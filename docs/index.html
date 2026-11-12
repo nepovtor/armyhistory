@@ -65,7 +65,8 @@ const __progress = p => {
 };
 const __advance = (p,body) => {
  const c=__scene(p.nodeId);
- if (c.id!==body.nodeId || c.type==='part_end') throw new Error('Переход недоступен');
+ if (c.id!==body.nodeId) throw new Error('Переход недоступен');
+ if ((c.type==='part_end'&&!c.next)||c.type==='ending') throw new Error('Часть уже завершена');
  const stats={...p.stats},decisions=[...p.decisions];
  let next=c.next;
  if(c.type==='choice') {

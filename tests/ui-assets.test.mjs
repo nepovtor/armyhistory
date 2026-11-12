@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { stories } from '../server/content.mjs';
@@ -57,6 +58,37 @@ test('автономная Pages-сборка встраивает изобра�
     const html = fs.readFileSync(output, 'utf8');
     assert.doesNotMatch(html, /\/assets\//, 'В Pages-сборке остались внешние ссылки на локальные ресурсы');
     assert.ok((html.match(/data:image\/webp;base64/g) || []).length >= 11, 'Не все WebP-иллюстрации встроены');
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test('автономная Pages-сборка разрешает переход к следующей части', () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'armyhistory-transition-'));
+  const output = path.join(tempDir, 'index.html');
+  try {
+    execFileSync(process.execPath, [fileURLToPath(new URL('../tools/build-demo.mjs', import.meta.url)), output], {
+      cwd: fileURLToPath(root),
+      stdio: 'pipe'
+    });
+    const html = fs.readFileSync(output, 'utf8');
+    assert.doesNotMatch(
+      html,
+      /c\.id!==body\.nodeId\s*\|\|\s*c\.type==='part_end'/,
+      'Pages-движок не должен блокировать конец части, у которого есть следующая сцена'
+    );
+    assert.match(
+      html,
+      /\(c\.type==='part_end'\s*&&\s*!c\.next\)\s*\|\|\s*c\.type==='ending'/,
+      'Pages-движок должен повторять правило перехода из серверного движка'
+    );
+    const runtimeStart = html.indexOf('const __stories = ');
+    const runtimeEnd = html.indexOf('window.fetch = async', runtimeStart);
+    assert.ok(runtimeStart >= 0 && runtimeEnd > runtimeStart, 'Не найден автономный движок в Pages-сборке');
+    const context = {};
+    vm.runInNewContext(`${html.slice(runtimeStart, runtimeEnd)}\n` +
+      `globalThis.transitionResult=__advance({nodeId:'c1p1-end',stats:{route:0,mood:0},decisions:[],visited:['c1p1-end']},{nodeId:'c1p1-end'});`, context);
+    assert.equal(context.transitionResult.nodeId, 'c1p2-01');
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }
