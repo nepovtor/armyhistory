@@ -9,8 +9,9 @@ const publicDir = path.join(root, 'public');
 const out = process.argv[2] || path.resolve(root, '..', 'HIStory-demo.html');
 const assets = new Map();
 for (const f of fs.readdirSync(path.join(publicDir, 'assets'))) {
-  if (!f.endsWith('.svg')) continue;
-  assets.set(`/assets/${f}`, 'data:image/svg+xml;base64,' + fs.readFileSync(path.join(publicDir,'assets',f)).toString('base64'));
+  const mime = f.endsWith('.svg') ? 'image/svg+xml' : f.endsWith('.webp') ? 'image/webp' : f.endsWith('.png') ? 'image/png' : null;
+  if (!mime) continue;
+  assets.set(`/assets/${f}`, `data:${mime};base64,` + fs.readFileSync(path.join(publicDir,'assets',f)).toString('base64'));
 }
 const storiesCopy = structuredClone(stories);
 for (const s of storiesCopy) {
@@ -22,7 +23,7 @@ for (const [filepath, data] of assets) app = app.replaceAll(`'${filepath}'`, `'$
 const stub = `
 // Только для полностью автономной демонстрации.
 const __stories = ${JSON.stringify(storiesCopy)};
-const __key = 'history-offline-preview-v1';
+const __key = 'history-offline-preview-v2';
 const __read = () => {
  try { return JSON.parse(localStorage.getItem(__key) || 'null'); } catch { return null; }
 };
@@ -76,6 +77,6 @@ window.fetch = async (url,opts={}) => {
 // Защитить закрывающие script-последовательности в пользовательских текстах.
 const safeScript = (stub + '\n' + app).replaceAll('</script', '<\\/script');
 const css = fs.readFileSync(path.join(publicDir, 'styles.css'), 'utf8');
-const html = `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1"><meta name="theme-color" content="#101f29"><title>HIStory — демоверсия</title><script src="https://telegram.org/js/telegram-web-app.js"></script><style>${css}</style></head><body><div id="app" aria-live="polite"></div><div id="toast" role="status" aria-live="polite"></div><script>${safeScript}</script></body></html>`;
+const html = `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1"><meta name="theme-color" content="#0b1e2b"><title>HIStory — демоверсия</title><script src="https://telegram.org/js/telegram-web-app.js"></script><style>${css}</style></head><body><div id="app" aria-live="polite"></div><div id="toast" role="status" aria-live="polite"></div><script>${safeScript}</script></body></html>`;
 fs.writeFileSync(out,html);
 console.log('Offline preview generated:',out,fs.statSync(out).size,'bytes');
