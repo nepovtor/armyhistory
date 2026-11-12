@@ -2,6 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { stories } from '../server/content.mjs';
 const root = new URL('../', import.meta.url);
 
@@ -40,5 +43,21 @@ test('новые растровые иллюстрации полноформа�
     assert.ok(bytes.length > 100_000, `${name} выглядит слишком маленьким`);
     assert.equal(bytes.subarray(0, 4).toString('ascii'), 'RIFF');
     assert.equal(bytes.subarray(8, 12).toString('ascii'), 'WEBP');
+  }
+});
+
+test('автономная Pages-сборка встраивает изображения из вложенных папок', () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'armyhistory-pages-'));
+  const output = path.join(tempDir, 'index.html');
+  try {
+    execFileSync(process.execPath, [fileURLToPath(new URL('../tools/build-demo.mjs', import.meta.url)), output], {
+      cwd: fileURLToPath(root),
+      stdio: 'pipe'
+    });
+    const html = fs.readFileSync(output, 'utf8');
+    assert.doesNotMatch(html, /\/assets\//, 'В Pages-сборке остались внешние ссылки на локальные ресурсы');
+    assert.ok((html.match(/data:image\/webp;base64/g) || []).length >= 11, 'Не все WebP-иллюстрации встроены');
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
   }
 });

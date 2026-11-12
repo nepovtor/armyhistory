@@ -8,11 +8,23 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicDir = path.join(root, 'public');
 const out = process.argv[2] || path.resolve(root, '..', 'HIStory-demo.html');
 const assets = new Map();
-for (const f of fs.readdirSync(path.join(publicDir, 'assets'))) {
-  const mime = f.endsWith('.svg') ? 'image/svg+xml' : f.endsWith('.webp') ? 'image/webp' : f.endsWith('.png') ? 'image/png' : null;
-  if (!mime) continue;
-  assets.set(`/assets/${f}`, `data:${mime};base64,` + fs.readFileSync(path.join(publicDir,'assets',f)).toString('base64'));
+const assetsDir = path.join(publicDir, 'assets');
+function collectAssets(dir, relativeDir = '') {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const relativePath = path.join(relativeDir, entry.name);
+    const absolutePath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      collectAssets(absolutePath, relativePath);
+      continue;
+    }
+    if (!entry.isFile()) continue;
+    const mime = entry.name.endsWith('.svg') ? 'image/svg+xml' : entry.name.endsWith('.webp') ? 'image/webp' : entry.name.endsWith('.png') ? 'image/png' : null;
+    if (!mime) continue;
+    const webPath = `/assets/${relativePath.split(path.sep).join('/')}`;
+    assets.set(webPath, `data:${mime};base64,` + fs.readFileSync(absolutePath).toString('base64'));
+  }
 }
+collectAssets(assetsDir);
 const storiesCopy = structuredClone(stories);
 for (const s of storiesCopy) {
   s.cover = assets.get(s.cover) || s.cover;

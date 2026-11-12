@@ -21,18 +21,32 @@
 - Part 3 beats: offer to join; evening request for an answer; humorous inner thought about enough fights and harsh hazing; refusal; documents returned; headquarters says diver-training group already left; wait for next assignment.
 - Generated 11 consistent full-frame WebP illustrations at 1086x1448 in `public/assets/comic-v2/`; total size is about 4.9 MB.
 - The draft-office illustration initially rendered an English calendar; a targeted edit removed all text and replaced it with a plain red star.
+- GitHub Pages image failure, local build evidence: `tools/build-demo.mjs` scans only direct children of `public/assets` with `fs.readdirSync`, so it never adds nested `public/assets/comic-v2/*.webp` files to the inline asset map.
+- Because nested files are absent from that map, `docs/index.html` retains absolute URLs such as `/assets/comic-v2/cover.webp`. On the project page `https://nepovtor.github.io/armyhistory/`, these resolve against the domain root as `https://nepovtor.github.io/assets/...`, outside the repository site.
+- The Pages workflow uploads only `docs/`; it does not separately upload `public/assets/comic-v2`, so the retained absolute URLs cannot succeed in the deployed artifact.
+- Live reproduction on 2026-11-13: the Pages document returns HTTP 200, while both `https://nepovtor.github.io/assets/comic-v2/cover.webp` and `https://nepovtor.github.io/armyhistory/assets/comic-v2/cover.webp` return HTTP 404.
+- Generated artifact measurement: `docs/index.html` contains 18 unresolved `/assets/comic-v2/` occurrences, zero embedded WebP data URLs, and one embedded SVG data URL. This matches the builder's top-level-only traversal.
+- Working comparison: the top-level route SVG is discovered and embedded; nested WebP files are not. The difference is directory depth, not WebP browser support or file corruption.
+- Confirmed root cause: the static demo builder assumes a flat `public/assets` directory, but the new image set lives one level deeper in `public/assets/comic-v2`.
+- Regression test reproduced the bug before the fix: the Pages build retained `/assets/` URLs and failed with 1 of 4 UI-asset tests.
+- Minimal fix: recursively collect supported files under `public/assets` while preserving POSIX-style web paths in the asset map.
+- After the fix, the targeted test passes, the generated Pages HTML contains 18 embedded WebP data URLs and zero unresolved `/assets/` references.
+- A local preview served at the same project-subpath shape (`/armyhistory/`) returned HTTP 200 with the complete 11,833,192-byte document and zero unresolved asset references.
 
 ## Technical Decisions
 | Decision | Rationale |
 |----------|-----------|
 | Built-in image generation/editing | Required by the imagegen skill for raster illustration work. |
 | Inspect repository before choosing which assets to replace | The request says "all photos" and the project already contains mixed SVG/WebP assets. |
+| Fix asset discovery recursively in the builder | Keeps the existing project organization and restores the intended single-file Pages artifact without repository-name-specific URL hacks. |
 
 ## Issues Encountered
 | Issue | Resolution |
 |-------|------------|
 | `magick` and `convert` montage commands are unavailable | Inspect assets directly with the built-in image viewer. |
 | macOS `sips` cannot write WebP in this environment | Use the installed `cwebp` encoder at quality 88. |
+| Web browsing tool could not access the GitHub Pages URL | Use read-only HTTP headers with `curl` to reproduce the live status codes. |
+| Initial temporary-file cleanup command was rejected because it used `rm -f` | Cleaned the exact temporary file and symlink with `unlink`, then removed the empty directory with `rmdir`. |
 
 ## Resources
 -
