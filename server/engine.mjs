@@ -11,7 +11,7 @@ function route(next, stats) {
 export function advance(story, progress, { nodeId, choiceId }) {
   const current = getScene(story, progress.nodeId);
   if (!current || current.id !== nodeId) throw new Error('Эта сцена уже пройдена. Обновите страницу.');
-  if (current.type === 'part_end' || current.type === 'ending') throw new Error('Часть уже завершена');
+  if ((current.type === 'part_end' && !current.next) || current.type === 'ending') throw new Error('Часть уже завершена');
   const stats = { ...progress.stats };
   let next;
   const decisions = [...progress.decisions];
@@ -58,12 +58,14 @@ export function publicStory(story, progress) {
     chapters: story.chapters.map(ch => ({
       number: ch.number, name: ch.name, subtitle: ch.subtitle, poster: ch.poster,
       status: ch.number < maxChapter ? 'done' : ch.number === maxChapter ? 'current' : 'locked',
-      parts: ch.parts.map(p => ({
-        ...p,
-        status: !p.published ? 'upcoming' : progress.visited.some(id => getScene(story, id)?.chapter === ch.number && getScene(story, id)?.part === p.number)
-          ? (current.type === 'part_end' && current.chapter === ch.number && current.part === p.number ? 'done' : 'current')
-          : 'available'
-      }))
+      parts: ch.parts.map(p => {
+        let status = 'locked';
+        if (!p.published) status = 'upcoming';
+        else if (ch.number < current.chapter || (ch.number === current.chapter && p.number < current.part)) status = 'done';
+        else if (ch.number === current.chapter && p.number === current.part) status = current.type === 'part_end' ? 'done' : 'current';
+        else if (ch.number === current.chapter && p.number === current.part + 1 && current.type === 'part_end') status = 'available';
+        return { ...p, status };
+      })
     })),
     completed: current.type === 'ending',
     partCompleted: current.type === 'part_end',

@@ -8,15 +8,17 @@ test('сюжет корректен: глава делится на части',
   assert.doesNotThrow(assertValidContent);
   assert.equal(story.chapters[0].parts.length, 3);
   assert.equal(story.chapters[0].parts[0].published, true);
-  assert.equal(story.chapters[0].parts[1].published, false);
+  assert.equal(story.chapters[0].parts[1].published, true);
+  assert.equal(story.chapters[0].parts[2].published, true);
   assert.equal(story.scenes[0].chapter, 1);
   assert.equal(story.scenes[0].part, 1);
 });
 
-test('изначально доступна только часть 1', () => {
+test('изначально открыта часть 1, следующие части идут по порядку', () => {
   const s = publicStory(story, initialProgress(story));
   assert.equal(s.chapters[0].parts[0].status, 'current');
-  assert.equal(s.chapters[0].parts[1].status, 'upcoming');
+  assert.equal(s.chapters[0].parts[1].status, 'locked');
+  assert.equal(s.chapters[0].parts[2].status, 'locked');
   assert.equal(s.started, false);
 });
 
@@ -57,9 +59,26 @@ test('нельзя пройти чужой сценой или недопуст�
 
 test('нельзя пройти дальше конца опубликованной части', () => {
   let p = initialProgress(story);
-  while (p.nodeId !== 'c1p1-end') {
+  while (p.nodeId !== 'c1p3-end') {
     const scene = story.scenes.find(s => s.id === p.nodeId);
     p = advance(story, p, { nodeId: scene.id, ...(scene.type === 'choice' ? {choiceId:'route'} : {}) });
   }
   assert.throws(() => advance(story, p, {nodeId:p.nodeId}),/уже завершена/);
+});
+
+test('после каждой завершённой части открывается следующая', () => {
+  let p = initialProgress(story);
+  while (p.nodeId !== 'c1p1-end') {
+    const scene = story.scenes.find(s => s.id === p.nodeId);
+    p = advance(story, p, { nodeId: scene.id, ...(scene.type === 'choice' ? { choiceId: 'route' } : {}) });
+  }
+  let listing = publicStory(story, p);
+  assert.deepEqual(listing.chapters[0].parts.map(part => part.status), ['done', 'available', 'locked']);
+  p = advance(story, p, { nodeId: p.nodeId });
+  assert.equal(p.nodeId, 'c1p2-01');
+  while (p.nodeId !== 'c1p2-end') p = advance(story, p, { nodeId: p.nodeId });
+  listing = publicStory(story, p);
+  assert.deepEqual(listing.chapters[0].parts.map(part => part.status), ['done', 'done', 'available']);
+  p = advance(story, p, { nodeId: p.nodeId });
+  assert.equal(p.nodeId, 'c1p3-01');
 });
