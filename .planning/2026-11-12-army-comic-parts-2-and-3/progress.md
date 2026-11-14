@@ -69,3 +69,29 @@
 | Error | Resolution |
 |-------|------------|
 | Cleanup command using `rm -f` was rejected | Used `unlink` for the exact temporary file and symlink, then `rmdir`. |
+
+## Session: 2026-11-13 — Part transition bug
+
+### Current Status
+- **Phase:** 8 - Diagnosing why part 2 does not open after part 1
+- **Started:** 2026-11-13
+
+### Actions Taken
+- Restored the existing task plan after the user reported the part 1 → part 2 failure.
+- Began systematic diagnosis before changing transition code.
+- Reproduced the stale unconditional `part_end` guard in the local Pages builder and the live GitHub Pages HTML.
+- Compared it with the working server engine, which permits a `part_end` transition when `next` is present.
+- Confirmed duplicated, diverged offline transition logic as the root cause.
+- Added a Pages transition regression test and observed the expected failure: 4 passed, 1 failed on the unconditional `part_end` guard.
+- Updated the offline guard to match the server engine and verified a real `c1p1-end` → `c1p2-01` transition inside the generated runtime.
+- Rebuilt `docs/index.html` with the corrected Pages runtime.
+
+### Test Results
+| Test | Expected | Actual | Status |
+|------|----------|--------|--------|
+| Pages transition regression before fix | Demonstrate the bug | 4 passed, 1 failed on the unconditional `part_end` block | expected fail |
+| Targeted Pages tests after fix | Assets and next-part transition work | 5/5 passed | pass |
+| Full `npm test` | All project tests pass | 16/16 passed, 0 failed | pass |
+| Fresh `npm run build:pages` | Corrected Pages artifact generated | 11,833,282 bytes | pass |
+| Generated artifact verification | Correct guard, images embedded, no external asset paths | 18 embedded WebP; 0 unresolved `/assets/` links | pass |
+| `git diff --check` | No whitespace errors | No output, exit 0 | pass |

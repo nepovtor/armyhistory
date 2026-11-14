@@ -32,6 +32,12 @@
 - Minimal fix: recursively collect supported files under `public/assets` while preserving POSIX-style web paths in the asset map.
 - After the fix, the targeted test passes, the generated Pages HTML contains 18 embedded WebP data URLs and zero unresolved `/assets/` references.
 - A local preview served at the same project-subpath shape (`/armyhistory/`) returned HTTP 200 with the complete 11,833,192-byte document and zero unresolved asset references.
+- Part 2 launch failure is reproducible in both the local Pages builder and the deployed Pages HTML: their offline `__advance` function rejects every scene whose type is `part_end`.
+- The published page returned HTTP 200 on 2026-11-13 and contained the exact stale guard `c.id!==body.nodeId || c.type==='part_end'`.
+- The server engine already has the correct rule: a `part_end` transition is blocked only when it has no `next`; part 1 ends at `c1p1-end` with `next: 'c1p2-01'`.
+- Confirmed root cause: duplicated transition logic diverged. `server/engine.mjs` was updated for sequential parts, but the offline engine embedded by `tools/build-demo.mjs` retained the old unconditional block.
+- The regression was verified red/green: it failed against the stale guard, then passed after the offline runtime adopted the server rule and executed `c1p1-end` → `c1p2-01` in a VM.
+- Final verification: 16/16 project tests passed; the rebuilt Pages artifact contains the corrected guard, 18 embedded WebP images, and zero unresolved `/assets/` URLs.
 
 ## Technical Decisions
 | Decision | Rationale |
@@ -39,6 +45,7 @@
 | Built-in image generation/editing | Required by the imagegen skill for raster illustration work. |
 | Inspect repository before choosing which assets to replace | The request says "all photos" and the project already contains mixed SVG/WebP assets. |
 | Fix asset discovery recursively in the builder | Keeps the existing project organization and restores the intended single-file Pages artifact without repository-name-specific URL hacks. |
+| Mirror the server transition guard in the Pages runtime | Restores part-to-part navigation without changing story data or unrelated UI behavior. |
 
 ## Issues Encountered
 | Issue | Resolution |

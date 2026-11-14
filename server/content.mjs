@@ -67,7 +67,7 @@ export const stories = [
         next: 'c1p1-06'
       },
       {
-        id: 'c1p1-06', chapter: 1, part: 1, background: 'train', type: 'narration',
+        id: 'c1p1-06', chapter: 1, part: 1, background: 'trainJourney', type: 'narration',
         label: 'ПОЕЗД · НА ЮГ',
         text: 'В поезде многие переживали из-за трёх лет службы. Кто-то пытался заглушить это горе спиртным. Так мы и ехали на юг — навстречу неизвестной ещё жизни.',
         next: 'c1p1-07'
@@ -129,7 +129,7 @@ export const stories = [
         next: 'c1p2-06'
       },
       {
-        id: 'c1p2-06', chapter: 1, part: 2, background: 'sparring', type: 'narration',
+        id: 'c1p2-06', chapter: 1, part: 2, background: 'examResult', type: 'narration',
         label: 'ЭКЗАМЕН ЗАКОНЧЕН',
         text: 'Так и сделал — проиграл ему. По лицу капитан-лейтенанта было видно: результатом он доволен. И раунд выиграл, и авторитет на месте.',
         next: 'c1p2-07'

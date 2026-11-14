@@ -20,6 +20,8 @@ const art = {
   station: '/assets/comic-v2/enlist.webp',
   paper: '/assets/comic-v2/commissariat.webp',
   train: '/assets/comic-v2/train.webp',
+  trainJourney: '/assets/comic-v2/train-journey.webp',
+  examResult: '/assets/comic-v2/exam-result.webp',
   route: '/assets/route.svg',
   sea: '/assets/comic-v2/harbor.webp',
   harbor: '/assets/comic-v2/harbor.webp',
@@ -121,11 +123,11 @@ function readerView() {
       ? `<div class="choices">${scene.choices.map(c=>`<button class="choice" data-action="choice" data-choice="${escapeHtml(c.id)}"><strong>${escapeHtml(c.text)}</strong><small>${escapeHtml(c.hint)}</small></button>`).join('')}</div>`
       : `<button class="btn wide" data-action="next"><span class="btn-copy">${scene.type==='archive'?'Продолжить':'Далее'}</span><span class="arrow">→</span></button>`;
   return `<main class="reader ${end?'part-end':''}">
-    <div class="scene-art"><img src="${escapeHtml(image)}" alt="Иллюстрация к эпизоду: ${escapeHtml(scene.label)}"/></div>
+    ${scene.background==='route'?'':`<div class="scene-art"><img src="${escapeHtml(image)}" alt="Иллюстрация к эпизоду: ${escapeHtml(scene.label)}"/></div>`}
     <div class="reader-hud"><button class="iconbtn" data-action="chapters" aria-label="Вернуться к главам">‹</button>
       <div class="reader-count"><div class="chapter-label"><span>Глава ${p.chapter.number} · часть ${p.part.number}</span><span>${p.partProgress}%</span></div><div class="progress-track" role="progressbar" aria-label="Прогресс части" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${p.partProgress}"><div class="progress-fill" style="width:${p.partProgress}%"></div></div></div>
       <button class="iconbtn" data-action="journal" aria-label="Дневник истории" title="Дневник">☷</button></div>
-    <div class="reader-center"><div class="scene-place"><span>${escapeHtml(scene.label)}</span><small>${escapeHtml(p.part.title)}</small></div></div>
+    <div class="reader-center ${scene.background==='route'?'reader-center-map':''}">${scene.background==='route'?`<img class="route-map" src="${escapeHtml(image)}" alt="Карта маршрута: Минск — Симферополь — Севастополь"/>`:''}<div class="scene-place"><span>${escapeHtml(scene.label)}</span><small>${escapeHtml(p.part.title)}</small></div></div>
     <section class="story-panel" aria-label="Текущая сцена"><div class="panel-top"><span class="eyebrow">${end?'Часть завершена':scene.type==='archive'?'Из воспоминаний':isChoice?'Выбери, что узнать':'От первого лица'}</span><span class="panel-step">${end?'⚓':step}</span></div>
       ${end?'<div class="end-emblem" aria-hidden="true">⚓</div>':''}<p class="scene-text">${escapeHtml(scene.text)}</p>
       ${scene.note?`<div class="scene-note">${escapeHtml(scene.note)}</div>`:''}

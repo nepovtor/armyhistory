@@ -4,10 +4,10 @@
 Refresh the project's visual assets into one simple, funny army-comic style and add polished second and third story parts based on the user's Russian text.
 
 ## Next Step
-Commit and push the verified Pages fix so GitHub Actions redeploys the corrected artifact.
+Commit and push the verified part-transition fix so GitHub Pages redeploys the corrected artifact.
 
 ## Current Phase
-Phase 7
+Phase 9
 
 ## Phases
 
@@ -49,6 +49,18 @@ Phase 7
 - [x] Rebuild and verify local and published-style URLs
 - **Status:** complete
 
+### Phase 8: Part Transition Root-Cause Diagnosis
+- [x] Reproduce the part 1 → part 2 failure
+- [x] Compare the Pages runtime with the server engine
+- [x] Record the confirmed root cause
+- **Status:** complete
+
+### Phase 9: Offline Transition Fix & Verification
+- [x] Add a failing regression check
+- [x] Implement the minimal transition fix
+- [x] Rebuild and verify the GitHub Pages artifact
+- **Status:** complete
+
 ## Decisions Made
 | Decision | Rationale |
 |----------|-----------|
@@ -64,3 +76,4 @@ Phase 7
 | Native browser automation pipe failed after the part 2 visual check | Retained the successful local render check and completed automated story, asset, and build verification. |
 | Web browsing tool could not open GitHub Pages | Fall back to read-only `curl` status/header checks. |
 | Temp cleanup command using `rm -f` was rejected | Used explicit `unlink` targets and `rmdir`. |
+| Initial phase-extension patch did not match its broad context | Re-read the exact plan sections and applied a narrower patch. |
