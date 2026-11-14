@@ -11,7 +11,7 @@ const root = new URL('../', import.meta.url);
 
 test('все сюжетные иллюстрации присутствуют и не загружаются из чужих доменов', () => {
   const backgrounds = {
-    station: 'comic-v2/enlist.webp', paper: 'comic-v2/commissariat.webp', train: 'comic-v2/train.webp', route: 'route.svg',
+    station: 'comic-v2/enlist.webp', paper: 'comic-v2/commissariat.webp', train: 'comic-v2/train.webp', route: null,
     sea: 'comic-v2/harbor.webp', harbor: 'comic-v2/harbor.webp', barracks: 'comic-v2/barracks.webp',
     marineOffer: 'comic-v2/marine-offer.webp', sparring: 'comic-v2/sparring.webp', decision: 'comic-v2/decision.webp',
     diversMissed: 'comic-v2/divers-missed.webp', cover: 'comic-v2/cover.webp'
@@ -23,10 +23,24 @@ test('все сюжетные иллюстрации присутствуют и
       assert.ok(fs.existsSync(new URL(`../public${artwork}`, import.meta.url)), artwork);
     }
     for (const scene of story.scenes) {
-      assert.ok(backgrounds[scene.background], `Нет иллюстрации для ${scene.id}`);
-      assert.ok(fs.existsSync(new URL(`../public/assets/${backgrounds[scene.background]}`, import.meta.url)));
+      assert.ok(Object.hasOwn(backgrounds, scene.background), `Нет иллюстрации для ${scene.id}`);
+      if (scene.background !== 'route') assert.ok(fs.existsSync(new URL(`../public/assets/${backgrounds[scene.background]}`, import.meta.url)));
     }
   }
+  assert.ok(fs.existsSync(new URL('../private/route.svg', import.meta.url)));
+  assert.equal(fs.existsSync(new URL('../public/assets/route.svg', import.meta.url)), false);
+});
+
+test('клиент показывает оплату карты и не доверяет одному callback Telegram', () => {
+  const app = fs.readFileSync(new URL('../public/app.js', import.meta.url), 'utf8');
+  assert.match(app, /route:\s*['"]\/api\/map['"]/);
+  assert.match(app, /data-action="buy-map"/);
+  assert.match(app, /openInvoice/);
+  assert.match(app, /data\.mapAccess/);
+  assert.match(app, /mapAccess\.unlocked/);
+  assert.match(app, /await api\('\/api\/bootstrap'\)/);
+  assert.match(app, /URL\.createObjectURL/);
+  assert.match(app, /X-Telegram-Init-Data/);
 });
 
 test('история не приписывает отцу тип или номер атомной лодки', () => {
@@ -58,7 +72,9 @@ test('автономная Pages-сборка встраивает изобра�
     });
     const html = fs.readFileSync(output, 'utf8');
     assert.doesNotMatch(html, /\/assets\//, 'В Pages-сборке остались внешние ссылки на локальные ресурсы');
+    assert.doesNotMatch(html, /['"]\/api\/map['"]/, 'Pages-сборка не должна запрашивать защищённую карту');
     assert.ok((html.match(/data:image\/webp;base64/g) || []).length >= 11, 'Не все WebP-иллюстрации встроены');
+    assert.ok((html.match(/data:image\/svg\+xml;base64/g) || []).length >= 1, 'Защищённая карта не встроена в демоверсию');
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }

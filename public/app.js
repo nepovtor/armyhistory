@@ -15,14 +15,14 @@ if (!demoId || !/^[a-z0-9-]{8,80}$/i.test(demoId)) {
   demoId = 'reader-' + crypto.randomUUID();
   localStorage.setItem(storeKey, demoId);
 }
-const state = { view: 'loading', config: null, user: null, stories: [], story: null, progress: null, busy: false, error: null };
+const state = { view: 'loading', config: null, user: null, stories: [], story: null, progress: null, mapAccess: { unlocked: false, price: 15, currency: 'XTR' }, mapImageUrl: null, busy: false, error: null };
 const art = {
   station: '/assets/comic-v2/enlist.webp',
   paper: '/assets/comic-v2/commissariat.webp',
   train: '/assets/comic-v2/train.webp',
   trainJourney: '/assets/comic-v2/train-journey.webp',
   examResult: '/assets/comic-v2/exam-result.webp',
-  route: '/assets/route.svg',
+  route: '/api/map',
   sea: '/assets/comic-v2/harbor.webp',
   harbor: '/assets/comic-v2/harbor.webp',
   barracks: '/assets/comic-v2/barracks.webp',
@@ -51,11 +51,27 @@ async function api(path, options = {}) {
   if (!response.ok) throw new Error(payload?.error || `Ошибка запроса (${response.status})`);
   return payload;
 }
+async function loadProtectedImage(path) {
+  const headers = { 'X-Demo-Id': demoId };
+  if (tg?.initData) headers['X-Telegram-Init-Data'] = tg.initData;
+  const response = await fetch(path, { headers });
+  if (!response.ok) {
+    let payload = null;
+    try { payload = await response.json(); } catch { /* errors below */ }
+    throw new Error(payload?.error || `Ошибка загрузки карты (${response.status})`);
+  }
+  return URL.createObjectURL(await response.blob());
+}
+async function ensureMapImage() {
+  if (!state.mapAccess.unlocked || state.mapImageUrl) return;
+  state.mapImageUrl = art.route.startsWith('data:') ? art.route : await loadProtectedImage(art.route);
+}
 async function boot() {
   try {
     state.config = await api('/api/config');
     const data = await api('/api/bootstrap');
     state.user = data.user;
+    state.mapAccess = data.mapAccess;
     state.stories = data.stories;
     state.story = data.stories[0];
     state.view = 'library';
@@ -113,7 +129,13 @@ function chaptersView() {
 }
 function readerView() {
   const p=state.progress, scene=p.scene, end=scene.type==='part_end', isChoice=scene.type==='choice';
-  const image=art[scene.background]||art.cover;
+  const image=scene.background==='route' ? state.mapImageUrl : art[scene.background]||art.cover;
+  const routeScene=scene.background==='route';
+  const mapContent=routeScene
+    ? state.mapAccess.unlocked
+      ? `<img class="route-map" src="${escapeHtml(image)}" alt="Карта маршрута: Минск — Симферополь — Севастополь"/>`
+      : `<section class="map-paywall" aria-label="Платный доступ к карте"><span class="map-lock" aria-hidden="true">✦</span><div><strong>Открыть карту маршрута</strong><p>Разовый доступ сохранится за вашим Telegram-аккаунтом.</p></div><button class="btn map-buy" data-action="buy-map"><span class="btn-copy">Открыть за ${state.mapAccess.price} ⭐</span><span class="arrow">›</span></button></section>`
+    : '';
   const step=String(Math.min(p.visitedCount,99)).padStart(2,'0');
   const actions=end
     ? scene.next
@@ -123,11 +145,11 @@ function readerView() {
       ? `<div class="choices">${scene.choices.map(c=>`<button class="choice" data-action="choice" data-choice="${escapeHtml(c.id)}"><strong>${escapeHtml(c.text)}</strong><small>${escapeHtml(c.hint)}</small></button>`).join('')}</div>`
       : `<button class="btn wide" data-action="next"><span class="btn-copy">${scene.type==='archive'?'Продолжить':'Далее'}</span><span class="arrow">→</span></button>`;
   return `<main class="reader ${end?'part-end':''}">
-    ${scene.background==='route'?'':`<div class="scene-art"><img src="${escapeHtml(image)}" alt="Иллюстрация к эпизоду: ${escapeHtml(scene.label)}"/></div>`}
+    ${routeScene?'':`<div class="scene-art"><img src="${escapeHtml(image)}" alt="Иллюстрация к эпизоду: ${escapeHtml(scene.label)}"/></div>`}
     <div class="reader-hud"><button class="iconbtn" data-action="chapters" aria-label="Вернуться к главам">‹</button>
       <div class="reader-count"><div class="chapter-label"><span>Глава ${p.chapter.number} · часть ${p.part.number}</span><span>${p.partProgress}%</span></div><div class="progress-track" role="progressbar" aria-label="Прогресс части" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${p.partProgress}"><div class="progress-fill" style="width:${p.partProgress}%"></div></div></div>
       <button class="iconbtn" data-action="journal" aria-label="Дневник истории" title="Дневник">☷</button></div>
-    <div class="reader-center ${scene.background==='route'?'reader-center-map':''}">${scene.background==='route'?`<img class="route-map" src="${escapeHtml(image)}" alt="Карта маршрута: Минск — Симферополь — Севастополь"/>`:''}<div class="scene-place"><span>${escapeHtml(scene.label)}</span><small>${escapeHtml(p.part.title)}</small></div></div>
+    <div class="reader-center ${routeScene?'reader-center-map':''}">${mapContent}<div class="scene-place"><span>${escapeHtml(scene.label)}</span><small>${escapeHtml(p.part.title)}</small></div></div>
     <section class="story-panel" aria-label="Текущая сцена"><div class="panel-top"><span class="eyebrow">${end?'Часть завершена':scene.type==='archive'?'Из воспоминаний':isChoice?'Выбери, что узнать':'От первого лица'}</span><span class="panel-step">${end?'⚓':step}</span></div>
       ${end?'<div class="end-emblem" aria-hidden="true">⚓</div>':''}<p class="scene-text">${escapeHtml(scene.text)}</p>
       ${scene.note?`<div class="scene-note">${escapeHtml(scene.note)}</div>`:''}
@@ -159,13 +181,49 @@ async function openReader(targetPart = null) {
   if (targetPart && targetPart > state.progress.part.number && state.progress.partCompleted && state.progress.scene.next) {
     state.progress = await api(`/api/story/${state.story.id}/advance`, { method: 'POST', body: JSON.stringify({ nodeId: state.progress.scene.id }) });
   }
+  if (state.progress.scene.background === 'route') await ensureMapImage();
   state.view = 'reader';
   render();
 }
 async function loadLibrary() {
   const data = await api('/api/bootstrap');
+  state.mapAccess = data.mapAccess;
   state.stories = data.stories;
   state.story = data.stories.find(s => s.id === state.story?.id) || data.stories[0];
+}
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+async function refreshMapAccess() {
+  for (let attempt = 0; attempt < 6; attempt++) {
+    const data = await api('/api/bootstrap');
+    state.mapAccess = data.mapAccess;
+    state.stories = data.stories;
+    state.story = data.stories.find(s => s.id === state.story?.id) || data.stories[0];
+    if (state.mapAccess.unlocked) {
+      await ensureMapImage();
+      return true;
+    }
+    if (attempt < 5) await wait(700);
+  }
+  return false;
+}
+async function buyMap() {
+  if (!tg?.openInvoice) throw new Error('Оплата Stars доступна только внутри Telegram.');
+  const { invoiceUrl } = await api('/api/map/invoice', { method: 'POST' });
+  const status = await new Promise((resolve, reject) => {
+    try { tg.openInvoice(invoiceUrl, resolve); }
+    catch (error) { reject(error); }
+  });
+  if (status === 'cancelled') return toast('Оплата отменена. Карта останется здесь, когда захотите вернуться.');
+  if (status === 'failed') return toast('Оплата не прошла. Попробуйте ещё раз.');
+  if (!['paid', 'pending'].includes(status)) return toast('Статус оплаты пока неизвестен.');
+  const unlocked = await refreshMapAccess();
+  render();
+  if (unlocked) {
+    haptic();
+    toast('Карта открыта навсегда.');
+  } else {
+    toast(status === 'pending' ? 'Платёж обрабатывается. Карта откроется после подтверждения Telegram.' : 'Платёж получен Telegram. Обновите экран через несколько секунд.');
+  }
 }
 async function navigate(action, button) {
   if (state.busy) return;
@@ -175,6 +233,12 @@ async function navigate(action, button) {
   if (action === 'library') { await loadLibrary(); state.view = 'library'; render(); return; }
   if (action === 'chapters') { await loadLibrary(); state.view = 'chapters'; render(); return; }
   if (action === 'read') return openReader(Number(button.dataset.part) || null);
+  if (action === 'buy-map') {
+    state.busy = true;
+    try { await buyMap(); }
+    finally { state.busy = false; }
+    return;
+  }
   if (action === 'restart') {
     if (!confirm('Начать первую часть заново? Текущий прогресс этой истории будет сброшен.')) return;
   }

@@ -25,6 +25,8 @@ function collectAssets(dir, relativeDir = '') {
   }
 }
 collectAssets(assetsDir);
+const privateMap = path.join(root, 'private', 'route.svg');
+assets.set('/api/map', 'data:image/svg+xml;base64,' + fs.readFileSync(privateMap).toString('base64'));
 const storiesCopy = structuredClone(stories);
 for (const s of storiesCopy) {
   s.cover = assets.get(s.cover) || s.cover;
@@ -78,7 +80,7 @@ window.fetch = async (url,opts={}) => {
   const err=message=>({ok:false,status:409,json:async()=>({error:message})});
   try {
    if(url==='/api/config')return ok({demoMode:true,gameName:'HIStory'});
-   if(url==='/api/bootstrap')return ok({user:{name:'Читатель',demo:true},stories:__stories.map(s=>__summary(__read()||__new()))});
+   if(url==='/api/bootstrap')return ok({user:{name:'Читатель',demo:true},mapAccess:{unlocked:true,price:15,currency:'XTR'},stories:__stories.map(s=>__summary(__read()||__new()))});
    if(url.endsWith('/reset')){const p=__new();__save(p);return ok(__progress(p));}
    if(url.endsWith('/advance')){const p=__advance(__read()||__new(),JSON.parse(opts.body||'{}'));__save(p);return ok(__progress(p));}
    if(url.endsWith('/back')){const p=__back(__read()||__new());__save(p);return ok(__progress(p));}

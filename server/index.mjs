@@ -7,9 +7,11 @@ import { advance, rewind, initialProgress, publicStory, publicProgress, assertVa
 import { verifyTelegramInitData, getRequestUser } from './auth.mjs';
 import { Storage } from './storage.mjs';
 import { launchBot } from './bot.mjs';
+import { MAP_ACCESS_CURRENCY, MAP_ACCESS_PRICE, MAP_ACCESS_PRODUCT, createMapInvoiceLink } from './payments.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicDir = path.join(root, 'public');
+const privateDir = path.join(root, 'private');
 const envPath = path.join(root, '.env');
 if (fs.existsSync(envPath)) {
   for (const line of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
@@ -33,6 +35,23 @@ const storage = new Storage(DATA_DIR);
 function send(res, code, payload) {
   res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' });
   res.end(JSON.stringify(payload));
+}
+function mapAccess(user) {
+  return {
+    unlocked: Boolean(user.demo) || storage.hasEntitlement(user.id, MAP_ACCESS_PRODUCT),
+    price: MAP_ACCESS_PRICE,
+    currency: MAP_ACCESS_CURRENCY
+  };
+}
+function sendProtectedMap(res) {
+  const file = path.join(privateDir, 'route.svg');
+  res.writeHead(200, {
+    'Content-Type': 'image/svg+xml',
+    'Content-Length': fs.statSync(file).size,
+    'Cache-Control': 'private, no-store',
+    'X-Content-Type-Options': 'nosniff'
+  });
+  fs.createReadStream(file).pipe(res);
 }
 function readJson(req) {
   return new Promise((resolve, reject) => {
@@ -73,7 +92,21 @@ const server = http.createServer(async (req, res) => {
     const user = getRequestUser(req, { botToken: BOT_TOKEN, demoMode: DEMO_MODE });
     if (!user) return send(res, 401, { error: 'Откройте приложение из Telegram. Локально доступен деморежим.' });
     if (pathname === '/api/bootstrap' && req.method === 'GET') {
-      return send(res, 200, { user: { name: user.name, demo: Boolean(user.demo) }, stories: stories.map(story => publicStory(story, storage.get(user.id, story))) });
+      return send(res, 200, {
+        user: { name: user.name, demo: Boolean(user.demo) },
+        mapAccess: mapAccess(user),
+        stories: stories.map(story => publicStory(story, storage.get(user.id, story)))
+      });
+    }
+    if (pathname === '/api/map' && req.method === 'GET') {
+      if (!mapAccess(user).unlocked) return send(res, 403, { error: `Карта доступна после оплаты ${MAP_ACCESS_PRICE} ⭐.` });
+      return sendProtectedMap(res);
+    }
+    if (pathname === '/api/map/invoice' && req.method === 'POST') {
+      if (user.demo) return send(res, 409, { error: 'В деморежиме карта уже открыта.' });
+      if (mapAccess(user).unlocked) return send(res, 409, { error: 'Карта уже открыта.' });
+      const invoiceUrl = await createMapInvoiceLink(BOT_TOKEN, user.telegramId);
+      return send(res, 200, { invoiceUrl });
     }
     const match = pathname.match(/^\/api\/story\/([a-z0-9-]+)(?:\/(advance|reset|back))?$/);
     if (!match) return send(res, 404, { error: 'Адрес не найден' });
@@ -110,6 +143,6 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, HOST, () => {
   console.info(`Mini App запущен: http://localhost:${PORT}`);
   if (DEMO_MODE) console.info('Деморежим включён — не используйте его на публичном сервере.');
-  if (BOT_TOKEN && APP_URL) launchBot(BOT_TOKEN, APP_URL).catch(console.error);
+  if (BOT_TOKEN && APP_URL) launchBot(BOT_TOKEN, APP_URL, { storage }).catch(console.error);
   else if (BOT_TOKEN) console.info('Для кнопки Telegram задайте APP_URL с HTTPS.');
 });
