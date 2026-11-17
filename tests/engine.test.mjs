@@ -7,6 +7,7 @@ const story = stories[0];
 test('сюжет корректен: глава делится на части', () => {
   assert.doesNotThrow(assertValidContent);
   assert.equal(story.chapters[0].parts.length, 3);
+  assert.equal(story.chapters[0].parts[0].sceneCount, 10);
   assert.equal(story.chapters[0].parts[0].published, true);
   assert.equal(story.chapters[0].parts[1].published, true);
   assert.equal(story.chapters[0].parts[2].published, true);
@@ -22,14 +23,29 @@ test('изначально открыта часть 1, следующие ча�
   assert.equal(s.started, false);
 });
 
-test('обе читательские развилки завершаются на 21 ноября, не меняя фактов', () => {
+test('обе читательские развилки сохраняют один порядок из десяти кадров', () => {
+  const expectedBackgrounds = [
+    'draftOffice',
+    'threeYears',
+    'trainDeparture',
+    'trainRecruits',
+    'route',
+    'simferopolArrival',
+    'simferopolSleep',
+    'haircut',
+    'uniform',
+    'sevastopolBarracks'
+  ];
   for (const choiceId of ['route','mood']) {
     let p = initialProgress(story);
     let n = 0;
+    const backgrounds = [];
     while (p.nodeId !== 'c1p1-end' && n++ < 30) {
       const scene = story.scenes.find(s => s.id === p.nodeId);
+      backgrounds.push(scene.background);
       p = advance(story, p, { nodeId: scene.id, ...(scene.type === 'choice' ? { choiceId } : {}) });
     }
+    assert.deepEqual(backgrounds, expectedBackgrounds);
     assert.equal(p.nodeId, 'c1p1-end');
     assert.equal(p.decisions.length, 1);
     assert.equal(p.decisions[0].choiceId, choiceId);
@@ -47,7 +63,7 @@ test('предыдущая сцена восстанавливается и по
   assert.equal(previous.decisions.length, 0);
   assert.equal(previous.stats.route, 0);
   const repeated = advance(story, previous, { nodeId: previous.nodeId, choiceId: 'mood' });
-  assert.equal(repeated.nodeId, 'c1p1-05b');
+  assert.equal(repeated.nodeId, 'c1p1-05');
 });
 
 test('нельзя пройти чужой сценой или недопустимым выбором', () => {

@@ -18,15 +18,15 @@ function collectAssets(dir, relativeDir = '') {
       continue;
     }
     if (!entry.isFile()) continue;
-    const mime = entry.name.endsWith('.svg') ? 'image/svg+xml' : entry.name.endsWith('.webp') ? 'image/webp' : entry.name.endsWith('.png') ? 'image/png' : null;
+    const mime = entry.name.endsWith('.svg') ? 'image/svg+xml' : entry.name.endsWith('.webp') ? 'image/webp' : entry.name.endsWith('.png') ? 'image/png' : entry.name.endsWith('.ttf') ? 'font/ttf' : null;
     if (!mime) continue;
     const webPath = `/assets/${relativePath.split(path.sep).join('/')}`;
     assets.set(webPath, `data:${mime};base64,` + fs.readFileSync(absolutePath).toString('base64'));
   }
 }
 collectAssets(assetsDir);
-const privateMap = path.join(root, 'private', 'route.svg');
-assets.set('/api/map', 'data:image/svg+xml;base64,' + fs.readFileSync(privateMap).toString('base64'));
+const privateMap = path.join(root, 'private', 'chapter-1', '05_route_map.webp');
+assets.set('/api/map', 'data:image/webp;base64,' + fs.readFileSync(privateMap).toString('base64'));
 const storiesCopy = structuredClone(stories);
 for (const s of storiesCopy) {
   s.cover = assets.get(s.cover) || s.cover;
@@ -39,7 +39,10 @@ const stub = `
 const __stories = ${JSON.stringify(storiesCopy)};
 const __key = 'history-offline-preview-v2';
 const __read = () => {
- try { return JSON.parse(localStorage.getItem(__key) || 'null'); } catch { return null; }
+ try {
+   const progress=JSON.parse(localStorage.getItem(__key) || 'null');
+   return progress && __stories[0].scenes.some(scene=>scene.id===progress.nodeId) ? progress : null;
+ } catch { return null; }
 };
 const __save = p => { localStorage.setItem(__key, JSON.stringify(p)); };
 const __new = () => ({ nodeId:__stories[0].start, stats:{route:0,mood:0}, decisions:[], visited:[__stories[0].start] });
@@ -91,7 +94,10 @@ window.fetch = async (url,opts={}) => {
 `;
 // Защитить закрывающие script-последовательности в пользовательских текстах.
 const safeScript = (stub + '\n' + app).replaceAll('</script', '<\\/script');
-const css = fs.readFileSync(path.join(publicDir, 'styles.css'), 'utf8');
+let css = fs.readFileSync(path.join(publicDir, 'styles.css'), 'utf8');
+for (const [filepath, data] of assets) css = css.replaceAll(filepath, data);
+const fontLicense = fs.readFileSync(path.join(assetsDir, 'fonts', 'OFL.txt'), 'utf8');
+css = `/*\n${fontLicense}\n*/\n` + css;
 const html = `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1"><meta name="theme-color" content="#0b1e2b"><title>HIStory — демоверсия</title><script src="https://telegram.org/js/telegram-web-app.js"></script><style>${css}</style></head><body><div id="app" aria-live="polite"></div><div id="toast" role="status" aria-live="polite"></div><script>${safeScript}</script></body></html>`;
 fs.writeFileSync(out,html);
 console.log('Offline preview generated:',out,fs.statSync(out).size,'bytes');

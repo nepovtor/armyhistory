@@ -11,7 +11,16 @@ const root = new URL('../', import.meta.url);
 
 test('все сюжетные иллюстрации присутствуют и не загружаются из чужих доменов', () => {
   const backgrounds = {
-    station: 'comic-v2/enlist.webp', paper: 'comic-v2/commissariat.webp', train: 'comic-v2/train.webp', route: null,
+    draftOffice: 'chapter-1/01_minsk_draft_office.webp',
+    threeYears: 'chapter-1/02_three_years_in_navy.webp',
+    trainDeparture: 'chapter-1/03_evening_train_departure.webp',
+    trainRecruits: 'chapter-1/04_train_recruits.webp',
+    route: null,
+    simferopolArrival: 'chapter-1/06_arrival_simferopol.webp',
+    simferopolSleep: 'chapter-1/07_simferopol_first_sleep.webp',
+    haircut: 'chapter-1/08_morning_haircut.webp',
+    uniform: 'chapter-1/09_naval_uniform.webp',
+    sevastopolBarracks: 'chapter-1/10_sevastopol_barracks.webp',
     sea: 'comic-v2/harbor.webp', harbor: 'comic-v2/harbor.webp', barracks: 'comic-v2/barracks.webp',
     marineOffer: 'comic-v2/marine-offer.webp', sparring: 'comic-v2/sparring.webp', decision: 'comic-v2/decision.webp',
     diversMissed: 'comic-v2/divers-missed.webp', cover: 'comic-v2/cover.webp'
@@ -27,12 +36,14 @@ test('все сюжетные иллюстрации присутствуют и
       if (scene.background !== 'route') assert.ok(fs.existsSync(new URL(`../public/assets/${backgrounds[scene.background]}`, import.meta.url)));
     }
   }
-  assert.ok(fs.existsSync(new URL('../private/route.svg', import.meta.url)));
+  assert.ok(fs.existsSync(new URL('../private/chapter-1/05_route_map.webp', import.meta.url)));
   assert.equal(fs.existsSync(new URL('../public/assets/route.svg', import.meta.url)), false);
+  assert.equal(fs.existsSync(new URL('../public/assets/chapter-1/05_route_map.webp', import.meta.url)), false);
 });
 
 test('клиент показывает оплату карты и не доверяет одному callback Telegram', () => {
   const app = fs.readFileSync(new URL('../public/app.js', import.meta.url), 'utf8');
+  const server = fs.readFileSync(new URL('../server/index.mjs', import.meta.url), 'utf8');
   assert.match(app, /route:\s*['"]\/api\/map['"]/);
   assert.match(app, /data-action="buy-map"/);
   assert.match(app, /openInvoice/);
@@ -41,6 +52,38 @@ test('клиент показывает оплату карты и не дове
   assert.match(app, /await api\('\/api\/bootstrap'\)/);
   assert.match(app, /URL\.createObjectURL/);
   assert.match(app, /X-Telegram-Init-Data/);
+  assert.match(server, /privateDir,\s*'chapter-1',\s*'05_route_map\.webp'/);
+  assert.match(server, /'Content-Type':\s*'image\/webp'/);
+  assert.match(server, /img-src 'self' data: blob:/, 'CSP должна разрешать blob URL защищённой карты');
+});
+
+test('ридер показывает новые сцены над текстом и разворачивает карту доступно', () => {
+  const app = fs.readFileSync(new URL('../public/app.js', import.meta.url), 'utf8');
+  const css = fs.readFileSync(new URL('../public/styles.css', import.meta.url), 'utf8');
+  const expectedAssets = [
+    '01_minsk_draft_office.webp',
+    '02_three_years_in_navy.webp',
+    '03_evening_train_departure.webp',
+    '04_train_recruits.webp',
+    '06_arrival_simferopol.webp',
+    '07_simferopol_first_sleep.webp',
+    '08_morning_haircut.webp',
+    '09_naval_uniform.webp',
+    '10_sevastopol_barracks.webp'
+  ];
+  for (const name of expectedAssets) assert.match(app, new RegExp(`chapter-1/${name.replace('.', '\\.')}`));
+  assert.match(app, /class="scene-media/);
+  assert.match(app, /class="scene-media[\s\S]*class="story-panel/);
+  assert.match(app, /decoding="async"/);
+  assert.match(app, /data-action="zoom-map"/);
+  assert.match(app, /data-action="close-map"/);
+  assert.match(app, /<dialog[^>]+class="map-dialog"/);
+  assert.match(app, /Минск[\s\S]*Симферополь[\s\S]*Севастополь/);
+  assert.match(app, /нижн(?:яя|ей) койк/i, 'Дневник должен сохранять подтверждённую нижнюю койку');
+  assert.doesNotMatch(app, /второй ярус/i, 'В дневнике не должно оставаться старого второго яруса');
+  assert.match(css, /\.scene-image[^}]*object-fit:\s*contain/);
+  assert.match(css, /\.route-map[^}]*object-fit:\s*contain/);
+  assert.match(css, /@media\(prefers-reduced-motion:\s*reduce\)/);
 });
 
 test('история не приписывает отцу тип или номер атомной лодки', () => {
@@ -52,14 +95,18 @@ test('история не приписывает отцу тип или номе
 });
 
 test('новые растровые иллюстрации полноформатные и достаточно крупные', () => {
-  const assets = fs.readdirSync(new URL('../public/assets/comic-v2/', import.meta.url)).filter(name => name.endsWith('.webp'));
-  assert.equal(assets.length, 13);
+  const assets = fs.readdirSync(new URL('../public/assets/chapter-1/', import.meta.url)).filter(name => name.endsWith('.webp'));
+  assert.equal(assets.length, 9);
   for (const name of assets) {
-    const bytes = fs.readFileSync(new URL(`../public/assets/comic-v2/${name}`, import.meta.url));
+    const bytes = fs.readFileSync(new URL(`../public/assets/chapter-1/${name}`, import.meta.url));
     assert.ok(bytes.length > 100_000, `${name} выглядит слишком маленьким`);
     assert.equal(bytes.subarray(0, 4).toString('ascii'), 'RIFF');
     assert.equal(bytes.subarray(8, 12).toString('ascii'), 'WEBP');
   }
+  const route = fs.readFileSync(new URL('../private/chapter-1/05_route_map.webp', import.meta.url));
+  assert.ok(route.length > 100_000);
+  assert.equal(route.subarray(0, 4).toString('ascii'), 'RIFF');
+  assert.equal(route.subarray(8, 12).toString('ascii'), 'WEBP');
 });
 
 test('автономная Pages-сборка встраивает изображения из вложенных папок', () => {
@@ -73,8 +120,7 @@ test('автономная Pages-сборка встраивает изобра�
     const html = fs.readFileSync(output, 'utf8');
     assert.doesNotMatch(html, /\/assets\//, 'В Pages-сборке остались внешние ссылки на локальные ресурсы');
     assert.doesNotMatch(html, /['"]\/api\/map['"]/, 'Pages-сборка не должна запрашивать защищённую карту');
-    assert.ok((html.match(/data:image\/webp;base64/g) || []).length >= 11, 'Не все WebP-иллюстрации встроены');
-    assert.ok((html.match(/data:image\/svg\+xml;base64/g) || []).length >= 1, 'Защищённая карта не встроена в демоверсию');
+    assert.ok((html.match(/data:image\/webp;base64/g) || []).length >= 10, 'Не все WebP-иллюстрации встроены');
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }

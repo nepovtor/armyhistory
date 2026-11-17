@@ -1,0 +1,1407 @@
+{
+ "url": "http://127.0.0.1:3100",
+ "at": "2026-11-15T19:26:59.684Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.42,
+    0.42
+   ],
+   "motion": {
+    "elements": 1,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 1115,
+     "screens": 1.2,
+     "words": 29,
+     "img": 1,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 1,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "09_naval_uniform.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "HIStory",
+     "words": 1,
+     "chars": 7,
+     "lines": 1,
+     "size": 84,
+     "vw": 5.8,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.05,
+     "leading": 0.92,
+     "top": 660,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "HIStory",
+     "words": 1,
+     "lines": 1,
+     "size": 84,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "HIStory",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 84,
+      "vw": 5.8,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.055,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.35,
+      "top": 660,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.58,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.42,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      13,
+      15,
+      16,
+      17,
+      19,
+      20,
+      22,
+      84
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 84,
+      "vw": 5.8,
+      "font": "Georgia",
+      "text": "HIStory"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 1
+    },
+    "eyebrows": [
+     {
+      "text": "HI",
+      "above": "HIStory",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 16,
+      "top": 600
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#040b12",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.64,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#071522",
+       "top": 20,
+       "hsl": {
+        "h": 209,
+        "s": 0.66,
+        "l": 0.08
+       }
+      },
+      {
+       "color": "#0d2638",
+       "top": 20,
+       "hsl": {
+        "h": 205,
+        "s": 0.62,
+        "l": 0.14
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#bbc5c2",
+       "share": 0.31
+      },
+      {
+       "color": "#c8b48e",
+       "share": 0.23
+      },
+      {
+       "color": "#142733",
+       "share": 0.19
+      },
+      {
+       "color": "#f5e6c8",
+       "share": 0.1
+      },
+      {
+       "color": "#fff7e7",
+       "share": 0.1
+      }
+     ],
+     "button": {
+      "bg": "#f5e6c8",
+      "hsl": {
+       "h": 40,
+       "s": 0.69,
+       "l": 0.87
+      },
+      "fg": "#142733"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": 6,
+     "height": 50,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Начать историю →"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.24
+     }
+    ],
+    "nav": {
+     "links": 0,
+     "fixed": false,
+     "height": 176,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 1115,
+    "margins": {
+     "left": 440,
+     "right": 440
+    },
+    "sections": [],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "HIStory",
+      "size": 84,
+      "top": 660,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 468,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 1,
+    "bodySize": 15,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.25,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 420,
+     "h": 780
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": true,
+    "ground": "#040b12",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 440,
+     "right": 440
+    },
+    "hero": {
+     "text": "HIStory",
+     "words": 1,
+     "chars": 7,
+     "lines": 1,
+     "size": 84,
+     "vw": 5.8,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.05,
+     "leading": 0.92,
+     "top": 660,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 1,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 2,
+     "radii": [
+      [
+       8,
+       1
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.18,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      13,
+      15,
+      16,
+      17,
+      19,
+      22,
+      84
+     ]
+    },
+    "title": {
+     "text": "HIStory",
+     "size": 84,
+     "top": 660
+    },
+    "colourShare": 0.113
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.75,
+    0.75
+   ],
+   "motion": {
+    "elements": 1,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1192,
+     "screens": 1.2,
+     "words": 29,
+     "img": 1,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 1,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "09_naval_uniform.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "HIStory",
+     "words": 1,
+     "chars": 7,
+     "lines": 1,
+     "size": 84,
+     "vw": 10.9,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.05,
+     "leading": 0.92,
+     "top": 737,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "HIStory",
+     "words": 1,
+     "lines": 1,
+     "size": 84,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "HIStory",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 84,
+      "vw": 10.9,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.055,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.66,
+      "top": 737,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.58,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.42,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      13,
+      15,
+      16,
+      17,
+      19,
+      20,
+      22,
+      84
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 84,
+      "vw": 10.9,
+      "font": "Georgia",
+      "text": "HIStory"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 1
+    },
+    "eyebrows": [
+     {
+      "text": "HI",
+      "above": "HIStory",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 16,
+      "top": 677
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#040b12",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.64,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#071522",
+       "top": 20,
+       "hsl": {
+        "h": 209,
+        "s": 0.66,
+        "l": 0.08
+       }
+      },
+      {
+       "color": "#0d2638",
+       "top": 20,
+       "hsl": {
+        "h": 205,
+        "s": 0.62,
+        "l": 0.14
+       }
+      },
+      {
+       "color": "#06111c",
+       "top": 20,
+       "hsl": {
+        "h": 210,
+        "s": 0.65,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#bbc5c2",
+       "share": 0.31
+      },
+      {
+       "color": "#c8b48e",
+       "share": 0.23
+      },
+      {
+       "color": "#142733",
+       "share": 0.19
+      },
+      {
+       "color": "#f5e6c8",
+       "share": 0.1
+      },
+      {
+       "color": "#fff7e7",
+       "share": 0.1
+      }
+     ],
+     "button": {
+      "bg": "#f5e6c8",
+      "hsl": {
+       "h": 40,
+       "s": 0.69,
+       "l": 0.87
+      },
+      "fg": "#142733"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": 6,
+     "height": 50,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Начать историю →",
+      "Главы и части →"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.45
+     }
+    ],
+    "nav": {
+     "links": 0,
+     "fixed": false,
+     "height": 176,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 1192,
+    "margins": {
+     "left": 104,
+     "right": 104
+    },
+    "sections": [
+     {
+      "sel": "div.home-visual",
+      "tag": "div",
+      "top": 20,
+      "height": 635,
+      "words": 0,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 104,
+      "right": 104,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-content",
+      "tag": "section",
+      "top": 655,
+      "height": 517,
+      "words": 26,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "HIStory",
+       "size": 84,
+       "tag": "h1"
+      },
+      "left": 132,
+      "right": 132,
+      "textLeft": 132,
+      "textRight": 132,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "HIStory",
+      "size": 84,
+      "top": 737,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 132,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 1,
+    "bodySize": 15,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": true,
+    "ground": "#040b12",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 104,
+     "right": 104
+    },
+    "hero": {
+     "text": "HIStory",
+     "words": 1,
+     "chars": 7,
+     "lines": 1,
+     "size": 84,
+     "vw": 10.9,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.05,
+     "leading": 0.92,
+     "top": 737,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 1,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 2,
+     "radii": [
+      [
+       8,
+       1
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.18,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      13,
+      15,
+      16,
+      17,
+      19,
+      22,
+      84
+     ]
+    },
+    "title": {
+     "text": "HIStory",
+     "size": 84,
+     "top": 737
+    },
+    "colourShare": 0.217
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 1,
+    "css": 1,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 1024,
+     "screens": 1.2,
+     "words": 29,
+     "img": 1,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 1,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "09_naval_uniform.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "HIStory",
+     "words": 1,
+     "chars": 7,
+     "lines": 1,
+     "size": 66,
+     "vw": 17,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.05,
+     "leading": 0.92,
+     "top": 605,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "HIStory",
+     "words": 1,
+     "lines": 1,
+     "size": 66.3,
+     "font": "Georgia"
+    },
+    "headings": [
+     {
+      "text": "HIStory",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 66.3,
+      "vw": 17,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": -0.055,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 605,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Три года до дома",
+      "words": 4,
+      "chars": 16,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Georgia",
+      "weight": 700,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 680,
+      "tag": "p",
+      "kind": "statement"
+     }
+    ],
+    "headingSummary": {
+     "count": 2,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 1,
+     "centered": 0,
+     "medianWords": 4,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.58,
+       "mono": false
+      },
+      {
+       "family": "Georgia",
+       "share": 0.42,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      13,
+      15,
+      16,
+      17,
+      19,
+      20,
+      22,
+      66
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 66.3,
+      "vw": 17,
+      "font": "Georgia",
+      "text": "HIStory"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.02,
+     "smallText": 1
+    },
+    "eyebrows": [
+     {
+      "text": "HI",
+      "above": "HIStory",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 16,
+      "top": 545
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#040b12",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.64,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#071522",
+       "top": 0,
+       "hsl": {
+        "h": 209,
+        "s": 0.66,
+        "l": 0.08
+       }
+      },
+      {
+       "color": "#0d2638",
+       "top": 0,
+       "hsl": {
+        "h": 205,
+        "s": 0.62,
+        "l": 0.14
+       }
+      },
+      {
+       "color": "#06111c",
+       "top": 0,
+       "hsl": {
+        "h": 210,
+        "s": 0.65,
+        "l": 0.07
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#bbc5c2",
+       "share": 0.31
+      },
+      {
+       "color": "#c8b48e",
+       "share": 0.23
+      },
+      {
+       "color": "#142733",
+       "share": 0.19
+      },
+      {
+       "color": "#f5e6c8",
+       "share": 0.1
+      },
+      {
+       "color": "#fff7e7",
+       "share": 0.1
+      }
+     ],
+     "button": {
+      "bg": "#f5e6c8",
+      "hsl": {
+       "h": 40,
+       "s": 0.69,
+       "l": 0.87
+      },
+      "fg": "#142733"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": 6,
+     "height": 50,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Начать историю →"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 1,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.62
+     }
+    ],
+    "nav": {
+     "links": 0,
+     "fixed": false,
+     "height": 176,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 1024,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "div.home-visual",
+      "tag": "div",
+      "top": 0,
+      "height": 523,
+      "words": 0,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": null,
+      "right": null,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-content",
+      "tag": "section",
+      "top": 523,
+      "height": 500,
+      "words": 26,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "HIStory",
+       "size": 66,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "HIStory",
+      "size": 66,
+      "top": 605,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 1,
+    "bodySize": 15,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": true,
+    "ground": "#040b12",
+    "sidebar": null,
+    "topbar": null,
+    "canvas": {
+     "left": 0,
+     "right": 0
+    },
+    "hero": {
+     "text": "HIStory",
+     "words": 1,
+     "chars": 7,
+     "lines": 1,
+     "size": 66,
+     "vw": 17,
+     "font": "Georgia",
+     "weight": 700,
+     "tracking": -0.05,
+     "leading": 0.92,
+     "top": 605,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 0,
+     "firstScreen": 0,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 0,
+     "radii": [],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.18,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      13,
+      15,
+      16,
+      17,
+      19,
+      22,
+      66
+     ]
+    },
+    "title": {
+     "text": "HIStory",
+     "size": 66,
+     "top": 605
+    },
+    "colourShare": 0.283
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (text #fff7e7).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "app-title-size",
+   "width": 1440,
+   "message": "The h1 is 84px (\"HIStory\").",
+   "fix": "An app screen is not a landing page: the title is 18-32px (20-24px on a phone).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "colour-sprawl",
+   "width": 768,
+   "message": "22% of the first screen is strongly coloured.",
+   "fix": "Keep the screen neutral and spend colour on data and status: the studied screens sit near 3%, and only tinted styles reach 10–15%, as pale tints rather than saturated fills.",
+   "alsoAt": [
+    390
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/nepovtor/armyhistory/.taste-skill/after-font/desktop-fold.jpg",
+   "pages": [
+    "/Users/nepovtor/armyhistory/.taste-skill/after-font/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/nepovtor/armyhistory/.taste-skill/after-font/tablet-fold.jpg",
+   "pages": [
+    "/Users/nepovtor/armyhistory/.taste-skill/after-font/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/nepovtor/armyhistory/.taste-skill/after-font/mobile-fold.jpg",
+   "pages": [
+    "/Users/nepovtor/armyhistory/.taste-skill/after-font/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

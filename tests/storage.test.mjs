@@ -21,6 +21,20 @@ test('прогресс восстанавливается после перез�
  } finally { fs.rmSync(dir,{recursive:true,force:true}); }
 });
 
+test('устаревшая сцена из прежней версии безопасно сбрасывается к началу',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'army-stories-migration-'));
+ try {
+  const story=stories[0];
+  fs.writeFileSync(path.join(dir,'progress.json'),JSON.stringify({users:{'tg:123456':{stories:{[story.id]:{
+   nodeId:'c1p1-05a',stats:{route:1,mood:0},decisions:[],visited:['c1p1-01','c1p1-05a']
+  }}}}}));
+  const storage=new Storage(dir);
+  const restored=storage.get('tg:123456',story);
+  assert.equal(restored.nodeId,story.start);
+  assert.deepEqual(restored.visited,[story.start]);
+ } finally { fs.rmSync(dir,{recursive:true,force:true}); }
+});
+
 test('оплаченный доступ сохраняется без потери старого прогресса',()=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'army-stories-entitlement-'));
  try {

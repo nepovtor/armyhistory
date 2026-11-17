@@ -14,7 +14,7 @@
 
 ## Смотреть в браузере
 
-После публикации GitHub Pages: `https://nepovtor.github.io/HIStory/`.
+После публикации GitHub Pages: `https://nepovtor.github.io/armyhistory/`.
 
 > GitHub Pages показывает автономную демоверсию, в том числе **внутри Telegram**, если указать URL в BotFather. Прогресс хранится локально в WebView. Чтобы синхронизировать его между устройствами и проверять Telegram `initData` на сервере, потребуется отдельный Node.js HTTPS-хостинг. GitHub Pages **не запускает** сервер и бота.
 
@@ -44,7 +44,7 @@ npm run build:demo    # ../HIStory-demo.html — автономный HTML
 ## Подключить демоверсию к Telegram без сервера
 
 1. Создать бота в [@BotFather](https://t.me/BotFather) (`/newbot`).
-2. Когда GitHub Pages заработает, в BotFather выбрать `/setmenubutton`, своего бота и указать название кнопки `Открыть HIStory` и URL `https://nepovtor.github.io/HIStory/`.
+2. Когда GitHub Pages заработает, в BotFather выбрать `/setmenubutton`, своего бота и указать название кнопки `Открыть HIStory` и URL `https://nepovtor.github.io/armyhistory/`.
 3. Открыть бот, нажать кнопку меню. Это будет работающая статическая версия игры внутри Telegram, с локальным прогрессом.
 
 ## Полный Telegram-бот с серверным прогрессом
