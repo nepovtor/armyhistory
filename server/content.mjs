@@ -38,7 +38,7 @@ export const stories = [
         next: 'c1p1-03'
       },
       {
-        id: 'c1p1-03', chapter: 1, part: 1, background: 'train', type: 'narration',
+        id: 'c1p1-03', chapter: 1, part: 1, background: 'trainBoarding', type: 'narration',
         label: '19 НОЯБРЯ · ВЕЧЕР',
         text: 'Вечером нас посадили на поезд. Из Минска — в Симферополь, а оттуда дальше, в Севастополь. Дорога к месту службы только начиналась.',
         next: 'c1p1-04'

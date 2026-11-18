@@ -11,7 +11,7 @@ const root = new URL('../', import.meta.url);
 
 test('все сюжетные иллюстрации присутствуют и не загружаются из чужих доменов', () => {
   const backgrounds = {
-    station: 'comic-v2/enlist.webp', paper: 'comic-v2/commissariat.webp', train: 'comic-v2/train.webp', route: null,
+    station: 'comic-v2/enlist.webp', paper: 'comic-v2/commissariat.webp', train: 'comic-v2/train.webp', trainBoarding: 'comic-v2/train-boarding.webp', route: null,
     sea: 'comic-v2/harbor.webp', harbor: 'comic-v2/harbor.webp', barracks: 'comic-v2/barracks.webp',
     marineOffer: 'comic-v2/marine-offer.webp', sparring: 'comic-v2/sparring.webp', decision: 'comic-v2/decision.webp',
     diversMissed: 'comic-v2/divers-missed.webp', nextAssignment: 'comic-v2/next-assignment.webp', cover: 'comic-v2/cover.webp'

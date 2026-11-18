@@ -20,6 +20,7 @@ const art = {
   station: '/assets/comic-v2/enlist.webp',
   paper: '/assets/comic-v2/commissariat.webp',
   train: '/assets/comic-v2/train.webp',
+  trainBoarding: '/assets/comic-v2/train-boarding.webp',
   trainJourney: '/assets/comic-v2/train-journey.webp',
   examResult: '/assets/comic-v2/exam-result.webp',
   route: '/api/map',
