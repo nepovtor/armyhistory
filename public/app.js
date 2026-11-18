@@ -30,6 +30,7 @@ const art = {
   sparring: '/assets/comic-v2/sparring.webp',
   decision: '/assets/comic-v2/decision.webp',
   diversMissed: '/assets/comic-v2/divers-missed.webp',
+  nextAssignment: '/assets/comic-v2/next-assignment.webp',
   cover: '/assets/comic-v2/cover.webp'
 };
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[ch]);

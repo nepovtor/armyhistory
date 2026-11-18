@@ -172,7 +172,7 @@ export const stories = [
         next: 'c1p3-05'
       },
       {
-        id: 'c1p3-05', chapter: 1, part: 3, background: 'diversMissed', type: 'narration',
+        id: 'c1p3-05', chapter: 1, part: 3, background: 'nextAssignment', type: 'narration',
         label: 'СЛЕДУЮЩЕЕ РАСПРЕДЕЛЕНИЕ',
         text: 'Мне сказали ждать следующего назначения. Личное дело снова легло в стопку, а я остался на распределительном пункте — уже без морской пехоты и без учебной части водолазов.',
         next: 'c1p3-06'

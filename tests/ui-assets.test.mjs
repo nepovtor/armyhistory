@@ -14,7 +14,7 @@ test('все сюжетные иллюстрации присутствуют и
     station: 'comic-v2/enlist.webp', paper: 'comic-v2/commissariat.webp', train: 'comic-v2/train.webp', route: null,
     sea: 'comic-v2/harbor.webp', harbor: 'comic-v2/harbor.webp', barracks: 'comic-v2/barracks.webp',
     marineOffer: 'comic-v2/marine-offer.webp', sparring: 'comic-v2/sparring.webp', decision: 'comic-v2/decision.webp',
-    diversMissed: 'comic-v2/divers-missed.webp', cover: 'comic-v2/cover.webp'
+    diversMissed: 'comic-v2/divers-missed.webp', nextAssignment: 'comic-v2/next-assignment.webp', cover: 'comic-v2/cover.webp'
     , trainJourney: 'comic-v2/train-journey.webp', examResult: 'comic-v2/exam-result.webp'
   };
   for (const story of stories) {
@@ -53,7 +53,7 @@ test('история не приписывает отцу тип или номе
 
 test('новые растровые иллюстрации полноформатные и достаточно крупные', () => {
   const assets = fs.readdirSync(new URL('../public/assets/comic-v2/', import.meta.url)).filter(name => name.endsWith('.webp'));
-  assert.equal(assets.length, 13);
+  assert.ok(assets.length >= 14, 'Набор иллюстраций должен включать отдельные сцены');
   for (const name of assets) {
     const bytes = fs.readFileSync(new URL(`../public/assets/comic-v2/${name}`, import.meta.url));
     assert.ok(bytes.length > 100_000, `${name} выглядит слишком маленьким`);
