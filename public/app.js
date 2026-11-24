@@ -16,24 +16,7 @@ if (!demoId || !/^[a-z0-9-]{8,80}$/i.test(demoId)) {
   localStorage.setItem(storeKey, demoId);
 }
 const state = { view: 'loading', config: null, user: null, stories: [], story: null, progress: null, mapAccess: { unlocked: false, price: 15, currency: 'XTR' }, mapImageUrl: null, busy: false, error: null };
-const art = {
-  station: '/assets/comic-v2/enlist.webp',
-  paper: '/assets/comic-v2/commissariat.webp',
-  train: '/assets/comic-v2/train.webp',
-  trainBoarding: '/assets/comic-v2/train-boarding.webp',
-  trainJourney: '/assets/comic-v2/train-journey.webp',
-  examResult: '/assets/comic-v2/exam-result.webp',
-  route: '/api/map',
-  sea: '/assets/comic-v2/harbor.webp',
-  harbor: '/assets/comic-v2/harbor.webp',
-  barracks: '/assets/comic-v2/barracks.webp',
-  marineOffer: '/assets/comic-v2/marine-offer.webp',
-  sparring: '/assets/comic-v2/sparring.webp',
-  decision: '/assets/comic-v2/decision.webp',
-  diversMissed: '/assets/comic-v2/divers-missed.webp',
-  nextAssignment: '/assets/comic-v2/next-assignment.webp',
-  cover: '/assets/comic-v2/cover.webp'
-};
+const art = { route: '/api/map' };
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[ch]);
 const haptic = () => { try { tg?.HapticFeedback?.impactOccurred?.('light'); } catch { /* optional */ } };
 let toastTimer;
@@ -86,29 +69,34 @@ async function boot() {
   }
 }
 function brand() {
-  return `<div class="logo" aria-label="HIStory"><span class="logo-mark" aria-hidden="true">⚓</span><div class="logo-label">HI<span>Story</span></div></div>`;
+  return `<div class="logo" aria-label="HIStory"><span class="logo-mark" aria-hidden="true">HI</span><div class="logo-label">HI<span>Story</span></div></div>`;
 }
 function header(back = 'library', actionLabel = 'Главная') {
-  return `<header class="topbar"><button class="backlink" data-action="${back}" aria-label="${escapeHtml(actionLabel)}"><i>‹</i>${escapeHtml(actionLabel)}</button>${brand()}<button class="iconbtn" data-action="journal" title="Дневник истории" aria-label="Дневник истории">☷</button></header>`;
+  return `<header class="topbar"><button class="backlink" data-action="${back}" aria-label="${escapeHtml(actionLabel)}"><i>‹</i>${escapeHtml(actionLabel)}</button>${brand()}<button class="iconbtn" data-action="journal" title="Дневник истории" aria-label="Дневник истории">≡</button></header>`;
+}
+function illustrationPlaceholder(label, className = '') {
+  return `<div class="illustration-placeholder ${className}" role="img" aria-label="Место для иллюстрации: ${escapeHtml(label)}"><span class="placeholder-frame" aria-hidden="true"></span><strong>Место для иллюстрации</strong><span>${escapeHtml(label)}</span></div>`;
 }
 function libraryView() {
   const story = state.story;
-  if (!story) return `<div class="errorbox">История пока недоступна.</div>`;
+  if (!story) return `<main class="page"><section class="errorbox">${brand()}<h1>История обновляется</h1><p>Ожидаем полную версию с авторскими исправлениями.</p></section></main>`;
   const chapter = story.chapters[0], part = chapter.parts[0];
+  const homeCover = story.cover;
   return `<main class="page home-view">
-    <img class="home-art" src="${escapeHtml(story.cover)}" alt="Иллюстрация советского моряка и Севастополя в стиле графической новеллы"/>
-    <div class="home-top"><span class="home-emblem" aria-hidden="true">⚓</span><span class="home-period">1990—1993</span></div>
-    <section class="home-brand" aria-label="HIStory. Три года до дома">
-      <h1>HI<span>Story</span></h1>
-      <p class="home-tagline">Три года до дома</p>
-      <p class="home-subtitle">Воспоминания о службе на атомной подводной лодке</p>
-    </section>
+    ${homeCover ? `<div class="home-visual"><img class="home-art" src="${escapeHtml(homeCover)}" alt="Обложка истории" decoding="async" fetchpriority="high"/></div>` : illustrationPlaceholder(story.title, 'home-placeholder')}
+    <section class="home-content">
+      <div class="home-brand" aria-label="HIStory. ${escapeHtml(story.title)}">
+      <h1>HIStory</h1>
+      <p class="home-tagline">${escapeHtml(story.title)}</p>
+      <p class="home-subtitle">${escapeHtml(story.shortDescription)}</p>
+      </div>
     <nav class="home-actions" aria-label="Меню истории">
-      <button class="btn wide" data-action="read"><span class="btn-icon">▸</span><span class="btn-copy">${story.started ? 'Продолжить' : 'Начать историю'}</span><span class="arrow">›</span></button>
-      <button class="btn btn-paper btn-small wide" data-action="chapters"><span class="btn-icon">☷</span><span class="btn-copy">Главы и части</span><span class="arrow">›</span></button>
-      <button class="btn btn-paper btn-small wide" data-action="journal"><span class="btn-icon">✦</span><span class="btn-copy">Дневник истории</span><span class="arrow">›</span></button>
+      <button class="home-action home-action-read" data-action="read"><span class="home-action-icon" aria-hidden="true">▶</span><span class="home-action-copy"><strong>${story.started ? 'Продолжить' : 'Начать историю'}</strong></span><span class="home-action-arrow" aria-hidden="true">›</span></button>
+      <button class="home-action home-action-chapters" data-action="chapters"><span class="home-action-icon" aria-hidden="true">≡</span><span class="home-action-copy"><strong>Главы и части</strong></span><span class="home-action-arrow" aria-hidden="true">›</span></button>
+      <button class="home-action home-action-journal" data-action="journal"><span class="home-action-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3c2.2 7 5.8 10.6 13 13-7.2 2.4-10.8 6-13 13-2.2-7-5.8-10.6-13-13 7.2-2.4 10.8-6 13-13z"/></svg></span><span class="home-action-copy"><strong>Дневник истории</strong></span><span class="home-action-arrow" aria-hidden="true">›</span></button>
     </nav>
-    <div class="home-foot"><span>ГЛАВА 01</span><span aria-hidden="true">⚓</span><span>${escapeHtml(part.title)}</span></div>
+    <div class="home-foot"><span>Глава 01</span><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 4v21m-5-16h10M8 17a8 8 0 0 0 16 0M5 18l3-3 3 3m10 0 3-3 3 3"/><circle cx="16" cy="5" r="2"/></svg><span>${escapeHtml(part.title)}</span></div>
+    </section>
   </main>`;
 }
 function chaptersView() {
@@ -116,76 +104,91 @@ function chaptersView() {
   const parts=chapter.parts.map(part=>{
     const locked=['upcoming','locked'].includes(part.status);
     const status=part.status==='done'?'Прочитано':part.status==='upcoming'?'Скоро':part.status==='locked'?'После предыдущей части':part.status==='current'&&story.started?'В процессе':'Доступно';
-    const covers={1:'/assets/comic-v2/enlist.webp',2:'/assets/comic-v2/sparring.webp',3:'/assets/comic-v2/divers-missed.webp'};
-    const cover=covers[part.number]||'/assets/comic-v2/submarine.webp';
+    const cover=part.cover||chapter.poster;
     return `<button class="part ${locked?'locked':''}" data-action="${locked?'locked':'read'}" data-part="${part.number}" ${locked?'disabled':''} aria-label="Часть ${part.number}. ${escapeHtml(part.title)}. ${status}">
-      <span class="part-thumb"><img src="${cover}" alt="" loading="lazy"></span><span class="part-info"><em>Часть ${String(part.number).padStart(2,'0')} · ${status}</em><strong>${escapeHtml(part.title)}</strong><small>${escapeHtml(part.subtitle)}</small></span><span class="part-go" aria-hidden="true">${locked?'⌑':'›'}</span>
+      ${cover ? `<span class="part-thumb"><img src="${escapeHtml(cover)}" alt="" loading="lazy" decoding="async"></span>` : `<span class="part-thumb part-placeholder" aria-hidden="true">${String(part.number).padStart(2, '0')}</span>`}<span class="part-info"><em>Часть ${part.number} · ${status}</em><strong>${escapeHtml(part.title)}</strong><small>${escapeHtml(part.subtitle)}</small></span><span class="part-go" aria-hidden="true">${locked?'—':'→'}</span>
     </button>`;
   }).join('');
   return `<main class="page chapter-view">${header('library','Главная')}
-    <section class="chapter-hero"><img src="${escapeHtml(chapter.poster)}" alt="Военно-морской пейзаж Севастополя"/><div class="chapter-hero-text"><div class="kicker">${escapeHtml(story.collection)} · ГЛАВА ${String(chapter.number).padStart(2,'0')}</div><h1>${escapeHtml(chapter.name)}</h1><p>${escapeHtml(chapter.subtitle)}</p><div class="anchor-rule" aria-hidden="true">⚓</div></div></section>
-    <section class="chapter-section"><div class="section-title"><h2>Части главы</h2><span class="tiny">01 / ${String(chapter.parts.length).padStart(2,'0')}</span></div>${parts}</section>
+    <section class="chapter-hero">${chapter.poster ? `<img src="${escapeHtml(chapter.poster)}" alt="Обложка главы" decoding="async"/>` : illustrationPlaceholder(chapter.name, 'chapter-placeholder')}<div class="chapter-hero-text"><div class="kicker">${escapeHtml(story.collection)} · Глава ${chapter.number}</div><h1>${escapeHtml(chapter.name)}</h1><p>${escapeHtml(chapter.subtitle)}</p></div></section>
+    <section class="chapter-section"><div class="section-title"><h2>Части главы</h2><span class="tiny">Частей: ${chapter.parts.length}</span></div>${parts}</section>
     <p class="chapter-footer">Части открываются по порядку. События основаны на личных воспоминаниях и не меняются читательским выбором.</p>
-    <div class="chapter-next">⚓ &nbsp; 1990—1993 · Атомный подводный флот</div>
+
   </main>`;
 }
+
+function sceneMedia(scene, image, routeScene) {
+  if (routeScene && !state.mapAccess.unlocked) {
+    return `<section class="scene-media map-paywall" aria-label="Платный доступ к карте"><span class="map-lock" aria-hidden="true">Карта</span><div><strong>Открыть маршрут</strong><p>Разовый доступ сохранится за вашим Telegram-аккаунтом.</p></div><button class="btn map-buy" data-action="buy-map"><span class="btn-copy">Открыть за ${state.mapAccess.price} ⭐</span><span class="arrow" aria-hidden="true">→</span></button></section>`;
+  }
+  if (routeScene) {
+    return `<figure class="scene-media route-media">
+      <div class="scene-frame route-frame"><img class="scene-image route-map" src="${escapeHtml(image)}" alt="Карта маршрута" decoding="async"/></div>
+      <figcaption class="scene-caption"><strong>${escapeHtml(scene.label)}</strong><span>Маршрут показан схематично</span><button class="text-action" data-action="zoom-map">Развернуть карту</button></figcaption>
+      <dialog class="map-dialog" aria-label="Карта маршрута крупным планом"><div class="map-dialog-bar"><strong>Карта маршрута</strong><button class="dialog-close" data-action="close-map" aria-label="Закрыть карту">Закрыть</button></div><div class="map-dialog-scroll"><img src="${escapeHtml(image)}" alt="Карта маршрута" decoding="async"/></div></dialog>
+    </figure>`;
+  }
+  if (!image) return `<figure class="scene-media">${illustrationPlaceholder(scene.label)}<figcaption class="scene-caption"><strong>${escapeHtml(scene.label)}</strong><span>${escapeHtml(state.progress.part.title)}</span></figcaption></figure>`;
+  return `<figure class="scene-media"><div class="scene-frame"><img class="scene-image" src="${escapeHtml(image)}" alt="Иллюстрация к эпизоду: ${escapeHtml(scene.label)}" decoding="async"/></div><figcaption class="scene-caption"><strong>${escapeHtml(scene.label)}</strong><span>${escapeHtml(state.progress.part.title)}</span></figcaption></figure>`;
+}
+
 function readerView() {
   const p=state.progress, scene=p.scene, end=scene.type==='part_end', isChoice=scene.type==='choice';
-  const image=scene.background==='route' ? state.mapImageUrl : art[scene.background]||art.cover;
+  const image=scene.background==='route' ? state.mapImageUrl : scene.artwork || art[scene.background]||art.cover;
   const routeScene=scene.background==='route';
-  const mapContent=routeScene
-    ? state.mapAccess.unlocked
-      ? `<img class="route-map" src="${escapeHtml(image)}" alt="Карта маршрута: Минск — Симферополь — Севастополь"/>`
-      : `<section class="map-paywall" aria-label="Платный доступ к карте"><span class="map-lock" aria-hidden="true">✦</span><div><strong>Открыть карту маршрута</strong><p>Разовый доступ сохранится за вашим Telegram-аккаунтом.</p></div><button class="btn map-buy" data-action="buy-map"><span class="btn-copy">Открыть за ${state.mapAccess.price} ⭐</span><span class="arrow">›</span></button></section>`
-    : '';
   const step=String(Math.min(p.visitedCount,99)).padStart(2,'0');
   const actions=end
     ? scene.next
-      ? `<button class="btn wide" data-action="next"><span class="btn-copy">Начать часть ${scene.part + 1}</span><span class="arrow">→</span></button><button class="subtle-btn" data-action="chapters" aria-label="К частям главы">☷</button>`
+      ? `<button class="btn wide" data-action="next"><span class="btn-copy">Начать часть ${scene.part + 1}</span><span class="arrow">→</span></button><button class="subtle-btn" data-action="chapters" aria-label="К частям главы">≡</button>`
       : `<button class="btn wide" data-action="chapters"><span class="btn-copy">К частям главы</span><span class="arrow">›</span></button><button class="subtle-btn" data-action="restart" aria-label="Начать заново">↻</button>`
     : isChoice
       ? `<div class="choices">${scene.choices.map(c=>`<button class="choice" data-action="choice" data-choice="${escapeHtml(c.id)}"><strong>${escapeHtml(c.text)}</strong><small>${escapeHtml(c.hint)}</small></button>`).join('')}</div>`
       : `<button class="btn wide" data-action="next"><span class="btn-copy">${scene.type==='archive'?'Продолжить':'Далее'}</span><span class="arrow">→</span></button>`;
   return `<main class="reader ${end?'part-end':''}">
-    ${routeScene?'':`<div class="scene-art"><img src="${escapeHtml(image)}" alt="Иллюстрация к эпизоду: ${escapeHtml(scene.label)}"/></div>`}
-    <div class="reader-hud"><button class="iconbtn" data-action="chapters" aria-label="Вернуться к главам">‹</button>
+    <div class="reader-hud"><button class="iconbtn" data-action="chapters" aria-label="Вернуться к главам">←</button>
       <div class="reader-count"><div class="chapter-label"><span>Глава ${p.chapter.number} · часть ${p.part.number}</span><span>${p.partProgress}%</span></div><div class="progress-track" role="progressbar" aria-label="Прогресс части" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${p.partProgress}"><div class="progress-fill" style="width:${p.partProgress}%"></div></div></div>
-      <button class="iconbtn" data-action="journal" aria-label="Дневник истории" title="Дневник">☷</button></div>
-    <div class="reader-center ${routeScene?'reader-center-map':''}">${mapContent}<div class="scene-place"><span>${escapeHtml(scene.label)}</span><small>${escapeHtml(p.part.title)}</small></div></div>
-    <section class="story-panel" aria-label="Текущая сцена"><div class="panel-top"><span class="eyebrow">${end?'Часть завершена':scene.type==='archive'?'Из воспоминаний':isChoice?'Выбери, что узнать':'От первого лица'}</span><span class="panel-step">${end?'⚓':step}</span></div>
-      ${end?'<div class="end-emblem" aria-hidden="true">⚓</div>':''}<p class="scene-text">${escapeHtml(scene.text)}</p>
+      <button class="iconbtn" data-action="journal" aria-label="Дневник истории" title="Дневник">≡</button></div>
+    <div class="reader-scroll">${sceneMedia(scene, image, routeScene)}
+    <section class="story-panel" aria-label="Текущая сцена"><div class="panel-top"><span class="eyebrow">${end?'Часть завершена':scene.type==='archive'?'Из воспоминаний':isChoice?'Выбери деталь':'От первого лица'}</span><span class="panel-step">${end?'Конец':step}</span></div>
+      <p class="scene-text">${escapeHtml(scene.text)}</p>
       ${scene.note?`<div class="scene-note">${escapeHtml(scene.note)}</div>`:''}
       ${isChoice?'<div class="scene-note">Выбор меняет ракурс чтения, но не реальные события.</div>':''}
-      <div class="panel-actions">${!end&&p.canGoBack?'<button class="subtle-btn" data-action="back-scene" aria-label="К предыдущей сцене">←</button>':''}${actions}</div>
-    </section>
+      <div class="panel-actions">${p.canGoBack?'<button class="subtle-btn" data-action="back-scene" aria-label="К предыдущей сцене">←</button>':''}${actions}</div>
+    </section></div>
   </main>`;
 }
 function journalView() {
   const p=state.progress, decisions=p?.decisions||[];
+  const parts = state.story.chapters[0].parts;
   return `<main class="page journal-view">${header(p?'read':'library',p?'К чтению':'Главная')}
-    <section class="journal-header"><div class="eyebrow">Бортовой журнал · 1990—1993</div><h1>Дневник<br>истории</h1><p class="journal-description">Даты и места из воспоминаний. Первую часть можно перечитать в любой момент.</p>
-      <div class="kicker">Известные даты</div>
-      <div class="milestone"><span class="index">19</span><div><strong>Ноябрь 1990 · военкомат</strong><p>Известие о трёхлетней службе в ВМФ.</p></div></div>
-      <div class="milestone"><span class="index">19</span><div><strong>Вечер · поезд из Минска</strong><p>Через Симферополь — в Севастополь.</p></div></div>
-      <div class="milestone"><span class="index">21</span><div><strong>Ночь · Севастополь</strong><p>Распределительный пункт, казарма, второй ярус.</p></div></div>
-      <div class="milestone"><span class="index">25</span><div><strong>Ноябрь 1990 · распределительный пункт</strong><p>Экзамен у морпехов, отказ и уехавшая группа водолазов.</p></div></div>
+    <section class="journal-header"><h1>Дневник<br>истории</h1><p class="journal-description">Прогресс чтения сохраняется автоматически.</p>
       <div class="kicker" style="margin-top:25px">Твой путь</div>
-      ${decisions.length?decisions.map((d,i)=>`<div class="milestone"><span class="index">0${i+1}</span><div><strong>${escapeHtml(d.summary)}</strong><p>Глава ${d.chapter}, часть ${d.part}</p></div></div>`).join(''):'<div class="journal-empty">Ты ещё не выбирал, на какой детали остановиться. Продолжай чтение.</div>'}
+      ${parts.map(part => `<div class="milestone"><span class="index">${String(part.number).padStart(2, '0')}</span><div><strong>${escapeHtml(part.title)}</strong><p>${part.status === 'done' ? 'Прочитано' : part.status === 'current' ? (state.story.started ? 'В процессе' : 'Можно начать') : part.status === 'available' ? 'Можно начать' : 'После предыдущей части'}</p></div></div>`).join('')}
+      ${decisions.length?decisions.map((d,i)=>`<div class="milestone"><span class="index">0${i+1}</span><div><strong>${escapeHtml(d.summary)}</strong><p>Глава ${d.chapter}, часть ${d.part}</p></div></div>`).join(''):''}
       <div style="margin-top:22px"><button class="btn wide" data-action="${p?'read':'chapters'}"><span class="btn-copy">${p?'Вернуться к чтению':'Открыть главу'}</span><span class="arrow">→</span></button></div>
     </section>
   </main>`;
 }
 function render() {
-  root.innerHTML = `<div class="shell">${state.view === 'loading' ? `<div class="loading"><div>HIStory</div><small>Открываем архив…</small></div>` : state.view === 'error' ? `<main class="page">${header('library')}<div class="errorbox"><div class="eyebrow">НЕ УДАЛОСЬ ОТКРЫТЬ</div><h2>Приложение недоступно</h2><p>${escapeHtml(state.error)}</p><p style="font-size:12px;color:#a8b3b0">Для проверки в браузере запусти <code>npm run dev</code>. Для запуска внутри Telegram потребуется настроенный бот и HTTPS-адрес.</p><button class="btn wide" data-action="retry">Повторить <span>↻</span></button></div></main>` : state.view === 'library' ? libraryView() : state.view === 'chapters' ? chaptersView() : state.view === 'reader' ? readerView() : journalView()}</div>`;
+  root.innerHTML = `<div class="shell">${state.view === 'loading' ? `<div class="loading"><div>HIStory</div><small>Открываем архив…</small></div>` : state.view === 'error' ? `<main class="page">${header('library')}<div class="errorbox"><div class="eyebrow">НЕ УДАЛОСЬ ОТКРЫТЬ</div><h2>Приложение недоступно</h2><p>${escapeHtml(state.error)}</p><p style="font-size:12px;color:#a8b3b0">Для проверки в браузере запусти <code>npm run dev</code>. Для запуска внутри Telegram потребуется настроенный бот и HTTPS-адрес.</p><button class="btn wide" data-action="retry">Повторить <span>↻</span></button></div></main>` : state.view === 'library' || !state.story ? libraryView() : state.view === 'chapters' ? chaptersView() : state.view === 'reader' ? readerView() : journalView()}</div>`;
+  window.scrollTo?.(0, 0);
 }
 async function openReader(targetPart = null) {
-  state.progress = await api(`/api/story/${state.story.id}`);
-  if (targetPart && targetPart > state.progress.part.number && state.progress.partCompleted && state.progress.scene.next) {
-    state.progress = await api(`/api/story/${state.story.id}/advance`, { method: 'POST', body: JSON.stringify({ nodeId: state.progress.scene.id }) });
-  }
-  if (state.progress.scene.background === 'route') await ensureMapImage();
-  state.view = 'reader';
-  render();
+  state.busy = true;
+  try {
+    state.progress = await api(`/api/story/${state.story.id}`);
+    if (targetPart && (targetPart < state.progress.part.number || (targetPart === state.progress.part.number && state.progress.partCompleted))) {
+      const part = state.story.chapters[0].parts.find(part => part.number === targetPart);
+      while (part && state.progress.scene.id !== part.start && state.progress.canGoBack) {
+        state.progress = await api(`/api/story/${state.story.id}/back`, { method: 'POST' });
+      }
+    } else if (targetPart && targetPart > state.progress.part.number && state.progress.partCompleted && state.progress.scene.next) {
+      state.progress = await api(`/api/story/${state.story.id}/advance`, { method: 'POST', body: JSON.stringify({ nodeId: state.progress.scene.id }) });
+    }
+    if (state.progress.scene.background === 'route') await ensureMapImage();
+    state.view = 'reader';
+    render();
+  } finally { state.busy = false; }
 }
 async function loadLibrary() {
   const data = await api('/api/bootstrap');
@@ -231,7 +234,21 @@ async function navigate(action, button) {
   if (state.busy) return;
   if (action === 'retry') return boot();
   if (action === 'locked') return toast('Эта часть появится после продолжения воспоминаний.');
-  if (action === 'journal') { state.view = 'journal'; render(); return; }
+  if (action === 'zoom-map') {
+    const dialog = root.querySelector('.map-dialog');
+    if (!dialog) return;
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else dialog.setAttribute('open', '');
+    return;
+  }
+  if (action === 'close-map') {
+    const dialog = button.closest('dialog');
+    if (!dialog) return;
+    if (typeof dialog.close === 'function') dialog.close();
+    else dialog.removeAttribute('open');
+    return;
+  }
+  if (action === 'journal') { await loadLibrary(); state.view = 'journal'; render(); return; }
   if (action === 'library') { await loadLibrary(); state.view = 'library'; render(); return; }
   if (action === 'chapters') { await loadLibrary(); state.view = 'chapters'; render(); return; }
   if (action === 'read') return openReader(Number(button.dataset.part) || null);
@@ -251,6 +268,7 @@ async function navigate(action, button) {
     const body = action === 'next' || action === 'choice' ? { nodeId: state.progress.scene.id, ...(action === 'choice' ? { choiceId: button.dataset.choice } : {}) } : {};
     const next = await api(url, { method: 'POST', body: JSON.stringify(body) });
     state.progress = next;
+    if (state.progress.scene.background === 'route') await ensureMapImage();
     state.view = 'reader';
     haptic();
     render();

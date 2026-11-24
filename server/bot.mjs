@@ -43,7 +43,7 @@ export async function handleBotUpdate(update, { token, appUrl, storage, callApi 
   if (message.text.startsWith('/start')) {
     await callApi(token, 'sendMessage', {
       chat_id: message.chat.id,
-      text: '«Три года до дома» — воспоминания о начале службы. Открой первую главу и читай историю по частям.',
+      text: 'HIStory — реальные истории по главам и частям. Открой приложение, чтобы увидеть доступные истории.',
       reply_markup: { inline_keyboard: [[{ text: '📖 Открыть «HIStory»', web_app: webApp }]] }
     });
   } else if (message.text.startsWith('/help')) {

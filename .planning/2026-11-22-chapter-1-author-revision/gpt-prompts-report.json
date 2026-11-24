@@ -1,0 +1,70 @@
+{
+  "sourceOfTruth": [
+    {
+      "file": "source-author-2026-11-22.txt",
+      "sha256": "c040846cedb5e5ce6a943ab73b4d57a94eb29b835f6379326b24ba6c1eb79d53",
+      "role": "original"
+    },
+    {
+      "file": "source-author-clarifications-2026-11-23.txt",
+      "sha256": "86c49e6abe42a6107301d031a274bfc46bb318412ab62dc2e26c6f3323a93b1f",
+      "role": "author-corrections-precedence"
+    },
+    {
+      "file": "source-user-jeans-color-2026-11-23.txt",
+      "sha256": "8af37a99cca02083ed6da3418a0eaac6454814cd7753fce29a4dd027b4dd0f3f",
+      "role": "user-jeans-color-clarification"
+    }
+  ],
+  "prompts": 41,
+  "parts": [
+    10,
+    11,
+    20
+  ],
+  "wordCounts": {
+    "1": 544,
+    "2": 535,
+    "3": 532,
+    "4": 528,
+    "5": 531,
+    "6": 527,
+    "7": 526,
+    "8": 529,
+    "9": 534,
+    "10": 533,
+    "11": 564,
+    "12": 551,
+    "13": 554,
+    "14": 556,
+    "15": 550,
+    "16": 554,
+    "17": 554,
+    "18": 553,
+    "19": 551,
+    "20": 562,
+    "21": 569,
+    "22": 561,
+    "23": 558,
+    "24": 554,
+    "25": 576,
+    "26": 555,
+    "27": 557,
+    "28": 550,
+    "29": 557,
+    "30": 555,
+    "31": 557,
+    "32": 558,
+    "33": 549,
+    "34": 611,
+    "35": 599,
+    "36": 594,
+    "37": 589,
+    "38": 590,
+    "39": 588,
+    "40": 598,
+    "41": 599
+  },
+  "imageGenerationPerformed": false,
+  "referenceImagesIncluded": false
+}

@@ -12,6 +12,7 @@ import { MAP_ACCESS_CURRENCY, MAP_ACCESS_PRICE, MAP_ACCESS_PRODUCT, createMapInv
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicDir = path.join(root, 'public');
 const privateDir = path.join(root, 'private');
+const mapFile = path.join(privateDir, 'chapter-1', '05_route_map.webp');
 const envPath = path.join(root, '.env');
 if (fs.existsSync(envPath)) {
   for (const line of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
@@ -44,9 +45,9 @@ function mapAccess(user) {
   };
 }
 function sendProtectedMap(res) {
-  const file = path.join(privateDir, 'route.svg');
+  const file = mapFile;
   res.writeHead(200, {
-    'Content-Type': 'image/svg+xml',
+    'Content-Type': 'image/webp',
     'Content-Length': fs.statSync(file).size,
     'Cache-Control': 'private, no-store',
     'X-Content-Type-Options': 'nosniff'
@@ -63,7 +64,7 @@ function readJson(req) {
     req.on('error', reject);
   });
 }
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'application/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'application/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.ttf': 'font/ttf', '.ico': 'image/x-icon' };
 function staticFile(req, res, pathname) {
   const file = path.resolve(publicDir, '.' + (pathname === '/' ? '/index.html' : pathname));
   if (!(file === path.join(publicDir, 'index.html') || file.startsWith(publicDir + path.sep))) return send(res, 403, { error: 'Недоступно' });
@@ -75,7 +76,7 @@ function staticFile(req, res, pathname) {
     'Cache-Control': file.endsWith('index.html') ? 'no-cache' : 'public, max-age=3600',
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'SAMEORIGIN',
-    'Content-Security-Policy': "default-src 'self'; img-src 'self' data:; script-src 'self' https://telegram.org; style-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'"
+    'Content-Security-Policy': "default-src 'self'; img-src 'self' data: blob:; script-src 'self' https://telegram.org; style-src 'self'; connect-src 'self'; base-uri 'none'; object-src 'none'"
   });
   fs.createReadStream(file).pipe(res);
 }
@@ -99,10 +100,12 @@ const server = http.createServer(async (req, res) => {
       });
     }
     if (pathname === '/api/map' && req.method === 'GET') {
+      if (!fs.existsSync(mapFile)) return send(res, 404, { error: 'Карта пока недоступна.' });
       if (!mapAccess(user).unlocked) return send(res, 403, { error: `Карта доступна после оплаты ${MAP_ACCESS_PRICE} ⭐.` });
       return sendProtectedMap(res);
     }
     if (pathname === '/api/map/invoice' && req.method === 'POST') {
+      if (!fs.existsSync(mapFile)) return send(res, 404, { error: 'Карта пока недоступна.' });
       if (user.demo) return send(res, 409, { error: 'В деморежиме карта уже открыта.' });
       if (mapAccess(user).unlocked) return send(res, 409, { error: 'Карта уже открыта.' });
       const invoiceUrl = await createMapInvoiceLink(BOT_TOKEN, user.telegramId);

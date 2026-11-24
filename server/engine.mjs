@@ -67,7 +67,7 @@ export function publicStory(story, progress) {
         return { ...p, status };
       })
     })),
-    completed: current.type === 'ending',
+    completed: current.type === 'ending' || (current.type === 'part_end' && !current.next),
     partCompleted: current.type === 'part_end',
     started: progress.visited.length > 1,
     decisionsCount: progress.decisions.length

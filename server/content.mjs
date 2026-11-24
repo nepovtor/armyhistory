@@ -1,203 +1,33 @@
-// Биографический рассказ: исходные факты переданы автором воспоминаний.
-// Тексты новых частей намеренно не подменены вымыслом.
-export const stories = [
-  {
-    id: 'three-years-to-home',
-    collection: 'АРМЕЙСКИЕ ИСТОРИИ',
-    title: 'Три года до дома',
-    shortDescription: '1990 год. Из Минска — в Севастополь. Начало трёх лет службы на атомной подводной лодке.',
-    genre: 'Реальные воспоминания',
-    duration: '10–12 минут',
-    cover: '/assets/comic-v2/cover.webp',
-    start: 'c1p1-01',
-    chapters: [
-      {
-        number: 1,
-        name: 'Начало службы',
-        subtitle: 'Призыв. Дорога. Севастополь.',
-        poster: '/assets/comic-v2/enlist.webp',
-        parts: [
-          { number: 1, title: 'Дорога в Севастополь', subtitle: '19–21 ноября 1990 года', start: 'c1p1-01', sceneCount: 9, published: true },
-          { number: 2, title: 'Экзамен у морпехов', subtitle: '25 ноября 1990 года', start: 'c1p2-01', sceneCount: 7, published: true },
-          { number: 3, title: 'Водолазы уже уехали', subtitle: 'Вечер 25 ноября 1990 года', start: 'c1p3-01', sceneCount: 7, published: true }
-        ]
-      },
-      { number: 2, name: 'Следующая глава', subtitle: 'Сюжет ещё не записан', poster: '/assets/comic-v2/submarine.webp', parts: [] }
-    ],
-    scenes: [
-      {
-        id: 'c1p1-01', chapter: 1, part: 1, background: 'station', type: 'narration',
-        label: '19 НОЯБРЯ · РАННЕЕ УТРО',
-        text: '19 ноября 1990 года, ранним утром, нас увезли в областной военкомат. С этого утра и началась моя дорога на флот.',
-        next: 'c1p1-02'
-      },
-      {
-        id: 'c1p1-02', chapter: 1, part: 1, background: 'paper', type: 'narration',
-        label: 'ОБЛАСТНОЙ ВОЕНКОМАТ',
-        text: 'Там я узнал: меня забирают в Военно-морской флот. Служить придётся целых три года. Услышал это — и на душе сразу стало тяжело. Накатила тоска.',
-        next: 'c1p1-03'
-      },
-      {
-        id: 'c1p1-03', chapter: 1, part: 1, background: 'trainBoarding', type: 'narration',
-        label: '19 НОЯБРЯ · ВЕЧЕР',
-        text: 'Вечером нас посадили на поезд. Из Минска — в Симферополь, а оттуда дальше, в Севастополь. Дорога к месту службы только начиналась.',
-        next: 'c1p1-04'
-      },
-      {
-        id: 'c1p1-04', chapter: 1, part: 1, background: 'train', type: 'choice',
-        label: 'В ДОРОГЕ',
-        text: 'Поезд увозил нас всё дальше на юг. В памяти остались и сам маршрут, и настроение ребят, которым предстояло служить три года. Что рассмотреть ближе?' ,
-        choices: [
-          { id: 'route', text: 'Посмотреть путь', hint: 'Минск → Симферополь → Севастополь', effects: { route: 1 }, next: 'c1p1-05a', summary: 'Ты рассмотрел маршрут.' },
-          { id: 'mood', text: 'Узнать, как ехали призывники', hint: 'Атмосфера в поезде', effects: { mood: 1 }, next: 'c1p1-05b', summary: 'Ты обратил внимание на настроение в поезде.' }
-        ]
-      },
-      {
-        id: 'c1p1-05a', chapter: 1, part: 1, background: 'route', type: 'archive',
-        label: 'МАРШРУТ · ПО ВОСПОМИНАНИЯМ',
-        text: 'Минск. Потом Симферополь. И, наконец, Севастополь. Таков был маршрут, с которого начиналась служба.',
-        note: 'Год призыва уточнён позднее: 1990. Пункты маршрута — из исходных воспоминаний.',
-        next: 'c1p1-06'
-      },
-      {
-        id: 'c1p1-05b', chapter: 1, part: 1, background: 'train', type: 'archive',
-        label: 'АТМОСФЕРА · В ПОЕЗДЕ',
-        text: 'Три года службы — для многих это известие было тяжёлым. В вагоне находились те, кто пытался утопить свою тоску в спиртном.',
-        note: 'Это деталь из воспоминаний, а не описание поступков рассказчика.',
-        next: 'c1p1-06'
-      },
-      {
-        id: 'c1p1-06', chapter: 1, part: 1, background: 'trainJourney', type: 'narration',
-        label: 'ПОЕЗД · НА ЮГ',
-        text: 'В поезде многие переживали из-за трёх лет службы. Кто-то пытался заглушить это горе спиртным. Так мы и ехали на юг — навстречу неизвестной ещё жизни.',
-        next: 'c1p1-07'
-      },
-      {
-        id: 'c1p1-07', chapter: 1, part: 1, background: 'sea', type: 'narration',
-        label: '21 НОЯБРЯ · НОЧЬ',
-        text: '21 ноября, уже ночью, мы прибыли в Севастополь. Нас отправили на распределительный пункт. Дорога закончилась. Служба только начиналась.',
-        next: 'c1p1-08'
-      },
-      {
-        id: 'c1p1-08', chapter: 1, part: 1, background: 'barracks', type: 'narration',
-        label: 'РАСПРЕДЕЛИТЕЛЬНЫЙ ПУНКТ',
-        text: 'В казарме были ребята, приехавшие из разных уголков Советского Союза. Нас уложили вместе с ними — всех, кто только что прибыл.',
-        next: 'c1p1-09'
-      },
-      {
-        id: 'c1p1-09', chapter: 1, part: 1, background: 'barracks', type: 'narration',
-        label: 'ПЕРВАЯ НОЧЬ В КАЗАРМЕ',
-        text: 'Спали прямо в одежде. Мне достался второй ярус. Эту первую ночь в Севастополе я запомнил именно такой.',
-        next: 'c1p1-end'
-      },
-      {
-        id: 'c1p1-end', chapter: 1, part: 1, background: 'barracks', type: 'part_end',
-        label: 'ГЛАВА 01 · ЧАСТЬ 01',
-        text: 'Севастополь. Казарма. Второй ярус кровати и одежда, которую даже не снимали. Так закончилась первая часть этой истории. Через несколько дней мной неожиданно заинтересуются морские пехотинцы.',
-        next: 'c1p2-01'
-      },
-      {
-        id: 'c1p2-01', chapter: 1, part: 2, background: 'marineOffer', type: 'narration',
-        label: '25 НОЯБРЯ · РАСПРЕДЕЛИТЕЛЬНЫЙ ПУНКТ',
-        text: '25 ноября моим личным делом заинтересовались офицеры морской пехоты. Вскоре ко мне подошёл капитан-лейтенант — уверенный, весёлый и явно уже что-то задумавший.',
-        next: 'c1p2-02'
-      },
-      {
-        id: 'c1p2-02', chapter: 1, part: 2, background: 'marineOffer', type: 'narration',
-        label: 'РАЗГОВОР С КАПИТАН-ЛЕЙТЕНАНТОМ',
-        text: 'Он спросил: «Ты был тренером по тхэквондо? И хочешь служить в морской пехоте?» Я ответил честно: тренером был, а насчёт службы пока не знаю.',
-        note: 'Капитан-лейтенант решил, что лучший способ выяснить остальное — устроить маленький экзамен.',
-        next: 'c1p2-03'
-      },
-      {
-        id: 'c1p2-03', chapter: 1, part: 2, background: 'sparring', type: 'narration',
-        label: 'КАЗАРМА · ПРОВЕРКА В БОЮ',
-        text: 'Меня отвели в казарму. Офицер предложил спарринг. Вокруг сразу собрались высокие и крепкие морские пехотинцы — зрителей набралось быстрее, чем участников.',
-        next: 'c1p2-04'
-      },
-      {
-        id: 'c1p2-04', chapter: 1, part: 2, background: 'sparring', type: 'narration',
-        label: 'ПЕРВЫЙ РАУНД',
-        text: 'Я сразу пошёл в атаку и сбил офицера с ног. Он такого не ожидал. Поднялся, поправил форму и тут же предложил ещё один поединок.',
-        note: 'По выражению лиц вокруг было понятно: проверка внезапно стала очень интересной.',
-        next: 'c1p2-05'
-      },
-      {
-        id: 'c1p2-05', chapter: 1, part: 2, background: 'sparring', type: 'narration',
-        label: 'ВТОРОЙ РАУНД',
-        text: 'Я понял: если выиграю и сейчас, будет третий раунд, потом четвёртый — и так до отбоя. Поэтому решил дать офицеру победить, чтобы все увидели достойный финал.',
-        next: 'c1p2-06'
-      },
-      {
-        id: 'c1p2-06', chapter: 1, part: 2, background: 'examResult', type: 'narration',
-        label: 'ЭКЗАМЕН ЗАКОНЧЕН',
-        text: 'Так и сделал — проиграл ему. По лицу капитан-лейтенанта было видно: результатом он доволен. И раунд выиграл, и авторитет на месте.',
-        next: 'c1p2-07'
-      },
-      {
-        id: 'c1p2-07', chapter: 1, part: 2, background: 'marineOffer', type: 'narration',
-        label: 'ПРЕДЛОЖЕНИЕ',
-        text: 'Капитан-лейтенант показал мне моё личное дело и сказал, что экзамен я прошёл: он может взять меня к себе в часть. Я попросил время до вечера, чтобы подумать.',
-        next: 'c1p2-end'
-      },
-      {
-        id: 'c1p2-end', chapter: 1, part: 2, background: 'marineOffer', type: 'part_end',
-        label: 'ГЛАВА 01 · ЧАСТЬ 02',
-        text: 'Экзамен у морпехов был сдан. Оставалось решить главное: соглашаться ли на службу, где таких «экзаменов» могло оказаться ещё очень много.',
-        next: 'c1p3-01'
-      },
-      {
-        id: 'c1p3-01', chapter: 1, part: 3, background: 'decision', type: 'narration',
-        label: '25 НОЯБРЯ · ВЕЧЕР',
-        text: 'Вечером за мной пришли узнать ответ. Я ещё раз всё обдумал: драк мне хватило и до армии, а морская пехота представлялась местом, где побоища и жёсткая дедовщина могли стать обычным делом.',
-        next: 'c1p3-02'
-      },
-      {
-        id: 'c1p3-02', chapter: 1, part: 3, background: 'decision', type: 'narration',
-        label: 'МОЙ ОТВЕТ',
-        text: 'Я ответил: «Нет». Морпехи удивились, но спорить не стали. Моё личное дело вернули и сказали отнести документы офицеру в штаб.',
-        next: 'c1p3-03'
-      },
-      {
-        id: 'c1p3-03', chapter: 1, part: 3, background: 'diversMissed', type: 'narration',
-        label: 'ШТАБ',
-        text: 'Я пришёл в штаб и передал документы офицеру. Там неожиданно выяснилось: меня хотели в тот же день отправить в учебную часть, где готовили водолазов.',
-        next: 'c1p3-04'
-      },
-      {
-        id: 'c1p3-04', chapter: 1, part: 3, background: 'diversMissed', type: 'narration',
-        label: 'ОПОЗДАЛ НА НЕСКОЛЬКО ЧАСОВ',
-        text: 'Но группа уже уехала. Пока я сдавал экзамен, думал и отказывался от морской пехоты, мои возможные товарищи-водолазы успели отправиться без меня.',
-        note: 'Вот так одно решение сразу закрыло одну дверь — а другая успела уехать на автобусе.',
-        next: 'c1p3-05'
-      },
-      {
-        id: 'c1p3-05', chapter: 1, part: 3, background: 'nextAssignment', type: 'narration',
-        label: 'СЛЕДУЮЩЕЕ РАСПРЕДЕЛЕНИЕ',
-        text: 'Мне сказали ждать следующего назначения. Личное дело снова легло в стопку, а я остался на распределительном пункте — уже без морской пехоты и без учебной части водолазов.',
-        next: 'c1p3-06'
-      },
-      {
-        id: 'c1p3-06', chapter: 1, part: 3, background: 'harbor', type: 'narration',
-        label: 'СЕВАСТОПОЛЬ · КОНЕЦ ДНЯ',
-        text: 'Утром меня проверяли в бою, днём приглашали в часть, вечером я отказался, а потом узнал, что опоздал к водолазам. Для одного дня событий получилось с запасом.',
-        next: 'c1p3-07'
-      },
-      {
-        id: 'c1p3-07', chapter: 1, part: 3, background: 'harbor', type: 'narration',
-        label: 'ВПЕРЕДИ — НЕИЗВЕСТНОСТЬ',
-        text: 'Армия только начиналась. Впереди было ещё много неожиданного. Главное — не сломаться, не потерять человеческое и дождаться своего следующего распределения.',
-        next: 'c1p3-end'
-      },
-      {
-        id: 'c1p3-end', chapter: 1, part: 3, background: 'harbor', type: 'part_end',
-        label: 'ГЛАВА 01 · ЧАСТЬ 03',
-        text: 'Так необычно прошёл этот день: морпехи, два раунда, отказ и уехавшие водолазы. Моё настоящее место службы всё ещё ждало впереди.',
-        next: null
-      }
-    ]
-  }
-];
+import { readFileSync } from 'node:fs';
+
+// Текст и стабильные ID берутся из раскадровки исправленного авторского рассказа.
+const chapter = JSON.parse(readFileSync(new URL('../production/chapter01/storyboard.json', import.meta.url), 'utf8'));
+const partDates = ['19–21 ноября 1990 года', '21 ноября 1990 года', '22–25 ноября 1990 года'];
+
+export const stories = [{
+  id: 'first-days-1990',
+  collection: 'Армейские воспоминания',
+  title: chapter.title,
+  shortDescription: 'Минск — Симферополь — Севастополь. 19–25 ноября 1990 года.',
+  genre: 'Личные воспоминания',
+  duration: `${Math.ceil(chapter.slides.reduce((sum, slide) => sum + slide.wordCount, 0) / 180)} минут чтения`,
+  cover: null,
+  start: chapter.slides[0].id,
+  chapters: [{
+    number: 1, name: chapter.title, subtitle: chapter.period, poster: null,
+    parts: chapter.parts.map(part => ({
+      number: part.number, title: part.title, subtitle: partDates[part.number - 1],
+      start: chapter.slides.find(slide => slide.part === part.number).id,
+      sceneCount: part.slides.length, published: true
+    }))
+  }],
+  scenes: chapter.slides.map((slide, index) => ({
+    id: slide.id, chapter: 1, part: slide.part,
+    type: chapter.slides[index + 1]?.part === slide.part ? 'narration' : 'part_end',
+    label: slide.title, text: slide.text, artwork: null,
+    next: chapter.slides[index + 1]?.id ?? null
+  }))
+}];
 
 export function getStory(id) { return stories.find(s => s.id === id) || null; }
 export function getScene(story, id) { return story.scenes.find(scene => scene.id === id) || null; }
