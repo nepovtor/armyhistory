@@ -4,7 +4,7 @@
 Publish all intended working-tree changes on a feature branch and provide the corrected three-part reader with illustration placeholders.
 
 ## Next Step
-Push the verified feature branch and create a pull request for review.
+Review PR #1 in a browser/Telegram WebView before merging and deploying.
 
 ## Current Phase
 Phase 5
@@ -33,9 +33,9 @@ Phase 5
 - **Status:** complete
 
 ### Phase 5: Delivery
-- [ ] Commit intended changes in understandable increments and push feature branch.
-- [ ] Verify GitHub head and prepare reviewable pull request.
-- **Status:** in_progress
+- [x] Commit the final reader from current origin/main and push feature branch.
+- [x] Verify GitHub head and open PR #1; GitHub reports MERGEABLE / CLEAN.
+- **Status:** complete
 
 ## Decisions Made
 | Decision | Rationale |

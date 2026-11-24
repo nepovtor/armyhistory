@@ -41,4 +41,4 @@
 - [x] Update current status and explain illustration/film plans.
 - [x] Check git diff --check, staged files, public assets and secret patterns.
 - [x] Commit source/reset and release changes in understandable commits; reconcile origin/main without restoring obsolete content.
-- [ ] Push feature branch, verify remote SHA and open reviewable PR; leave main unchanged.
+- [x] Push feature branch, verify remote SHA and open reviewable PR; leave main unchanged.
