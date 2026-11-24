@@ -17,7 +17,9 @@ export class Storage {
   }
   get(userId, story) {
     const user = this.db.users[userId];
-    return user?.stories?.[story.id] ?? initialProgress(story);
+    const saved = user?.stories?.[story.id];
+    if (!saved || !story.scenes.some(scene => scene.id === saved.nodeId)) return initialProgress(story);
+    return saved;
   }
   put(userId, story, progress) {
     if (!this.db.users[userId]) this.db.users[userId] = { stories: {}, entitlements: {} };

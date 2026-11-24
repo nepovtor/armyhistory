@@ -3,3 +3,23 @@ node_modules/
 data/
 .DS_Store
 *.log
+__pycache__/
+*.py[cod]
+
+# HIStory cinematic production: keep large/private/generated media local.
+production/**/renders/
+production/**/private/
+production/**/tmp/
+production/**/models/
+production/**/*_unreleased.mp4
+production/**/*.mov
+production/**/*.wav
+production/**/*.flac
+production/**/*.blend1
+*.safetensors
+*.ckpt
+
+# Full-resolution diagnostic frames stay local; keep only selected QC sheets.
+production/**/qc/*-checkpoints/
+production/**/qc/*-checkpoints-contact-sheet*.png
+production/**/qc/*-painterly-contact-sheet.png

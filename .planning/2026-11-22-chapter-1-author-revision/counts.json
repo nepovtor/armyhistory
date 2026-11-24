@@ -1,0 +1,88 @@
+{
+  "parts": [
+    {
+      "number": 1,
+      "title": "Дорога и распределение",
+      "slides": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "durationSec": 160,
+      "wordCount": 239,
+      "illustrations": 10,
+      "actingEpisodes": 7,
+      "heldShots": 3
+    },
+    {
+      "number": 2,
+      "title": "Экзамен у морпехов",
+      "slides": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "durationSec": 146,
+      "wordCount": 204,
+      "illustrations": 11,
+      "actingEpisodes": 8,
+      "heldShots": 3
+    },
+    {
+      "number": 3,
+      "title": "Ночь, отказ и новое назначение",
+      "slides": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "durationSec": 248,
+      "wordCount": 381,
+      "illustrations": 15,
+      "actingEpisodes": 8,
+      "heldShots": 7
+    }
+  ],
+  "totals": {
+    "storySlides": 36,
+    "keyIllustrations": 36,
+    "actingEpisodes": 23,
+    "heldShots": 13,
+    "keyPoseDrawings": 94,
+    "backgroundMasters": 11,
+    "extraLightingVariants": 3,
+    "characterModelSheets": 8,
+    "mouthDrawings": 18,
+    "propSheets": 6,
+    "editorialCards": 4,
+    "wordCount": 824,
+    "durationSec": 554
+  }
+}

@@ -22,7 +22,7 @@ export async function createMapInvoiceLink(token, telegramId, fetchImpl = fetch)
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       title: 'Карта маршрута',
-      description: 'Разовый доступ к карте маршрута Минск — Симферополь — Севастополь.',
+      description: 'Разовый доступ к карте маршрута истории.',
       payload: mapInvoicePayload(telegramId),
       currency: MAP_ACCESS_CURRENCY,
       prices: [{ label: 'Доступ к карте', amount: MAP_ACCESS_PRICE }]

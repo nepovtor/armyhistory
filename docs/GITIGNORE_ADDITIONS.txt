@@ -1,0 +1,12 @@
+# HIStory cinematic production: append to existing .gitignore after reviewing
+production/**/renders/
+production/**/private/
+production/**/tmp/
+production/**/models/
+production/**/*_unreleased.mp4
+production/**/*.mov
+production/**/*.wav
+production/**/*.flac
+production/**/*.blend1
+*.safetensors
+*.ckpt

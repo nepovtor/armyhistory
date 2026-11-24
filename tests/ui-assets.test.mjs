@@ -7,106 +7,115 @@ import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { stories } from '../server/content.mjs';
-const root = new URL('../', import.meta.url);
 
-test('все сюжетные иллюстрации присутствуют и не загружаются из чужих доменов', () => {
-  const backgrounds = {
-    station: 'comic-v2/enlist.webp', paper: 'comic-v2/commissariat.webp', train: 'comic-v2/train.webp', trainBoarding: 'comic-v2/train-boarding.webp', route: null,
-    sea: 'comic-v2/harbor.webp', harbor: 'comic-v2/harbor.webp', barracks: 'comic-v2/barracks.webp',
-    marineOffer: 'comic-v2/marine-offer.webp', sparring: 'comic-v2/sparring.webp', decision: 'comic-v2/decision.webp',
-    diversMissed: 'comic-v2/divers-missed.webp', nextAssignment: 'comic-v2/next-assignment.webp', cover: 'comic-v2/cover.webp'
-    , trainJourney: 'comic-v2/train-journey.webp', examResult: 'comic-v2/exam-result.webp'
-  };
-  for (const story of stories) {
-    for (const artwork of [story.cover, ...story.chapters.map(ch => ch.poster)]) {
-      assert.ok(artwork.startsWith('/assets/'));
-      assert.ok(fs.existsSync(new URL(`../public${artwork}`, import.meta.url)), artwork);
-    }
-    for (const scene of story.scenes) {
-      assert.ok(Object.hasOwn(backgrounds, scene.background), `Нет иллюстрации для ${scene.id}`);
-      if (scene.background !== 'route') assert.ok(fs.existsSync(new URL(`../public/assets/${backgrounds[scene.background]}`, import.meta.url)));
-    }
-  }
-  assert.ok(fs.existsSync(new URL('../private/route.svg', import.meta.url)));
-  assert.equal(fs.existsSync(new URL('../public/assets/route.svg', import.meta.url)), false);
+const root = fileURLToPath(new URL('../', import.meta.url));
+
+function browserContext(fetch) {
+  const app = { innerHTML: '', addEventListener() {} };
+  const saved = new Map([['history-offline-preview-v2', JSON.stringify({ nodeId: 'removed-node' })]]);
+  const context = vm.createContext({
+    document: {
+      querySelector: selector => selector === '#app' ? app : {},
+      addEventListener() {}
+    },
+    localStorage: { getItem: key => saved.get(key) ?? null, setItem: (key, value) => saved.set(key, value) },
+    crypto: { randomUUID: () => 'test-reader-1234' },
+    setTimeout, clearTimeout, fetch
+  });
+  context.window = context;
+  return { context, app };
+}
+
+function assertEmptyView(app) {
+  assert.match(app.innerHTML, /История обновляется/);
+  assert.match(app.innerHTML, /авторскими исправлениями/);
+  assert.doesNotMatch(app.innerHTML, /<img|data-action="(?:read|chapters|buy-map)"/);
+}
+
+test('в проекте отсутствуют прежние фотографии, история и производственные материалы', () => {
+  const assets = fs.readdirSync(path.join(root, 'public/assets')).sort();
+  assert.deepEqual(assets, ['fonts', 'icon.svg']);
+  for (const relative of [
+    'private', 'production/chapter01/assets', 'production/chapter01/renders', 'production/chapter01/rigs', '.taste-skill',
+    'docs/source-story-chapter-1-part-1.md', 'docs/source-story-chapter-1-parts-2-3.md'
+  ]) assert.equal(fs.existsSync(path.join(root, relative)), false, relative);
 });
 
-test('клиент показывает оплату карты и не доверяет одному callback Telegram', () => {
-  const app = fs.readFileSync(new URL('../public/app.js', import.meta.url), 'utf8');
-  assert.match(app, /route:\s*['"]\/api\/map['"]/);
-  assert.match(app, /data-action="buy-map"/);
+test('клиент открывает пустой каталог и безопасно обрабатывает переходы', async () => {
+  const fetch = async url => ({ ok: true, json: async () => url === '/api/config'
+    ? { demoMode: true }
+    : { user: { demo: true }, mapAccess: { unlocked: true, price: 15, currency: 'XTR' }, stories: [] }
+  });
+  const { context, app } = browserContext(fetch);
+  const script = fs.readFileSync(path.join(root, 'public/app.js'), 'utf8');
+  await vm.runInContext(script + '\nboot();', context);
+  assertEmptyView(app);
+  for (const action of ['journal', 'chapters', 'library']) {
+    await vm.runInContext(`navigate('${action}', {});`, context);
+    assertEmptyView(app);
+  }
+});
+
+test('Pages содержит три части без фото и корректно читает, возвращает и сбрасывает прогресс', async () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'armyhistory-pages-reader-'));
+  try {
+    const output = path.join(tempDir, 'index.html');
+    execFileSync(process.execPath, [path.join(root, 'tools/build-demo.mjs'), output]);
+    const html = fs.readFileSync(output, 'utf8');
+    assert.doesNotMatch(html, /data:image\/(?:webp|png|jpeg);base64|home-sevastopol-portrait|comic-v[23]/);
+    assert.doesNotMatch(html, /\/assets\//, 'Все оставшиеся шрифты должны быть встроены');
+    const { context, app } = browserContext();
+    const script = html.slice(html.lastIndexOf('<script>') + '<script>'.length, html.lastIndexOf('</script>'));
+    await vm.runInContext(script + '\nboot();', context);
+    assert.match(app.innerHTML, /Место для иллюстрации/);
+    assert.match(app.innerHTML, /Начать историю/);
+    assert.doesNotMatch(app.innerHTML, /<img/);
+    await vm.runInContext("navigate('chapters', {});", context);
+    assert.match(app.innerHTML, /Дорога и распределение/);
+    assert.match(app.innerHTML, /Экзамен у морпехов/);
+    assert.match(app.innerHTML, /Ночь, отказ и новое назначение/);
+    assert.doesNotMatch(app.innerHTML, /<img/);
+    await vm.runInContext('openReader();', context);
+    assert.match(app.innerHTML, /восемнадцать/);
+    assert.doesNotMatch(app.innerHTML, /<img|Открыть за/);
+    for (let step = 1; step < 41; step++) {
+      await vm.runInContext("navigate('next', {});", context);
+      assert.match(app.innerHTML, /Место для иллюстрации/);
+      assert.doesNotMatch(app.innerHTML, /<img/);
+    }
+    const bootstrap = await (await context.fetch('/api/bootstrap')).json();
+    assert.equal(bootstrap.stories[0].completed, true);
+    assert.deepEqual(Array.from(bootstrap.stories[0].chapters[0].parts, part => part.status), ['done', 'done', 'done']);
+    assert.equal(bootstrap.mapAccess.available, false);
+    await vm.runInContext("navigate('back-scene', {});", context);
+    assert.equal(vm.runInContext('state.progress.scene.id', context), stories[0].scenes.at(-2).id);
+    await vm.runInContext('boot();', context);
+    await vm.runInContext('openReader();', context);
+    assert.equal(vm.runInContext('state.progress.scene.id', context), stories[0].scenes.at(-2).id);
+    await vm.runInContext("navigate('journal', {});", context);
+    assert.match(app.innerHTML, /Прогресс чтения сохраняется автоматически/);
+    assert.doesNotMatch(app.innerHTML, /ещё не выбирал/);
+    await vm.runInContext('openReader(1);', context);
+    assert.equal(vm.runInContext('state.progress.scene.id', context), stories[0].start);
+    await context.fetch('/api/story/first-days-1990/reset', { method: 'POST' });
+    const reset = await (await context.fetch('/api/story/first-days-1990')).json();
+    assert.equal(reset.scene.id, stories[0].start);
+    assert.equal(reset.visitedCount, 1);
+    const missing = await context.fetch('/api/story/removed-story');
+    assert.equal(missing.ok, false);
+    const invoice = await context.fetch('/api/map/invoice', { method: 'POST' });
+    assert.equal(invoice.ok, false);
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test('клиент сохраняет серверную проверку покупки и доступные элементы ридера', () => {
+  const app = fs.readFileSync(path.join(root, 'public/app.js'), 'utf8');
+  const css = fs.readFileSync(path.join(root, 'public/styles.css'), 'utf8');
   assert.match(app, /openInvoice/);
-  assert.match(app, /data\.mapAccess/);
-  assert.match(app, /mapAccess\.unlocked/);
   assert.match(app, /await api\('\/api\/bootstrap'\)/);
-  assert.match(app, /URL\.createObjectURL/);
   assert.match(app, /X-Telegram-Init-Data/);
-});
-
-test('история не приписывает отцу тип или номер атомной лодки', () => {
-  const s=stories[0];
-  assert.match(s.shortDescription, /1990/);
-  assert.match(s.shortDescription, /атомной подводной лодке/);
-  assert.match(s.scenes[0].text, /19 ноября 1990/);
-  assert.ok(!s.scenes.some(n => /проект\s+\d+|К-\d+/.test(n.text)));
-});
-
-test('новые растровые иллюстрации полноформатные и достаточно крупные', () => {
-  const assets = fs.readdirSync(new URL('../public/assets/comic-v2/', import.meta.url)).filter(name => name.endsWith('.webp'));
-  assert.ok(assets.length >= 14, 'Набор иллюстраций должен включать отдельные сцены');
-  for (const name of assets) {
-    const bytes = fs.readFileSync(new URL(`../public/assets/comic-v2/${name}`, import.meta.url));
-    assert.ok(bytes.length > 100_000, `${name} выглядит слишком маленьким`);
-    assert.equal(bytes.subarray(0, 4).toString('ascii'), 'RIFF');
-    assert.equal(bytes.subarray(8, 12).toString('ascii'), 'WEBP');
-  }
-});
-
-test('автономная Pages-сборка встраивает изображения из вложенных папок', () => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'armyhistory-pages-'));
-  const output = path.join(tempDir, 'index.html');
-  try {
-    execFileSync(process.execPath, [fileURLToPath(new URL('../tools/build-demo.mjs', import.meta.url)), output], {
-      cwd: fileURLToPath(root),
-      stdio: 'pipe'
-    });
-    const html = fs.readFileSync(output, 'utf8');
-    assert.doesNotMatch(html, /\/assets\//, 'В Pages-сборке остались внешние ссылки на локальные ресурсы');
-    assert.doesNotMatch(html, /['"]\/api\/map['"]/, 'Pages-сборка не должна запрашивать защищённую карту');
-    assert.ok((html.match(/data:image\/webp;base64/g) || []).length >= 11, 'Не все WebP-иллюстрации встроены');
-    assert.ok((html.match(/data:image\/svg\+xml;base64/g) || []).length >= 1, 'Защищённая карта не встроена в демоверсию');
-  } finally {
-    fs.rmSync(tempDir, { recursive: true, force: true });
-  }
-});
-
-test('автономная Pages-сборка разрешает переход к следующей части', () => {
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'armyhistory-transition-'));
-  const output = path.join(tempDir, 'index.html');
-  try {
-    execFileSync(process.execPath, [fileURLToPath(new URL('../tools/build-demo.mjs', import.meta.url)), output], {
-      cwd: fileURLToPath(root),
-      stdio: 'pipe'
-    });
-    const html = fs.readFileSync(output, 'utf8');
-    assert.doesNotMatch(
-      html,
-      /c\.id!==body\.nodeId\s*\|\|\s*c\.type==='part_end'/,
-      'Pages-движок не должен блокировать конец части, у которого есть следующая сцена'
-    );
-    assert.match(
-      html,
-      /\(c\.type==='part_end'\s*&&\s*!c\.next\)\s*\|\|\s*c\.type==='ending'/,
-      'Pages-движок должен повторять правило перехода из серверного движка'
-    );
-    const runtimeStart = html.indexOf('const __stories = ');
-    const runtimeEnd = html.indexOf('window.fetch = async', runtimeStart);
-    assert.ok(runtimeStart >= 0 && runtimeEnd > runtimeStart, 'Не найден автономный движок в Pages-сборке');
-    const context = {};
-    vm.runInNewContext(`${html.slice(runtimeStart, runtimeEnd)}\n` +
-      `globalThis.transitionResult=__advance({nodeId:'c1p1-end',stats:{route:0,mood:0},decisions:[],visited:['c1p1-end']},{nodeId:'c1p1-end'});`, context);
-    assert.equal(context.transitionResult.nodeId, 'c1p2-01');
-  } finally {
-    fs.rmSync(tempDir, { recursive: true, force: true });
-  }
+  assert.match(app, /<dialog[^>]+class="map-dialog"/);
+  assert.match(css, /@media\(prefers-reduced-motion:\s*reduce\)/);
 });
