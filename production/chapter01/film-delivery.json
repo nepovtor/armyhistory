@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "status": "no_media_delivered",
+  "shots": {},
+  "recordings": {},
+  "assets": {},
+  "pilotSegments": {},
+  "pilotAudio": null,
+  "pilotSubtitlesSrt": null,
+  "masterAudio": null,
+  "subtitlesSrt": null,
+  "note": "Register inspected local files and explicit approvals here. Generated film plans never overwrite this delivery record. No media is currently delivered."
+}

@@ -1,6 +1,7 @@
 export const MAP_ACCESS_PRODUCT = 'route-map';
 export const MAP_ACCESS_PRICE = 15;
-export const MAP_ACCESS_CURRENCY = 'XTR';
+export const STARS_CURRENCY = 'XTR';
+export const MAP_ACCESS_CURRENCY = STARS_CURRENCY;
 
 const TELEGRAM_API = 'https://api.telegram.org/bot';
 

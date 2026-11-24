@@ -15,7 +15,7 @@ if (!demoId || !/^[a-z0-9-]{8,80}$/i.test(demoId)) {
   demoId = 'reader-' + crypto.randomUUID();
   localStorage.setItem(storeKey, demoId);
 }
-const state = { view: 'loading', config: null, user: null, stories: [], story: null, progress: null, mapAccess: { unlocked: false, price: 15, currency: 'XTR' }, mapImageUrl: null, busy: false, error: null };
+const state = { view: 'loading', config: null, user: null, stories: [], formats: [], story: null, progress: null, mapAccess: { unlocked: false, price: 15, currency: 'XTR' }, mapImageUrl: null, busy: false, error: null };
 const art = { route: '/api/map' };
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[ch]);
 const haptic = () => { try { tg?.HapticFeedback?.impactOccurred?.('light'); } catch { /* optional */ } };
@@ -58,6 +58,7 @@ async function boot() {
     state.user = data.user;
     state.mapAccess = data.mapAccess;
     state.stories = data.stories;
+    state.formats = data.formats || [];
     state.story = data.stories[0];
     state.view = 'library';
     state.error = null;
@@ -80,25 +81,26 @@ function illustrationPlaceholder(label, className = '') {
 function libraryView() {
   const story = state.story;
   if (!story) return `<main class="page"><section class="errorbox">${brand()}<h1>История обновляется</h1><p>Ожидаем полную версию с авторскими исправлениями.</p></section></main>`;
-  const chapter = story.chapters[0], part = chapter.parts[0];
-  const homeCover = story.cover;
+  const chapter = story.chapters[0];
+  const formats = state.formats.filter(format => ['audio', 'video'].includes(format.id));
   return `<main class="page home-view">
-    ${homeCover ? `<div class="home-visual"><img class="home-art" src="${escapeHtml(homeCover)}" alt="Обложка истории" decoding="async" fetchpriority="high"/></div>` : illustrationPlaceholder(story.title, 'home-placeholder')}
+    ${story.cover ? `<div class="home-visual"><img class="home-art" src="${escapeHtml(story.cover)}" alt="Обложка истории" decoding="async" fetchpriority="high"/></div>` : illustrationPlaceholder(story.title, 'home-placeholder')}
     <section class="home-content">
-      <div class="home-brand" aria-label="HIStory. ${escapeHtml(story.title)}">
-      <h1>HIStory</h1>
-      <p class="home-tagline">${escapeHtml(story.title)}</p>
-      <p class="home-subtitle">${escapeHtml(story.shortDescription)}</p>
+      <div class="home-brand">
+        <span class="home-wordmark">HIStory</span>
+        <h1>${escapeHtml(story.title)}</h1>
+        <p class="home-subtitle">${escapeHtml(story.shortDescription)}</p>
       </div>
-    <nav class="home-actions" aria-label="Меню истории">
-      <button class="home-action home-action-read" data-action="read"><span class="home-action-icon" aria-hidden="true">▶</span><span class="home-action-copy"><strong>${story.started ? 'Продолжить' : 'Начать историю'}</strong></span><span class="home-action-arrow" aria-hidden="true">›</span></button>
-      <button class="home-action home-action-chapters" data-action="chapters"><span class="home-action-icon" aria-hidden="true">≡</span><span class="home-action-copy"><strong>Главы и части</strong></span><span class="home-action-arrow" aria-hidden="true">›</span></button>
-      <button class="home-action home-action-journal" data-action="journal"><span class="home-action-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3c2.2 7 5.8 10.6 13 13-7.2 2.4-10.8 6-13 13-2.2-7-5.8-10.6-13-13 7.2-2.4 10.8-6 13-13z"/></svg></span><span class="home-action-copy"><strong>Дневник истории</strong></span><span class="home-action-arrow" aria-hidden="true">›</span></button>
-    </nav>
-    <div class="home-foot"><span>Глава 01</span><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 4v21m-5-16h10M8 17a8 8 0 0 0 16 0M5 18l3-3 3 3m10 0 3-3 3 3"/><circle cx="16" cy="5" r="2"/></svg><span>${escapeHtml(part.title)}</span></div>
+      <nav class="home-actions" aria-label="Как открыть историю">
+        <button class="home-action home-action-read" data-action="read"><span class="home-action-copy"><strong>${story.started ? 'Продолжить чтение' : 'Читать историю'}</strong><small>Бесплатно</small></span><span class="home-action-arrow" aria-hidden="true">→</span></button>
+        ${formats.map(format => `<button class="home-action home-action-development" disabled aria-disabled="true" aria-label="${escapeHtml(format.label)}. В разработке"><span class="home-action-copy"><strong>${escapeHtml(format.label)}</strong><small>В разработке</small></span></button>`).join('')}
+      </nav>
+      <nav class="home-links" aria-label="Разделы истории"><button data-action="chapters">Главы и части</button><button data-action="journal">Дневник истории</button></nav>
+      <p class="home-foot">Глава ${chapter.number} · ${chapter.parts.length} части</p>
     </section>
   </main>`;
 }
+
 function chaptersView() {
   const story=state.story, chapter=story.chapters[0];
   const parts=chapter.parts.map(part=>{
@@ -170,7 +172,7 @@ function journalView() {
   </main>`;
 }
 function render() {
-  root.innerHTML = `<div class="shell">${state.view === 'loading' ? `<div class="loading"><div>HIStory</div><small>Открываем архив…</small></div>` : state.view === 'error' ? `<main class="page">${header('library')}<div class="errorbox"><div class="eyebrow">НЕ УДАЛОСЬ ОТКРЫТЬ</div><h2>Приложение недоступно</h2><p>${escapeHtml(state.error)}</p><p style="font-size:12px;color:#a8b3b0">Для проверки в браузере запусти <code>npm run dev</code>. Для запуска внутри Telegram потребуется настроенный бот и HTTPS-адрес.</p><button class="btn wide" data-action="retry">Повторить <span>↻</span></button></div></main>` : state.view === 'library' || !state.story ? libraryView() : state.view === 'chapters' ? chaptersView() : state.view === 'reader' ? readerView() : journalView()}</div>`;
+  root.innerHTML = `<div class="shell">${state.view === 'loading' ? `<div class="loading"><div>HIStory</div><small>Открываем архив…</small></div>` : state.view === 'error' ? `<main class="page">${header('library')}<div class="errorbox"><div class="eyebrow">НЕ УДАЛОСЬ ОТКРЫТЬ</div><h2>Приложение недоступно</h2><p>${escapeHtml(state.error)}</p><p>Проверьте соединение и попробуйте открыть историю ещё раз.</p><button class="btn wide" data-action="retry">Повторить <span>↻</span></button></div></main>` : state.view === 'library' || !state.story ? libraryView() : state.view === 'chapters' ? chaptersView() : state.view === 'reader' ? readerView() : journalView()}</div>`;
   window.scrollTo?.(0, 0);
 }
 async function openReader(targetPart = null) {
@@ -194,6 +196,7 @@ async function loadLibrary() {
   const data = await api('/api/bootstrap');
   state.mapAccess = data.mapAccess;
   state.stories = data.stories;
+    state.formats = data.formats || [];
   state.story = data.stories.find(s => s.id === state.story?.id) || data.stories[0];
 }
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -202,6 +205,7 @@ async function refreshMapAccess() {
     const data = await api('/api/bootstrap');
     state.mapAccess = data.mapAccess;
     state.stories = data.stories;
+    state.formats = data.formats || [];
     state.story = data.stories.find(s => s.id === state.story?.id) || data.stories[0];
     if (state.mapAccess.unlocked) {
       await ensureMapImage();

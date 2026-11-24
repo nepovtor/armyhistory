@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { stories, getScene } from '../server/content.mjs';
+import { playbackFormats } from '../server/playback.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicDir = path.join(root, 'public');
 const out = process.argv[2] || path.resolve(root, '..', 'HIStory-demo.html');
@@ -59,8 +60,10 @@ window.fetch = async (url, opts = {}) => {
     if (url === '/api/bootstrap') return response(200, {
       user: { name: 'Читатель', demo: true },
       mapAccess: { available: false, unlocked: false, price: 15, currency: 'XTR' },
+      formats: ${JSON.stringify(playbackFormats())},
       stories: stories.map(story => publicStory(story, __read(story)))
     });
+    if (/^\\/api\\/playback\\/(audio|video)\\/invoice$/.test(url)) return response(409, { error: 'Этот формат ещё в разработке. Оплата недоступна.' });
     const match = url.match(/^\\/api\\/story\\/([a-z0-9-]+)(?:\\/(advance|back|reset))?$/);
     const story = match && stories.find(story => story.id === match[1]);
     if (!story) return response(404, { error: 'Адрес не найден' });

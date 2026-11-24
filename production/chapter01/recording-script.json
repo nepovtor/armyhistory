@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "status": "not_recorded",
+  "language": "ru",
+  "timing": "set_after_recording",
+  "cues": [
+    {
+      "id": "ch01-p01-s01-voice01",
+      "sourceNode": "ch01-p01-s01",
+      "speaker": "NARRATOR",
+      "text": "19 ноября 1990 года. Ранним утром нас отвезли в областной военкомат. Именно там я узнал, что впереди меня ждут три года службы в Военно-морском флоте СССР. Мне было восемнадцать лет.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p01-s02-voice01",
+      "sourceNode": "ch01-p01-s02",
+      "speaker": "NARRATOR",
+      "text": "Новость оказалась тяжёлой. Было такое чувство, будто мне дали тюремный срок за плохое поведение. Три года вдали от дома тогда казались целой вечностью. Ещё вчера я жил обычной жизнью, строил планы, занимался спортом, а теперь всё резко изменилось.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p01-s03-voice01",
+      "sourceNode": "ch01-p01-s03",
+      "speaker": "NARRATOR",
+      "text": "Вечером всех нас, кому предстояло служить в ВМФ, посадили на поезд. Из Минска нужно было добраться до Симферополя, где нас распределят по воинским частям, а затем — до Севастополя.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p01-s04-voice01",
+      "sourceNode": "ch01-p01-s04",
+      "speaker": "NARRATOR",
+      "text": "Настроение у всех было скверное. Почти все начали пить спиртное, заглушая отчаяние, но особого веселья никто не испытывал. Каждый по-своему переживал предстоящую разлуку с домом и путь в неизвестность.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p01-s05-voice01",
+      "sourceNode": "ch01-p01-s05",
+      "speaker": "NARRATOR",
+      "text": "Да… Впереди была неизвестность. Никто толком не представлял, где окажется и как пройдут следующие три года.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p01-s06-voice01",
+      "sourceNode": "ch01-p01-s06",
+      "speaker": "NARRATOR",
+      "text": "В Симферополь мы приехали ночью 20 ноября 1990 года.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p01-s07-voice01",
+      "sourceNode": "ch01-p01-s07",
+      "speaker": "NARRATOR",
+      "text": "Оттуда на грузовиках нас доставили на распределительный пункт и разместили в казарме.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p01-s08-voice01",
+      "sourceNode": "ch01-p01-s08",
+      "speaker": "NARRATOR",
+      "text": "Здесь уже находились призывники из самых разных уголков Советского Союза. У каждого была своя история, свой дом, своя семья, но теперь всех объединяло одно — предстоящая служба. В казарме стоял постоянный гул голосов. Ребята знакомились, рассказывали, откуда приехали, обсуждали, в какие части их могут отправить.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p01-s09-voice01",
+      "sourceNode": "ch01-p01-s09",
+      "speaker": "NARRATOR",
+      "text": "Мне досталась кровать на втором ярусе. Спать легли прямо в одежде, в куртках: было холодновато.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p01-s10-voice01",
+      "sourceNode": "ch01-p01-s10",
+      "speaker": "NARRATOR",
+      "text": "Утром 21 ноября нас построили и проверили, все ли на месте. Скудно покормили, затем снова построили и проверили по списку. Такие проверки повторялись каждые четыре часа.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s11-voice01",
+      "sourceNode": "ch01-p02-s11",
+      "speaker": "NARRATOR",
+      "text": "21 ноября моим личным делом заинтересовались офицеры морской пехоты. Капитан-лейтенанта заинтересовало, что я в 17 лет стал тренером по тхэквондо. Он подошёл и сказал:",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s11-voice02",
+      "sourceNode": "ch01-p02-s11",
+      "speaker": "O1",
+      "text": "— Предлагаю служить в морской пехоте, так как у тебя есть навыки боя. Но прежде ты должен сдать тест на бой. Согласен?",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s12-voice01",
+      "sourceNode": "ch01-p02-s12",
+      "speaker": "NARRATOR",
+      "text": "Я ответил:",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s12-voice02",
+      "sourceNode": "ch01-p02-s12",
+      "speaker": "HERO",
+      "text": "— Тест сдать согласен, а там посмотрим.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s13-voice01",
+      "sourceNode": "ch01-p02-s13",
+      "speaker": "NARRATOR",
+      "text": "Сначала мне предстояло пройти проверку в бою.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s14-voice01",
+      "sourceNode": "ch01-p02-s14",
+      "speaker": "NARRATOR",
+      "text": "Меня отвели в другую казарму, где собрались крепкие, физически подготовленные морпехи. Проверять меня в бою должен был тот самый капитан-лейтенант, с которым я только что разговаривал.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s15-voice01",
+      "sourceNode": "ch01-p02-s15",
+      "speaker": "NARRATOR",
+      "text": "Мы встали в боевую стойку. Первый спарринг длился около двадцати секунд. Я сразу пошёл в атаку и ударом ногой в голову сбил капитан-лейтенанта с ног.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s16-voice01",
+      "sourceNode": "ch01-p02-s16",
+      "speaker": "NARRATOR",
+      "text": "Капитан-лейтенант поднялся, отряхнулся и предложил провести второй раунд.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s17-voice01",
+      "sourceNode": "ch01-p02-s17",
+      "speaker": "NARRATOR",
+      "text": "В этот момент я задумался. Если снова выиграю, на этом проверка вряд ли закончится. Наверняка найдётся ещё кто-нибудь, кто захочет подраться со мной. А превращать всё это в бесконечную череду поединков мне совсем не хотелось.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s18-voice01",
+      "sourceNode": "ch01-p02-s18",
+      "speaker": "NARRATOR",
+      "text": "Второй спарринг длился около минуты. Я понял, что меня так просто не отпустят и, скорее всего, придётся по очереди драться с другими морпехами. Поэтому решил дать себя побить: ушёл в защиту, позволил бить себя кулаками и ногами и отступил к стене, чтобы не упасть.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s19-voice01",
+      "sourceNode": "ch01-p02-s19",
+      "speaker": "NARRATOR",
+      "text": "Капитан-лейтенант увидел, что я как будто сдался, и отступил. Морпехи были довольны: он победил и доказал, что ещё имеет силы. Сам офицер тоже остался доволен. Он объявил, что проверку я прошёл и он готов забрать меня в свою часть. Теперь предстояло решить, хочу ли я действительно служить в морской пехоте.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s20-voice01",
+      "sourceNode": "ch01-p02-s20",
+      "speaker": "NARRATOR",
+      "text": "Я попросил дать мне время подумать до завтрашнего дня.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p02-s21-voice01",
+      "sourceNode": "ch01-p02-s21",
+      "speaker": "NARRATOR",
+      "text": "Меня отвели обратно к своим, в ту же казарму. Там мы просидели до отбоя, а потом снова легли спать в одежде. Я занял ту же койку на втором ярусе.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s22-voice01",
+      "sourceNode": "ch01-p03-s22",
+      "speaker": "NARRATOR",
+      "text": "Ночью спали плохо. Постоянно вспыхивали стычки между парнями из Средней Азии и славянами. Били друг друга чем попало: железными прутьями, табуретками. Кричали.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s23-voice01",
+      "sourceNode": "ch01-p03-s23",
+      "speaker": "NARRATOR",
+      "text": "Участвовать в драках мне было неинтересно. Я оставался на своей верхней койке и пытался поспать.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s24-voice01",
+      "sourceNode": "ch01-p03-s24",
+      "speaker": "NARRATOR",
+      "text": "Утром 22 ноября многих среди нас не было: после драк их забрали в санчасть.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s25-voice01",
+      "sourceNode": "ch01-p03-s25",
+      "speaker": "NARRATOR",
+      "text": "Когда я шёл по части, ко мне подошли старослужащие и попросили поменяться штанами. Это была просьба, от которой нельзя было отказаться: всё равно бы забрали. Я отдал свои старые порванные джинсы — джинсы в девяностых были в дефиците. Взамен получил широкие тёмно-синие брюки, похожие по крою на брюки от кимоно. Хорошо хоть подошли.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s26-voice01",
+      "sourceNode": "ch01-p03-s26",
+      "speaker": "NARRATOR",
+      "text": "22 ноября за моим решением пришёл другой офицер морской пехоты. Он принёс моё личное дело и спросил, согласен ли я служить у них. Я отказался.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s27-voice01",
+      "sourceNode": "ch01-p03-s27",
+      "speaker": "NARRATOR",
+      "text": "Дело было не в страхе перед физическими нагрузками или трудностями службы. Драться мне очень часто доводилось, и я прекрасно понимал, что это такое. После прежних драк мне совсем не хотелось, чтобы мне отбили голову. Ещё я думал, что офицер, которого я свалил с ног, злится на меня: сначала я его победил, а потом поддался, и это заметили все его подчинённые.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s28-voice01",
+      "sourceNode": "ch01-p03-s28",
+      "speaker": "NARRATOR",
+      "text": "Офицер принял мой отказ. Хотя, если бы меня поуговаривали, я бы, наверное, согласился.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s29-voice01",
+      "sourceNode": "ch01-p03-s29",
+      "speaker": "NARRATOR",
+      "text": "Он вернул мне личное дело и велел отнести его в штаб распределительного пункта. Я отнёс документы и сказал, что к морской пехоте у меня нет вдохновения.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s30-voice01",
+      "sourceNode": "ch01-p03-s30",
+      "speaker": "NARRATOR",
+      "text": "Там мне объяснили: меня хотели отправить в часть, где готовят водолазов, но набор уже завершили, и группа уехала.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s31-voice01",
+      "sourceNode": "ch01-p03-s31",
+      "speaker": "NARRATOR",
+      "text": "В штабе точно сказали, что я буду подводником, а по специальности — скорее всего радистом. Меня собирались отправить в Севастополь, в учебную часть на полгода, а затем предстояло служить на подводной лодке. Отправить нас планировали в тот же день.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s32-voice01",
+      "sourceNode": "ch01-p03-s32",
+      "speaker": "NARRATOR",
+      "text": "Я подумал: лучше бы согласился на морскую пехоту. Не хотелось проводить годы под водой.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s33-voice01",
+      "sourceNode": "ch01-p03-s33",
+      "speaker": "NARRATOR",
+      "text": "Через некоторое время нас повели стричься. Всех постригли налысо.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s34-voice01",
+      "sourceNode": "ch01-p03-s34",
+      "speaker": "NARRATOR",
+      "text": "Потом нас отвели в душ, забрали всю гражданскую одежду и выдали полный комплект зимней морской формы: три тельняшки, тёмно-синие робу и брюки, ремень с морской пряжкой, чёрную морскую пилотку, четыре пары носков, ботинки, парадную форму с бескозыркой, бушлат и гюйс. На ленте бескозырки была надпись «Балтийский флот».",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s35-voice01",
+      "sourceNode": "ch01-p03-s35",
+      "speaker": "NARRATOR",
+      "text": "Прощание с привычной жизнью получилось своеобразным. Ещё вчера мы ходили в гражданской одежде и с обычными причёсками, а теперь стояли с обритыми головами, в одинаковой форме. В Севастополь мы отправились в парадной форме моряка и в бескозырках. Так началась наша служба в Военно-морском флоте.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s36-voice01",
+      "sourceNode": "ch01-p03-s36",
+      "speaker": "NARRATOR",
+      "text": "Мы, кого определили в подводный флот, отправились в Севастополь на поезде.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s37-voice01",
+      "sourceNode": "ch01-p03-s37",
+      "speaker": "NARRATOR",
+      "text": "В Севастополь, в учебку, мы прибыли ночью 23 ноября. Запомнилось, что в конце ноября там было тепло.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s38-voice01",
+      "sourceNode": "ch01-p03-s38",
+      "speaker": "NARRATOR",
+      "text": "На вокзале нас забрали и на грузовиках повезли в учебную часть. Было страшновато: как там, какие порядки, будут ли издевательства и побоища? И многое другое не давало покоя.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s39-voice01",
+      "sourceNode": "ch01-p03-s39",
+      "speaker": "NARRATOR",
+      "text": "Когда приехали, нас распределили по командам. В нашей команде были радисты, акустики и электрики. Всего — примерно шестьдесят человек.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s40-voice01",
+      "sourceNode": "ch01-p03-s40",
+      "speaker": "NARRATOR",
+      "text": "Потом нашу команду отвели в казарму.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s41-voice01",
+      "sourceNode": "ch01-p03-s41",
+      "speaker": "NARRATOR",
+      "text": "Нас уложили спать. Теперь мне досталась койка на первом ярусе.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s41-voice02",
+      "sourceNode": "ch01-p03-s41",
+      "speaker": "NARRATOR",
+      "text": "К 25 ноября я успел покинуть родной Минск, проехать через всю Украину и оказаться в Севастополе. Сменить гражданскую одежду на военную форму, пройти испытание у морских пехотинцев, отказаться от предложения служить в их части и попасть в подводный флот.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s41-voice03",
+      "sourceNode": "ch01-p03-s41",
+      "speaker": "NARRATOR",
+      "text": "Жизнь полна приключений. Главное, чтобы приключения хорошо заканчивались.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    },
+    {
+      "id": "ch01-p03-s41-voice04",
+      "sourceNode": "ch01-p03-s41",
+      "speaker": "NARRATOR",
+      "text": "Это были итоги первых дней службы — 25 ноября 1990 года. Впереди оставались почти три года службы в Военно-морском флоте СССР.",
+      "audioFile": null,
+      "inFrame": null,
+      "outFrame": null,
+      "status": "not_recorded"
+    }
+  ]
+}

@@ -1,0 +1,700 @@
+{
+  "schemaVersion": 1,
+  "status": "inventory_template",
+  "note": "Expected paths are delivery slots, not existing files. Update only after inspecting delivered assets.",
+  "assets": [
+    {
+      "id": "R01",
+      "kind": "author_reference",
+      "required": true,
+      "expectedPath": "private/film/references/R01.png",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "R02",
+      "kind": "author_reference",
+      "required": true,
+      "expectedPath": "private/film/references/R02.png",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "R03",
+      "kind": "author_reference",
+      "required": false,
+      "expectedPath": "private/film/references/R03.png",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "R04",
+      "kind": "author_reference",
+      "required": true,
+      "expectedPath": "private/film/references/R04.png",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B01",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B01.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B02",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B02.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B03",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B03.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B04",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B04.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B05",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B05.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B06",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B06.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B07",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B07.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B08",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B08.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B09",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B09.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B10",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B10.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B11",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B11.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B12",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B12.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B13",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B13.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B14",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B14.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "B15",
+      "kind": "layered_background",
+      "required": true,
+      "expectedPath": "private/film/backgrounds/B15.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "H1",
+      "kind": "hero_model_and_rig",
+      "required": true,
+      "expectedPath": "private/film/rigs/hero-H1.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "H1_to_H2",
+      "kind": "hero_model_and_rig",
+      "required": true,
+      "expectedPath": "private/film/rigs/hero-H1_to_H2.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "H2",
+      "kind": "hero_model_and_rig",
+      "required": true,
+      "expectedPath": "private/film/rigs/hero-H2.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "H2_to_H3",
+      "kind": "hero_model_and_rig",
+      "required": true,
+      "expectedPath": "private/film/rigs/hero-H2_to_H3.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "H3_to_H4",
+      "kind": "hero_model_and_rig",
+      "required": true,
+      "expectedPath": "private/film/rigs/hero-H3_to_H4.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "H4",
+      "kind": "hero_model_and_rig",
+      "required": true,
+      "expectedPath": "private/film/rigs/hero-H4.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "O1",
+      "kind": "supporting_model_and_rig",
+      "required": true,
+      "expectedPath": "private/film/rigs/O1.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "O2",
+      "kind": "supporting_model_and_rig",
+      "required": true,
+      "expectedPath": "private/film/rigs/O2.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "recruits",
+      "kind": "supporting_model_and_rig",
+      "required": true,
+      "expectedPath": "private/film/rigs/recruits.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "mouths",
+      "kind": "actual_mouth_drawings",
+      "required": true,
+      "expectedPath": "private/film/rigs/mouths.blend",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s01-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s01-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s02-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s02-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s03-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s03-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s04-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s04-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s05-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s05-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s06-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s06-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s07-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s07-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s08-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s08-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s09-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s09-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p01-s10-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p01-s10-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s11-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s11-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s11-voice02",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s11-voice02.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s12-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s12-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s12-voice02",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s12-voice02.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s13-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s13-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s14-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s14-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s15-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s15-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s16-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s16-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s17-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s17-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s18-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s18-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s19-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s19-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s20-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s20-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p02-s21-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p02-s21-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s22-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s22-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s23-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s23-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s24-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s24-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s25-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s25-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s26-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s26-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s27-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s27-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s28-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s28-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s29-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s29-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s30-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s30-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s31-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s31-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s32-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s32-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s33-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s33-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s34-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s34-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s35-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s35-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s36-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s36-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s37-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s37-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s38-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s38-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s39-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s39-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s40-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s40-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s41-voice01",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s41-voice01.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s41-voice02",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s41-voice02.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s41-voice03",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s41-voice03.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ch01-p03-s41-voice04",
+      "kind": "voice_recording",
+      "required": true,
+      "expectedPath": "private/film/audio/ch01-p03-s41-voice04.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "ambience",
+      "kind": "licensed_ambience_stems",
+      "required": true,
+      "expectedPath": "private/film/audio/ambience.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    },
+    {
+      "id": "music",
+      "kind": "licensed_music_optional",
+      "required": false,
+      "expectedPath": "private/film/audio/music.wav",
+      "file": null,
+      "status": "missing",
+      "approved": false
+    }
+  ]
+}

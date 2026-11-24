@@ -53,6 +53,12 @@ test('HTTP: три части читаются бесплатно, прогре�
   assert.equal((await fetch(base + '/api/bootstrap')).status, 401);
   const bootstrap = await request('/api/bootstrap');
   assert.equal(bootstrap.stories.length, 1);
+  assert.deepEqual(bootstrap.formats.map(format => format.id), ['read', 'audio', 'video']);
+  for (const format of ['audio', 'video']) {
+    const unavailable = await fetch(`${base}/api/playback/${format}/invoice`, { headers, method: 'POST', body: JSON.stringify({ price: 1, status: 'ready' }) });
+    assert.equal(unavailable.status, 409);
+    assert.match((await unavailable.json()).error, /разработке/);
+  }
   const url = `/api/story/${stories[0].id}`;
   let progress = await request(url);
   for (const scene of stories[0].scenes) {

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "status": "planning_only",
+  "fps": 24,
+  "totalFrames": 1320,
+  "durationSec": 55,
+  "master": {
+    "width": 1920,
+    "height": 1080
+  },
+  "segments": [
+    {
+      "sourceNode": "ch01-p01-s03",
+      "title": "Вечерний поезд",
+      "startFrame": 0,
+      "endFrame": 336,
+      "sourceShotIds": [
+        "ch01-p01-s03-sh01",
+        "ch01-p01-s03-sh02",
+        "ch01-p01-s03-sh03"
+      ],
+      "voiceTreatment": "Выбрать точный фрагмент авторского текста после записи; окончательный ритм утвердить на голосе.",
+      "status": "planned",
+      "outputFile": null
+    },
+    {
+      "sourceNode": "ch01-p01-s04",
+      "title": "В вагоне",
+      "startFrame": 336,
+      "endFrame": 504,
+      "sourceShotIds": [
+        "ch01-p01-s04-sh01",
+        "ch01-p01-s04-sh02",
+        "ch01-p01-s04-sh03"
+      ],
+      "voiceTreatment": "Выбрать точный фрагмент авторского текста после записи; окончательный ритм утвердить на голосе.",
+      "status": "planned",
+      "outputFile": null
+    },
+    {
+      "sourceNode": "ch01-p01-s06",
+      "title": "Ночное прибытие в Симферополь",
+      "startFrame": 504,
+      "endFrame": 648,
+      "sourceShotIds": [
+        "ch01-p01-s06-sh01"
+      ],
+      "voiceTreatment": "Выбрать точный фрагмент авторского текста после записи; окончательный ритм утвердить на голосе.",
+      "status": "planned",
+      "outputFile": null
+    },
+    {
+      "sourceNode": "ch01-p01-s09",
+      "title": "Второй ярус",
+      "startFrame": 648,
+      "endFrame": 840,
+      "sourceShotIds": [
+        "ch01-p01-s09-sh01",
+        "ch01-p01-s09-sh02"
+      ],
+      "voiceTreatment": "Выбрать точный фрагмент авторского текста после записи; окончательный ритм утвердить на голосе.",
+      "status": "planned",
+      "outputFile": null
+    },
+    {
+      "sourceNode": "ch01-p02-s15",
+      "title": "Первый спарринг",
+      "startFrame": 840,
+      "endFrame": 1320,
+      "sourceShotIds": [
+        "ch01-p02-s15-sh01",
+        "ch01-p02-s15-sh02",
+        "ch01-p02-s15-sh03"
+      ],
+      "voiceTreatment": "Выбрать точный фрагмент авторского текста после записи; окончательный ритм утвердить на голосе.",
+      "status": "planned",
+      "outputFile": null
+    }
+  ]
+}

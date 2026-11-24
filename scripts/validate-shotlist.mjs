@@ -10,6 +10,8 @@ const shotlistPath = path.join(root, 'production', 'chapter01', 'shotlist.json')
 const storyFile = path.join(root, 'server', 'content.mjs');
 const errors = [];
 const warnings = [];
+const requireMedia = process.argv.includes('--require-media');
+const pilot = process.argv.includes('--pilot');
 
 let data;
 try {
@@ -22,10 +24,12 @@ try {
 if (data.schemaVersion !== 1) errors.push('Expected shotlist schemaVersion 1');
 if (data.chapter !== 1) errors.push('Expected chapter 1');
 if (!Array.isArray(data.beats) || !data.beats.length) errors.push('Expected non-empty beats');
+if (data.format?.fps !== 24 || data.format?.width !== 1920 || data.format?.height !== 1080) errors.push('Expected a 1920×1080, 24fps master plan');
 
 const ids = new Set();
 const shotIds = new Set();
 let totalSec = 0;
+let cursor = 0;
 for (const beat of data.beats || []) {
   if (!beat.sourceNode || ids.has(beat.sourceNode)) errors.push(`Missing/duplicate sourceNode: ${beat.sourceNode}`);
   ids.add(beat.sourceNode);
@@ -36,9 +40,38 @@ for (const beat of data.beats || []) {
     shotIds.add(shot.id);
     if (!Number.isFinite(shot.durationSec) || shot.durationSec <= 0 || shot.durationSec > 60) errors.push(`Invalid duration for ${shot.id}`);
     if (!shot.action || !shot.animationMethod || !shot.shotSize) errors.push(`Incomplete direction for ${shot.id}`);
+    if (!['wide', 'medium', 'close', 'insert'].includes(shot.shotSize)) errors.push(`Invalid shot size for ${shot.id}`);
+    if (!Number.isSafeInteger(shot.startFrame) || !Number.isSafeInteger(shot.endFrame) || shot.startFrame !== cursor || shot.endFrame <= cursor) errors.push(`Invalid frame continuity for ${shot.id}`);
+    if (Math.abs((shot.endFrame - shot.startFrame) / data.format.fps - shot.durationSec) > 0.000001) errors.push(`Frame/duration mismatch for ${shot.id}`);
+    cursor = shot.endFrame;
     if (!['planned','blocked','animatic','approved','final'].includes(shot.status)) errors.push(`Invalid status for ${shot.id}`);
     if (shot.status === 'final' && !shot.outputFile) errors.push(`Final shot without outputFile: ${shot.id}`);
+    if (requireMedia && !pilot) {
+      if (!['approved', 'final'].includes(shot.status) || !shot.outputFile) errors.push(`NOT READY: approved animation missing for ${shot.id}`);
+      else {
+        const file = path.resolve(root, 'production/chapter01', shot.outputFile);
+        try { await access(file); } catch { errors.push(`NOT READY: animation file absent for ${shot.id}`); }
+      }
+    }
     totalSec += Number(shot.durationSec) || 0;
+  }
+}
+if (cursor !== data.totalFrames) errors.push('Total frame count does not match the timeline');
+
+if (requireMedia) {
+  const delivery = JSON.parse(await readFile(path.join(root, 'production/chapter01/film-delivery.json'), 'utf8'));
+  if (pilot) {
+    const plan = JSON.parse(await readFile(path.join(root, 'production/chapter01/pilot-plan.json'), 'utf8'));
+    for (const segment of plan.segments) {
+      const record = delivery.pilotSegments[segment.sourceNode];
+      if (!record?.outputFile || !['approved', 'final'].includes(record.status)) errors.push(`NOT READY: approved pilot segment missing for ${segment.sourceNode}`);
+      else try { await access(path.resolve(root, 'production/chapter01', record.outputFile)); } catch { errors.push(`NOT READY: pilot file absent for ${segment.sourceNode}`); }
+    }
+  }
+  for (const key of pilot ? ['pilotAudio', 'pilotSubtitlesSrt'] : ['masterAudio', 'subtitlesSrt']) {
+    const item = delivery[key];
+    if (!item?.approved || !item.file) errors.push(`NOT READY: approved ${key} missing`);
+    else try { await access(path.resolve(root, 'production/chapter01', item.file)); } catch { errors.push(`NOT READY: ${key} file absent`); }
   }
 }
 
@@ -65,6 +98,7 @@ try {
 
 console.log(`HIStory shotlist: ${data.beats?.length || 0} narrative beats, ${shotIds.size} shots, ${(totalSec/60).toFixed(1)} min planned`);
 for (const warn of warnings) console.warn('[WARN]', warn);
-for (const error of errors) console.error('[ERROR]', error);
+for (const error of errors.slice(0, 12)) console.error('[ERROR]', error);
+if (errors.length > 12) console.error(`[ERROR] ${errors.length - 12} additional readiness/validation errors`);
 console.log(errors.length ? `FAILED: ${errors.length} error(s)` : 'PASS: structure is valid (this is NOT proof of rendered animation)');
 if (errors.length) process.exitCode = 1;

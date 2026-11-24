@@ -8,6 +8,7 @@ import { verifyTelegramInitData, getRequestUser } from './auth.mjs';
 import { Storage } from './storage.mjs';
 import { launchBot } from './bot.mjs';
 import { MAP_ACCESS_CURRENCY, MAP_ACCESS_PRICE, MAP_ACCESS_PRODUCT, createMapInvoiceLink } from './payments.mjs';
+import { playbackProducts, playbackFormats, createPlaybackInvoiceLink } from './playback.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const publicDir = path.join(root, 'public');
@@ -96,6 +97,7 @@ const server = http.createServer(async (req, res) => {
       return send(res, 200, {
         user: { name: user.name, demo: Boolean(user.demo) },
         mapAccess: mapAccess(user),
+        formats: playbackFormats(storage, user.id),
         stories: stories.map(story => publicStory(story, storage.get(user.id, story)))
       });
     }
@@ -109,6 +111,16 @@ const server = http.createServer(async (req, res) => {
       if (user.demo) return send(res, 409, { error: 'В деморежиме карта уже открыта.' });
       if (mapAccess(user).unlocked) return send(res, 409, { error: 'Карта уже открыта.' });
       const invoiceUrl = await createMapInvoiceLink(BOT_TOKEN, user.telegramId);
+      return send(res, 200, { invoiceUrl });
+    }
+    const playbackInvoice = pathname.match(/^\/api\/playback\/(audio|video)\/invoice$/);
+    if (playbackInvoice) {
+      if (req.method !== 'POST') return send(res, 405, { error: 'Метод не разрешён' });
+      const product = playbackProducts.find(product => product.format === playbackInvoice[1]);
+      if (product.status !== 'ready') return send(res, 409, { error: 'Этот формат ещё в разработке. Оплата недоступна.' });
+      if (user.demo) return send(res, 409, { error: 'Покупка доступна только внутри Telegram.' });
+      if (storage.hasEntitlement(user.id, product.id)) return send(res, 409, { error: 'Этот формат уже куплен.' });
+      const invoiceUrl = await createPlaybackInvoiceLink(BOT_TOKEN, user.telegramId, product);
       return send(res, 200, { invoiceUrl });
     }
     const match = pathname.match(/^\/api\/story\/([a-z0-9-]+)(?:\/(advance|reset|back))?$/);

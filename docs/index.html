@@ -238,26 +238,23 @@ img { max-width: 100%; }
 .home-view { background: var(--navy); }
 .home-visual { background: #06111c; }
 .home-art { display: block; width: 100%; height: auto; object-fit: contain; }
-.home-content { display: grid; gap: 25px; padding: 24px var(--pad) calc(32px + env(safe-area-inset-bottom)); background: linear-gradient(#081a28e8, #061321f5); text-align: center; }
-.home-brand h1 { margin: 0; color: var(--text); font: 700 clamp(48px, 15vw, 76px)/1 var(--serif); letter-spacing: -.045em; }
-.home-tagline { margin: 12px 0 0; color: var(--paper-light); font: italic 24px/1.2 var(--serif); }
-.home-subtitle { max-width: 34ch; margin: 16px auto 0; color: #dfc7a3; font-size: 13px; font-weight: 700; letter-spacing: .14em; line-height: 1.6; text-transform: uppercase; }
-.home-actions { display: grid; gap: 13px; }
-.home-action { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 72px; padding: 10px 14px; border: 3px solid #a78154; outline: 2px solid #ead0a2; outline-offset: -8px; border-radius: 7px; text-align: center; transition: transform .16s ease, background-color .16s ease; }
-.home-action:active { transform: translateY(2px); }
-.home-action-icon { display: grid; flex: 0 0 30px; place-items: center; font-size: 21px; }
-.home-action-icon svg { display: block; width: 24px; height: 24px; fill: currentColor; }
-.home-action-copy { flex: 1; }
-.home-action-copy strong { font: 700 clamp(19px, 5vw, 27px)/1.1 var(--serif); }
-.home-action-arrow { flex: 0 0 30px; font: 36px/1 var(--sans); }
-.home-action-read { border-color: #bd8a59; outline-color: #713128; background: var(--red); color: #fff7e7; }
+.home-content { display: grid; gap: 20px; padding: 24px var(--pad) calc(28px + env(safe-area-inset-bottom)); background: var(--ink); text-align: left; }
+.home-wordmark { color: var(--paper-muted); font: 700 16px var(--serif); }
+.home-brand h1 { margin: 12px 0 0; color: var(--text); font: 700 clamp(32px, 9vw, 44px)/1.08 var(--serif); letter-spacing: -.025em; }
+.home-subtitle { margin: 12px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.home-actions { display: grid; gap: 10px; }
+.home-action { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-height: 76px; padding: 14px 18px; border: 1px solid #46525c; border-radius: 5px; text-align: left; }
+.home-action-copy { flex: 1; min-width: 0; }
+.home-action-copy strong { display: block; font: 700 clamp(19px, 5vw, 23px)/1.2 var(--serif); }
+.home-action-copy small { display: block; margin-top: 5px; font: 13px/1.4 var(--sans); }
+.home-action-arrow { flex: none; font-size: 22px; }
+.home-action-read { border-color: var(--red); background: var(--red); color: #fff7e7; }
 .home-action-read:hover { background: #b93931; }
-.home-action-chapters { background: var(--paper-light); color: var(--paper-ink); }
-.home-action-chapters:hover { background: #fff2d9; }
-.home-action-journal { background: var(--paper-light); color: var(--paper-ink); }
-.home-action-journal:hover { background: #fff2d9; }
-.home-foot { display: flex; align-items: center; justify-content: center; gap: 9px; color: var(--paper-muted); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-.home-foot svg { flex: none; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.home-action-development { background: #242b30; color: #d2d6d8; }
+.home-action-development small { color: #b2bac0; }
+.home-links { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.home-links button { padding: 0; border: 0; background: transparent; color: var(--paper-light); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.home-foot { margin: 0; color: var(--muted); font-size: 13px; }
 
 /* Chapter list */
 .chapter-view { padding-bottom: calc(26px + env(safe-area-inset-bottom)); background: var(--ink); }
@@ -300,7 +297,7 @@ img { max-width: 100%; }
 .illustration-placeholder strong { color: var(--paper-light); font: 700 18px/1.3 var(--serif); }
 .illustration-placeholder > span:last-child { max-width: 34ch; font-size: 13px; line-height: 1.5; }
 .placeholder-frame { width: 42px; height: 30px; border: 1px solid var(--paper-muted); }
-.home-placeholder { min-height: 170px; }
+.home-placeholder { min-height: 140px; aspect-ratio: 16 / 7; }
 .chapter-placeholder { min-height: 240px; }
 .part-placeholder { display: grid; place-items: center; color: var(--paper-muted); font: 700 32px var(--serif); }
 
@@ -387,7 +384,6 @@ img { max-width: 100%; }
 
 @media (max-width: 360px) {
   :root { --pad: 15px; }
-  .home-brand h1 { font-size: 52px; }
   .part-thumb { flex-basis: 88px; }
   .scene-text { font-size: 18px; }
   .reader-hud { gap: 8px; padding-left: 10px; padding-right: 10px; }
@@ -531,8 +527,10 @@ window.fetch = async (url, opts = {}) => {
     if (url === '/api/bootstrap') return response(200, {
       user: { name: 'Читатель', demo: true },
       mapAccess: { available: false, unlocked: false, price: 15, currency: 'XTR' },
+      formats: [{"id":"read","label":"Читать историю","status":"available","purchase":"free","price":null,"purchasable":false,"owned":true},{"id":"audio","productId":"chapter-1-audio","label":"Прослушать историю","status":"development","purchase":"separate","price":null,"purchasable":false,"owned":false},{"id":"video","productId":"chapter-1-video","label":"Посмотреть мини-ролик","status":"development","purchase":"separate","price":null,"purchasable":false,"owned":false}],
       stories: stories.map(story => publicStory(story, __read(story)))
     });
+    if (/^\/api\/playback\/(audio|video)\/invoice$/.test(url)) return response(409, { error: 'Этот формат ещё в разработке. Оплата недоступна.' });
     const match = url.match(/^\/api\/story\/([a-z0-9-]+)(?:\/(advance|back|reset))?$/);
     const story = match && stories.find(story => story.id === match[1]);
     if (!story) return response(404, { error: 'Адрес не найден' });
@@ -565,7 +563,7 @@ if (!demoId || !/^[a-z0-9-]{8,80}$/i.test(demoId)) {
   demoId = 'reader-' + crypto.randomUUID();
   localStorage.setItem(storeKey, demoId);
 }
-const state = { view: 'loading', config: null, user: null, stories: [], story: null, progress: null, mapAccess: { unlocked: false, price: 15, currency: 'XTR' }, mapImageUrl: null, busy: false, error: null };
+const state = { view: 'loading', config: null, user: null, stories: [], formats: [], story: null, progress: null, mapAccess: { unlocked: false, price: 15, currency: 'XTR' }, mapImageUrl: null, busy: false, error: null };
 const art = { route: '/api/map' };
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[ch]);
 const haptic = () => { try { tg?.HapticFeedback?.impactOccurred?.('light'); } catch { /* optional */ } };
@@ -608,6 +606,7 @@ async function boot() {
     state.user = data.user;
     state.mapAccess = data.mapAccess;
     state.stories = data.stories;
+    state.formats = data.formats || [];
     state.story = data.stories[0];
     state.view = 'library';
     state.error = null;
@@ -630,25 +629,26 @@ function illustrationPlaceholder(label, className = '') {
 function libraryView() {
   const story = state.story;
   if (!story) return `<main class="page"><section class="errorbox">${brand()}<h1>История обновляется</h1><p>Ожидаем полную версию с авторскими исправлениями.</p></section></main>`;
-  const chapter = story.chapters[0], part = chapter.parts[0];
-  const homeCover = story.cover;
+  const chapter = story.chapters[0];
+  const formats = state.formats.filter(format => ['audio', 'video'].includes(format.id));
   return `<main class="page home-view">
-    ${homeCover ? `<div class="home-visual"><img class="home-art" src="${escapeHtml(homeCover)}" alt="Обложка истории" decoding="async" fetchpriority="high"/></div>` : illustrationPlaceholder(story.title, 'home-placeholder')}
+    ${story.cover ? `<div class="home-visual"><img class="home-art" src="${escapeHtml(story.cover)}" alt="Обложка истории" decoding="async" fetchpriority="high"/></div>` : illustrationPlaceholder(story.title, 'home-placeholder')}
     <section class="home-content">
-      <div class="home-brand" aria-label="HIStory. ${escapeHtml(story.title)}">
-      <h1>HIStory</h1>
-      <p class="home-tagline">${escapeHtml(story.title)}</p>
-      <p class="home-subtitle">${escapeHtml(story.shortDescription)}</p>
+      <div class="home-brand">
+        <span class="home-wordmark">HIStory</span>
+        <h1>${escapeHtml(story.title)}</h1>
+        <p class="home-subtitle">${escapeHtml(story.shortDescription)}</p>
       </div>
-    <nav class="home-actions" aria-label="Меню истории">
-      <button class="home-action home-action-read" data-action="read"><span class="home-action-icon" aria-hidden="true">▶</span><span class="home-action-copy"><strong>${story.started ? 'Продолжить' : 'Начать историю'}</strong></span><span class="home-action-arrow" aria-hidden="true">›</span></button>
-      <button class="home-action home-action-chapters" data-action="chapters"><span class="home-action-icon" aria-hidden="true">≡</span><span class="home-action-copy"><strong>Главы и части</strong></span><span class="home-action-arrow" aria-hidden="true">›</span></button>
-      <button class="home-action home-action-journal" data-action="journal"><span class="home-action-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3c2.2 7 5.8 10.6 13 13-7.2 2.4-10.8 6-13 13-2.2-7-5.8-10.6-13-13 7.2-2.4 10.8-6 13-13z"/></svg></span><span class="home-action-copy"><strong>Дневник истории</strong></span><span class="home-action-arrow" aria-hidden="true">›</span></button>
-    </nav>
-    <div class="home-foot"><span>Глава 01</span><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 4v21m-5-16h10M8 17a8 8 0 0 0 16 0M5 18l3-3 3 3m10 0 3-3 3 3"/><circle cx="16" cy="5" r="2"/></svg><span>${escapeHtml(part.title)}</span></div>
+      <nav class="home-actions" aria-label="Как открыть историю">
+        <button class="home-action home-action-read" data-action="read"><span class="home-action-copy"><strong>${story.started ? 'Продолжить чтение' : 'Читать историю'}</strong><small>Бесплатно</small></span><span class="home-action-arrow" aria-hidden="true">→</span></button>
+        ${formats.map(format => `<button class="home-action home-action-development" disabled aria-disabled="true" aria-label="${escapeHtml(format.label)}. В разработке"><span class="home-action-copy"><strong>${escapeHtml(format.label)}</strong><small>В разработке</small></span></button>`).join('')}
+      </nav>
+      <nav class="home-links" aria-label="Разделы истории"><button data-action="chapters">Главы и части</button><button data-action="journal">Дневник истории</button></nav>
+      <p class="home-foot">Глава ${chapter.number} · ${chapter.parts.length} части</p>
     </section>
   </main>`;
 }
+
 function chaptersView() {
   const story=state.story, chapter=story.chapters[0];
   const parts=chapter.parts.map(part=>{
@@ -720,7 +720,7 @@ function journalView() {
   </main>`;
 }
 function render() {
-  root.innerHTML = `<div class="shell">${state.view === 'loading' ? `<div class="loading"><div>HIStory</div><small>Открываем архив…</small></div>` : state.view === 'error' ? `<main class="page">${header('library')}<div class="errorbox"><div class="eyebrow">НЕ УДАЛОСЬ ОТКРЫТЬ</div><h2>Приложение недоступно</h2><p>${escapeHtml(state.error)}</p><p style="font-size:12px;color:#a8b3b0">Для проверки в браузере запусти <code>npm run dev</code>. Для запуска внутри Telegram потребуется настроенный бот и HTTPS-адрес.</p><button class="btn wide" data-action="retry">Повторить <span>↻</span></button></div></main>` : state.view === 'library' || !state.story ? libraryView() : state.view === 'chapters' ? chaptersView() : state.view === 'reader' ? readerView() : journalView()}</div>`;
+  root.innerHTML = `<div class="shell">${state.view === 'loading' ? `<div class="loading"><div>HIStory</div><small>Открываем архив…</small></div>` : state.view === 'error' ? `<main class="page">${header('library')}<div class="errorbox"><div class="eyebrow">НЕ УДАЛОСЬ ОТКРЫТЬ</div><h2>Приложение недоступно</h2><p>${escapeHtml(state.error)}</p><p>Проверьте соединение и попробуйте открыть историю ещё раз.</p><button class="btn wide" data-action="retry">Повторить <span>↻</span></button></div></main>` : state.view === 'library' || !state.story ? libraryView() : state.view === 'chapters' ? chaptersView() : state.view === 'reader' ? readerView() : journalView()}</div>`;
   window.scrollTo?.(0, 0);
 }
 async function openReader(targetPart = null) {
@@ -744,6 +744,7 @@ async function loadLibrary() {
   const data = await api('/api/bootstrap');
   state.mapAccess = data.mapAccess;
   state.stories = data.stories;
+    state.formats = data.formats || [];
   state.story = data.stories.find(s => s.id === state.story?.id) || data.stories[0];
 }
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -752,6 +753,7 @@ async function refreshMapAccess() {
     const data = await api('/api/bootstrap');
     state.mapAccess = data.mapAccess;
     state.stories = data.stories;
+    state.formats = data.formats || [];
     state.story = data.stories.find(s => s.id === state.story?.id) || data.stories[0];
     if (state.mapAccess.unlocked) {
       await ensureMapImage();

@@ -12,6 +12,10 @@
     "dev": "NODE_ENV=development DEMO_MODE=1 node server/index.mjs",
     "test": "node --test tests/*.test.mjs",
     "build:demo": "node tools/build-demo.mjs",
-    "build:pages": "node tools/build-demo.mjs docs/index.html"
+    "build:pages": "node tools/build-demo.mjs docs/index.html",
+    "film:prepare": "node tools/prepare-film.mjs",
+    "film:check": "node tools/prepare-film.mjs --check && node scripts/validate-shotlist.mjs",
+    "film:toolchain": "node tools/assemble-film.mjs --smoke-test",
+    "film:export": "node tools/assemble-film.mjs"
   }
 }

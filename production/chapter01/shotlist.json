@@ -1,0 +1,2261 @@
+{
+  "schemaVersion": 1,
+  "chapter": 1,
+  "title": "Первые дни службы",
+  "status": "planning_only",
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24
+  },
+  "timing": "estimate_before_recorded_voice",
+  "totalFrames": 16872,
+  "durationSec": 703,
+  "continuity": {
+    "source": "reference-bible.md",
+    "style": "style-bible.md",
+    "filmGuide": "film-production.md"
+  },
+  "beats": [
+    {
+      "sourceNode": "ch01-p01-s01",
+      "part": 1,
+      "title": "Областной военкомат",
+      "startFrame": 0,
+      "endFrame": 456,
+      "shots": [
+        {
+          "id": "ch01-p01-s01-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 0,
+          "endFrame": 152,
+          "durationSec": 6.333333333333333,
+          "action": "Ряд призывников в обобщённом пространстве военкомата",
+          "actionKeys": [
+            "Стоит в ряду",
+            "Поворачивает голову к источнику известия",
+            "Останавливает взгляд, опускает плечи"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Авторский закадровый текст; приглушённые шаги и шум помещения без разборчивых выдуманных реплик.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B01",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s01-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 152,
+          "endFrame": 456,
+          "durationSec": 12.666666666666666,
+          "action": "Герой слушает известие; плечи опускаются, взгляд останавливается",
+          "actionKeys": [
+            "Стоит в ряду",
+            "Поворачивает голову к источнику известия",
+            "Останавливает взгляд, опускает плечи"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Авторский закадровый текст; приглушённые шаги и шум помещения без разборчивых выдуманных реплик.",
+          "transition": "Прямая склейка",
+          "background": "B01",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p01-s02",
+      "part": 1,
+      "title": "Три года вдали от дома",
+      "startFrame": 456,
+      "endFrame": 984,
+      "shots": [
+        {
+          "id": "ch01-p01-s02-sh01",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 456,
+          "endFrame": 632,
+          "durationSec": 7.333333333333333,
+          "action": "Сдержанная реакция героя на слова о трёх годах службы",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый текст, пауза после слов о трёх годах, гул помещения тише.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B01",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s02-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 632,
+          "endFrame": 984,
+          "durationSec": 14.666666666666666,
+          "action": "Оставить героя в пространстве ряда; внутренний монолог без выдуманного воспоминания",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый текст, пауза после слов о трёх годах, гул помещения тише.",
+          "transition": "Прямая склейка",
+          "background": "B01",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p01-s03",
+      "part": 1,
+      "title": "Вечерний поезд",
+      "startFrame": 984,
+      "endFrame": 1416,
+      "shots": [
+        {
+          "id": "ch01-p01-s03-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 984,
+          "endFrame": 1070,
+          "durationSec": 3.5833333333333335,
+          "action": "Группа у вагона; определить сторону входа и направление движения",
+          "actionKeys": [
+            "Подходит к вагону",
+            "Берётся за поручень",
+            "Ставит ногу на ступеньку",
+            "Переносит вес и входит в вагон"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, металл ступеньки, двери вагона; закадровый текст. Без выдуманного объявления маршрута.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B02",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s03-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 1070,
+          "endFrame": 1330,
+          "durationSec": 10.833333333333334,
+          "action": "Герой берётся за поручень, переносит вес на ступеньку и входит",
+          "actionKeys": [
+            "Подходит к вагону",
+            "Берётся за поручень",
+            "Ставит ногу на ступеньку",
+            "Переносит вес и входит в вагон"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, металл ступеньки, двери вагона; закадровый текст. Без выдуманного объявления маршрута.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B02",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s03-sh03",
+          "shotSize": "insert",
+          "framing": "single",
+          "startFrame": 1330,
+          "endFrame": 1416,
+          "durationSec": 3.5833333333333335,
+          "action": "Нога на ступеньке и рука на поручне; совпадение действия при склейке",
+          "actionKeys": [
+            "Подходит к вагону",
+            "Берётся за поручень",
+            "Ставит ногу на ступеньку",
+            "Переносит вес и входит в вагон"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, металл ступеньки, двери вагона; закадровый текст. Без выдуманного объявления маршрута.",
+          "transition": "Прямая склейка",
+          "background": "B02",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p01-s04",
+      "part": 1,
+      "title": "В вагоне",
+      "startFrame": 1416,
+      "endFrame": 1872,
+      "shots": [
+        {
+          "id": "ch01-p01-s04-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 1416,
+          "endFrame": 1530,
+          "durationSec": 4.75,
+          "action": "Общий вагон с подавленными призывниками",
+          "actionKeys": [
+            "Попутчик сидит, держа ёмкость",
+            "Поднимает её к губам",
+            "Опускает руку; сосед отворачивается"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Колёса, звон ёмкости, неразборчивый гул; закадровый текст. Никаких песен и застольных шуток.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B03",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s04-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 1530,
+          "endFrame": 1758,
+          "durationSec": 9.5,
+          "action": "Попутчик поднимает ёмкость к губам и опускает; сосед отворачивается",
+          "actionKeys": [
+            "Попутчик сидит, держа ёмкость",
+            "Поднимает её к губам",
+            "Опускает руку; сосед отворачивается"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Колёса, звон ёмкости, неразборчивый гул; закадровый текст. Никаких песен и застольных шуток.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B03",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s04-sh03",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 1758,
+          "endFrame": 1872,
+          "durationSec": 4.75,
+          "action": "Реакция героя без выдуманных реплик",
+          "actionKeys": [
+            "Попутчик сидит, держа ёмкость",
+            "Поднимает её к губам",
+            "Опускает руку; сосед отворачивается"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Колёса, звон ёмкости, неразборчивый гул; закадровый текст. Никаких песен и застольных шуток.",
+          "transition": "Прямая склейка",
+          "background": "B03",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p01-s05",
+      "part": 1,
+      "title": "Путь в неизвестность",
+      "startFrame": 1872,
+      "endFrame": 2136,
+      "shots": [
+        {
+          "id": "ch01-p01-s05-sh01",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 1872,
+          "endFrame": 2136,
+          "durationSec": 11,
+          "action": "Взгляд героя в неизвестность; спокойный план на внутреннем монологе",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый текст и ритм колёс; короткая пауза.",
+          "transition": "Звук колёс предваряет следующий кадр, затем обрывается.",
+          "background": "B03",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p01-s06",
+      "part": 1,
+      "title": "Ночное прибытие в Симферополь",
+      "startFrame": 2136,
+      "endFrame": 2328,
+      "shots": [
+        {
+          "id": "ch01-p01-s06-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 2136,
+          "endFrame": 2328,
+          "durationSec": 8,
+          "action": "Ночное прибытие в Симферополь; не копировать подтверждённый вокзал другого города",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Затихающий поезд, шаги, ночной воздух; закадровый текст. Титр места добавляется при монтаже.",
+          "transition": "Прямая склейка",
+          "background": "B04",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p01-s07",
+      "part": 1,
+      "title": "На распределительный пункт",
+      "startFrame": 2328,
+      "endFrame": 2568,
+      "shots": [
+        {
+          "id": "ch01-p01-s07-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 2328,
+          "endFrame": 2488,
+          "durationSec": 6.666666666666667,
+          "action": "Герой опирается рукой на край кузова и спускается",
+          "actionKeys": [
+            "Герой у края кузова",
+            "Опирается рукой и спускает ногу",
+            "Переносит вес вниз",
+            "Встаёт на землю"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Двигатель на холостом ходу, скрип борта, шаги; закадровый текст.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s07-sh02",
+          "shotSize": "insert",
+          "framing": "single",
+          "startFrame": 2488,
+          "endFrame": 2568,
+          "durationSec": 3.3333333333333335,
+          "action": "Перенос веса с кузова на землю; совпадение положения ноги",
+          "actionKeys": [
+            "Герой у края кузова",
+            "Опирается рукой и спускает ногу",
+            "Переносит вес вниз",
+            "Встаёт на землю"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Двигатель на холостом ходу, скрип борта, шаги; закадровый текст.",
+          "transition": "Прямая склейка",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p01-s08",
+      "part": 1,
+      "title": "Новая казарма",
+      "startFrame": 2568,
+      "endFrame": 3192,
+      "shots": [
+        {
+          "id": "ch01-p01-s08-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 2568,
+          "endFrame": 2724,
+          "durationSec": 6.5,
+          "action": "География казармы: проход и двухъярусные койки",
+          "actionKeys": [
+            "Стоит в проходе",
+            "Делает шаг мимо кровати",
+            "Поворачивается к своей койке"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Неразборчивые голоса, шаги, скрип кроватей; закадровый текст.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s08-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 2724,
+          "endFrame": 3036,
+          "durationSec": 13,
+          "action": "Герой проходит вдоль кроватей и поворачивается к своей",
+          "actionKeys": [
+            "Стоит в проходе",
+            "Делает шаг мимо кровати",
+            "Поворачивается к своей койке"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Неразборчивые голоса, шаги, скрип кроватей; закадровый текст.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s08-sh03",
+          "shotSize": "medium",
+          "framing": "reverse",
+          "startFrame": 3036,
+          "endFrame": 3192,
+          "durationSec": 6.5,
+          "action": "Ответный ракурс на обитателей казармы; разборчивых придуманных реплик нет",
+          "actionKeys": [
+            "Стоит в проходе",
+            "Делает шаг мимо кровати",
+            "Поворачивается к своей койке"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Встречный ракурс; сохранить ось разговора и направление взглядов.",
+          "sound": "Неразборчивые голоса, шаги, скрип кроватей; закадровый текст.",
+          "transition": "Прямая склейка",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p01-s09",
+      "part": 1,
+      "title": "Второй ярус",
+      "startFrame": 3192,
+      "endFrame": 3480,
+      "shots": [
+        {
+          "id": "ch01-p01-s09-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 3192,
+          "endFrame": 3384,
+          "durationSec": 8,
+          "action": "Подъём на верхнюю койку через опору с переносом веса",
+          "actionKeys": [
+            "Берётся за край второго яруса",
+            "Ставит ногу на опору",
+            "Поднимается наверх",
+            "Садится",
+            "Ложится, оставаясь в куртке"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Скрип металлической кровати, шорох куртки, гул постепенно стихает.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s09-sh02",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 3384,
+          "endFrame": 3480,
+          "durationSec": 4,
+          "action": "Герой устраивается в куртке; сохранить ориентацию головы и верхний ярус",
+          "actionKeys": [
+            "Берётся за край второго яруса",
+            "Ставит ногу на опору",
+            "Поднимается наверх",
+            "Садится",
+            "Ложится, оставаясь в куртке"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Скрип металлической кровати, шорох куртки, гул постепенно стихает.",
+          "transition": "Затемнение на естественной паузе, переход к утру.",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p01-s10",
+      "part": 1,
+      "title": "Проверки по списку",
+      "startFrame": 3480,
+      "endFrame": 3888,
+      "shots": [
+        {
+          "id": "ch01-p01-s10-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 3480,
+          "endFrame": 3616,
+          "durationSec": 5.666666666666667,
+          "action": "Призывники занимают места и выравниваются в ряду",
+          "actionKeys": [
+            "Призывники подходят на места",
+            "Выравниваются в ряду",
+            "Проверяющий проводит пальцем по списку"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, шорох бумаги, звук скудной трапезы только как краткий переход; закадровый текст. Не придумывать меню.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s10-sh02",
+          "shotSize": "insert",
+          "framing": "single",
+          "startFrame": 3616,
+          "endFrame": 3752,
+          "durationSec": 5.666666666666667,
+          "action": "Палец проверяющего движется по списку без выдуманных читаемых данных",
+          "actionKeys": [
+            "Призывники подходят на места",
+            "Выравниваются в ряду",
+            "Проверяющий проводит пальцем по списку"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, шорох бумаги, звук скудной трапезы только как краткий переход; закадровый текст. Не придумывать меню.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p01-s10-sh03",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 3752,
+          "endFrame": 3888,
+          "durationSec": 5.666666666666667,
+          "action": "Ряд на повторной проверке; не выдавать монтаж за одну проверку",
+          "actionKeys": [
+            "Призывники подходят на места",
+            "Выравниваются в ряду",
+            "Проверяющий проводит пальцем по списку"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, шорох бумаги, звук скудной трапезы только как краткий переход; закадровый текст. Не придумывать меню.",
+          "transition": "Склейка на личное дело; окончание части 1.",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s11",
+      "part": 2,
+      "title": "Вопрос капитан-лейтенанта",
+      "startFrame": 3888,
+      "endFrame": 4536,
+      "shots": [
+        {
+          "id": "ch01-p02-s11-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 3888,
+          "endFrame": 4147,
+          "durationSec": 10.791666666666666,
+          "action": "O1 обращается к герою; закрепить ось разговора",
+          "actionKeys": [
+            "Офицер обращается к герою",
+            "Герой переводит на него взгляд",
+            "Речь офицера по утверждённому аудио",
+            "Короткий ответ героя по аудио"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Воспроизведённая автором реплика капитан-лейтенанта; речь по финальной русской записи. Неразборчивый фон двора.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s11-sh02",
+          "shotSize": "medium",
+          "framing": "reverse",
+          "startFrame": 4147,
+          "endFrame": 4277,
+          "durationSec": 5.416666666666667,
+          "action": "Встречный взгляд героя на O1, та же ось и свет",
+          "actionKeys": [
+            "Офицер обращается к герою",
+            "Герой переводит на него взгляд",
+            "Речь офицера по утверждённому аудио",
+            "Короткий ответ героя по аудио"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Встречный ракурс; сохранить ось разговора и направление взглядов.",
+          "sound": "Воспроизведённая автором реплика капитан-лейтенанта; речь по финальной русской записи. Неразборчивый фон двора.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s11-sh03",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 4277,
+          "endFrame": 4536,
+          "durationSec": 10.791666666666666,
+          "action": "O1 произносит подтверждённую реплику по финальному аудио и рисункам рта",
+          "actionKeys": [
+            "Офицер обращается к герою",
+            "Герой переводит на него взгляд",
+            "Речь офицера по утверждённому аудио",
+            "Короткий ответ героя по аудио"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Воспроизведённая автором реплика капитан-лейтенанта; речь по финальной русской записи. Неразборчивый фон двора.",
+          "transition": "Прямая склейка",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s12",
+      "part": 2,
+      "title": "Согласен сдать тест",
+      "startFrame": 4536,
+      "endFrame": 4728,
+      "shots": [
+        {
+          "id": "ch01-p02-s12-sh01",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 4536,
+          "endFrame": 4728,
+          "durationSec": 8,
+          "action": "Ответ героя по подтверждённой реплике; короткая пауза перед началом",
+          "actionKeys": [
+            "Смотрит на капитан-лейтенанта",
+            "Короткая пауза",
+            "Произносит «Тест сдать согласен, а там посмотрим» по аудио"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Воспроизведённый автором ответ героя; никаких прежних альтернативных реплик.",
+          "transition": "Прямая склейка",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s13",
+      "part": 2,
+      "title": "Перед проверкой",
+      "startFrame": 4728,
+      "endFrame": 4920,
+      "shots": [
+        {
+          "id": "ch01-p02-s13-sh01",
+          "shotSize": "medium",
+          "framing": "two-shot",
+          "startFrame": 4728,
+          "endFrame": 4920,
+          "durationSec": 8,
+          "action": "Пауза между героем и O1 перед проверкой; не добавлять новую реплику",
+          "actionKeys": [
+            "Капитан-лейтенант обращён к герою",
+            "Герой внимательно смотрит на него",
+            "Короткая пауза перед проверкой"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый рассказ; без придуманной дополнительной прямой речи.",
+          "transition": "Прямая склейка",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s14",
+      "part": 2,
+      "title": "В другую казарму",
+      "startFrame": 4920,
+      "endFrame": 5328,
+      "shots": [
+        {
+          "id": "ch01-p02-s14-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 4920,
+          "endFrame": 5056,
+          "durationSec": 5.666666666666667,
+          "action": "Другая казарма и свободное место для спарринга",
+          "actionKeys": [
+            "Герой появляется у входа",
+            "Проходит к свободному месту",
+            "Останавливается перед офицером"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, шорох одежды, затихающие неразборчивые голоса; закадровый текст.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s14-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 5056,
+          "endFrame": 5328,
+          "durationSec": 11.333333333333334,
+          "action": "Герой проходит к O1 и останавливается",
+          "actionKeys": [
+            "Герой появляется у входа",
+            "Проходит к свободному месту",
+            "Останавливается перед офицером"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, шорох одежды, затихающие неразборчивые голоса; закадровый текст.",
+          "transition": "Прямая склейка",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s15",
+      "part": 2,
+      "title": "Первый спарринг",
+      "startFrame": 5328,
+      "endFrame": 5736,
+      "shots": [
+        {
+          "id": "ch01-p02-s15-sh01",
+          "shotSize": "medium",
+          "framing": "two-shot",
+          "startFrame": 5328,
+          "endFrame": 5410,
+          "durationSec": 3.4166666666666665,
+          "action": "Оба в боевой стойке; ноги, дистанция и направление атаки читаются",
+          "actionKeys": [
+            "Оба в боевой стойке",
+            "Герой начинает атаку",
+            "Поднимает ногу для удара",
+            "Нога направлена к голове капитан-лейтенанта",
+            "Контакт без натурализма",
+            "Капитан-лейтенант теряет равновесие",
+            "Падает",
+            "Герой останавливает атаку"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, шорох ткани, короткий глухой звук падения; закадровый текст. Без хруста и выдуманной реакции толпы.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s15-sh02",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 5410,
+          "endFrame": 5654,
+          "durationSec": 10.166666666666666,
+          "action": "Непрерывно показать атаку ногой, потерю равновесия O1 и падение без натурализма",
+          "actionKeys": [
+            "Оба в боевой стойке",
+            "Герой начинает атаку",
+            "Поднимает ногу для удара",
+            "Нога направлена к голове капитан-лейтенанта",
+            "Контакт без натурализма",
+            "Капитан-лейтенант теряет равновесие",
+            "Падает",
+            "Герой останавливает атаку"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, шорох ткани, короткий глухой звук падения; закадровый текст. Без хруста и выдуманной реакции толпы.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s15-sh03",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 5654,
+          "endFrame": 5736,
+          "durationSec": 3.4166666666666665,
+          "action": "Герой прекращает атаку; сохранить позицию упавшего O1",
+          "actionKeys": [
+            "Оба в боевой стойке",
+            "Герой начинает атаку",
+            "Поднимает ногу для удара",
+            "Нога направлена к голове капитан-лейтенанта",
+            "Контакт без натурализма",
+            "Капитан-лейтенант теряет равновесие",
+            "Падает",
+            "Герой останавливает атаку"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, шорох ткани, короткий глухой звук падения; закадровый текст. Без хруста и выдуманной реакции толпы.",
+          "transition": "Прямая склейка",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s16",
+      "part": 2,
+      "title": "Предложение второго раунда",
+      "startFrame": 5736,
+      "endFrame": 5928,
+      "shots": [
+        {
+          "id": "ch01-p02-s16-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 5736,
+          "endFrame": 5928,
+          "durationSec": 8,
+          "action": "O1 опирается, поднимается на колено, встаёт и отряхивается",
+          "actionKeys": [
+            "Офицер опирается для подъёма",
+            "Поднимается на колено",
+            "Встаёт",
+            "Отряхивается"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шорох формы и шаги; предложение передаётся авторским закадровым текстом, без сочинённой речи.",
+          "transition": "Прямая склейка",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s17",
+      "part": 2,
+      "title": "Ещё один поединок",
+      "startFrame": 5928,
+      "endFrame": 6432,
+      "shots": [
+        {
+          "id": "ch01-p02-s17-sh01",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 5928,
+          "endFrame": 6180,
+          "durationSec": 10.5,
+          "action": "Герой обдумывает, что проверка может продолжиться; без изображения неслучившегося боя",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровые мысли, спокойный фон казармы, пауза перед решением.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s17-sh02",
+          "shotSize": "medium",
+          "framing": "reverse",
+          "startFrame": 6180,
+          "endFrame": 6432,
+          "durationSec": 10.5,
+          "action": "Морпехи в той же казарме как объект его взгляда; без новых событий",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Встречный ракурс; сохранить ось разговора и направление взглядов.",
+          "sound": "Закадровые мысли, спокойный фон казармы, пауза перед решением.",
+          "transition": "Прямая склейка",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s18",
+      "part": 2,
+      "title": "Сознательно дал себя побить",
+      "startFrame": 6432,
+      "endFrame": 7056,
+      "shots": [
+        {
+          "id": "ch01-p02-s18-sh01",
+          "shotSize": "medium",
+          "framing": "two-shot",
+          "startFrame": 6432,
+          "endFrame": 6557,
+          "durationSec": 5.208333333333333,
+          "action": "Начало второго спарринга; согласовать позиции с первым",
+          "actionKeys": [
+            "Оба в боевой стойке",
+            "Герой уходит в защиту",
+            "Принимает удары кулаками без натурализма",
+            "Принимает удары ногами без конкретизации техники",
+            "Отступает к стене",
+            "Удерживается на ногах у стены",
+            "Снижает сопротивление",
+            "Капитан-лейтенант прекращает поединок"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Сдержанный шум контакта и одежды; никаких гиперболизированных ударов. Весь смысл — в авторском тексте.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s18-sh02",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 6557,
+          "endFrame": 6806,
+          "durationSec": 10.375,
+          "action": "Герой защищается и отступает под ударами; опора стоп и масса тела сохраняются",
+          "actionKeys": [
+            "Оба в боевой стойке",
+            "Герой уходит в защиту",
+            "Принимает удары кулаками без натурализма",
+            "Принимает удары ногами без конкретизации техники",
+            "Отступает к стене",
+            "Удерживается на ногах у стены",
+            "Снижает сопротивление",
+            "Капитан-лейтенант прекращает поединок"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Сдержанный шум контакта и одежды; никаких гиперболизированных ударов. Весь смысл — в авторском тексте.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s18-sh03",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 6806,
+          "endFrame": 7056,
+          "durationSec": 10.416666666666666,
+          "action": "Герой у стены остаётся на ногах; O1 останавливается и отходит",
+          "actionKeys": [
+            "Оба в боевой стойке",
+            "Герой уходит в защиту",
+            "Принимает удары кулаками без натурализма",
+            "Принимает удары ногами без конкретизации техники",
+            "Отступает к стене",
+            "Удерживается на ногах у стены",
+            "Снижает сопротивление",
+            "Капитан-лейтенант прекращает поединок"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Сдержанный шум контакта и одежды; никаких гиперболизированных ударов. Весь смысл — в авторском тексте.",
+          "transition": "Прямая склейка",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s19",
+      "part": 2,
+      "title": "Проверка пройдена",
+      "startFrame": 7056,
+      "endFrame": 7728,
+      "shots": [
+        {
+          "id": "ch01-p02-s19-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 7056,
+          "endFrame": 7504,
+          "durationSec": 18.666666666666668,
+          "action": "O1 после проверки, без новой выдуманной прямой речи",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Предложение в косвенной речи закадрового рассказчика, спокойный фон казармы.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s19-sh02",
+          "shotSize": "medium",
+          "framing": "reverse",
+          "startFrame": 7504,
+          "endFrame": 7728,
+          "durationSec": 9.333333333333334,
+          "action": "Морпехи довольны результатом; сдержанная реакция",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Встречный ракурс; сохранить ось разговора и направление взглядов.",
+          "sound": "Предложение в косвенной речи закадрового рассказчика, спокойный фон казармы.",
+          "transition": "Прямая склейка",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s20",
+      "part": 2,
+      "title": "Подумать до завтра",
+      "startFrame": 7728,
+      "endFrame": 7920,
+      "shots": [
+        {
+          "id": "ch01-p02-s20-sh01",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 7728,
+          "endFrame": 7920,
+          "durationSec": 8,
+          "action": "Герой просит время в косвенном авторском рассказе, без добавленной цитаты",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Косвенная речь закадрового рассказчика; не превращать её в выдуманную дословную реплику.",
+          "transition": "Прямая склейка",
+          "background": "B07",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p02-s21",
+      "part": 2,
+      "title": "Обратно к своим",
+      "startFrame": 7920,
+      "endFrame": 8376,
+      "shots": [
+        {
+          "id": "ch01-p02-s21-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 7920,
+          "endFrame": 8072,
+          "durationSec": 6.333333333333333,
+          "action": "Возвращение к своим и ожидание отбоя; обозначить монтажный пропуск",
+          "actionKeys": [
+            "Сидит перед отбоем",
+            "Поднимается к своему месту",
+            "Устраивается на втором ярусе",
+            "Ложится в одежде"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Гул казармы стихает, кровать скрипит; закадровый текст.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p02-s21-sh02",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 8072,
+          "endFrame": 8376,
+          "durationSec": 12.666666666666666,
+          "action": "Подъём и укладывание на прежнюю верхнюю койку в одежде",
+          "actionKeys": [
+            "Сидит перед отбоем",
+            "Поднимается к своему месту",
+            "Устраивается на втором ярусе",
+            "Ложится в одежде"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Гул казармы стихает, кровать скрипит; закадровый текст.",
+          "transition": "Темнота сохраняется при переходе к началу части 3.",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s22",
+      "part": 3,
+      "title": "Беспокойная ночь",
+      "startFrame": 8376,
+      "endFrame": 8736,
+      "shots": [
+        {
+          "id": "ch01-p03-s22-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 8376,
+          "endFrame": 8616,
+          "durationSec": 10,
+          "action": "Проход в ночной казарме; столкновение силуэтов частично закрыто койками",
+          "actionKeys": [
+            "Напряжённые силуэты в проходе",
+            "Короткое сближение",
+            "Часть движения закрыта кроватью",
+            "Табуретка смещается, прут остаётся силуэтом",
+            "Участники расходятся на шаг"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Крики без придуманных разборчивых фраз, грохот табуретки, металлический звук. Этническое описание остаётся свидетельством автора об этой ночи, без добавленного обобщения.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s22-sh02",
+          "shotSize": "insert",
+          "framing": "single",
+          "startFrame": 8616,
+          "endFrame": 8736,
+          "durationSec": 5,
+          "action": "Смещённая табуретка и силуэт прута без натурализма и новых травм",
+          "actionKeys": [
+            "Напряжённые силуэты в проходе",
+            "Короткое сближение",
+            "Часть движения закрыта кроватью",
+            "Табуретка смещается, прут остаётся силуэтом",
+            "Участники расходятся на шаг"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Крики без придуманных разборчивых фраз, грохот табуретки, металлический звук. Этническое описание остаётся свидетельством автора об этой ночи, без добавленного обобщения.",
+          "transition": "Прямая склейка",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s23",
+      "part": 3,
+      "title": "Попытка поспать",
+      "startFrame": 8736,
+      "endFrame": 9000,
+      "shots": [
+        {
+          "id": "ch01-p03-s23-sh01",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 8736,
+          "endFrame": 9000,
+          "durationSec": 11,
+          "action": "Герой остаётся на верхнем ярусе и пытается уснуть",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Грохот отдаляется в субъективном миксе; тихий авторский голос, без новой внутренней реплики.",
+          "transition": "Прямая склейка",
+          "background": "B06",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s24",
+      "part": 3,
+      "title": "Утро после драк",
+      "startFrame": 9000,
+      "endFrame": 9240,
+      "shots": [
+        {
+          "id": "ch01-p03-s24-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 9000,
+          "endFrame": 9240,
+          "durationSec": 10,
+          "action": "Утро в той же казарме; отсутствие части призывников передать без выдуманных пострадавших",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Утренние шаги и закадровый текст. Отсутствие людей подчёркивается сравнением композиции, без придуманной цифры.",
+          "transition": "Прямая склейка",
+          "background": "B05",
+          "heroState": "H1",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s25",
+      "part": 3,
+      "title": "Обмен джинсов",
+      "startFrame": 9240,
+      "endFrame": 9960,
+      "shots": [
+        {
+          "id": "ch01-p03-s25-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 9240,
+          "endFrame": 9600,
+          "durationSec": 15,
+          "action": "Обмен сложенных джинсов на широкие брюки; давление передать дистанцией, не новым избиением",
+          "actionKeys": [
+            "Герой останавливается перед старослужащими",
+            "Джинсы сложены в руках",
+            "Передаёт джинсы и принимает другие брюки",
+            "После склейки на нём уже другие брюки"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги и шорох ткани; только закадровое описание просьбы и обмена.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H1_to_H2",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s25-sh02",
+          "shotSize": "insert",
+          "framing": "single",
+          "startFrame": 9600,
+          "endFrame": 9780,
+          "durationSec": 7.5,
+          "action": "Передача чёрных старых джинсов и тёмно-синих брюк",
+          "actionKeys": [
+            "Герой останавливается перед старослужащими",
+            "Джинсы сложены в руках",
+            "Передаёт джинсы и принимает другие брюки",
+            "После склейки на нём уже другие брюки"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги и шорох ткани; только закадровое описание просьбы и обмена.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H1_to_H2",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s25-sh03",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 9780,
+          "endFrame": 9960,
+          "durationSec": 7.5,
+          "action": "После явной склейки герой уже в широких тёмно-синих брюках",
+          "actionKeys": [
+            "Герой останавливается перед старослужащими",
+            "Джинсы сложены в руках",
+            "Передаёт джинсы и принимает другие брюки",
+            "После склейки на нём уже другие брюки"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги и шорох ткани; только закадровое описание просьбы и обмена.",
+          "transition": "Прямая склейка",
+          "background": "B05",
+          "heroState": "H1_to_H2",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s26",
+      "part": 3,
+      "title": "Отказ морской пехоте",
+      "startFrame": 9960,
+      "endFrame": 10368,
+      "shots": [
+        {
+          "id": "ch01-p03-s26-sh01",
+          "shotSize": "medium",
+          "framing": "two-shot",
+          "startFrame": 9960,
+          "endFrame": 10096,
+          "durationSec": 5.666666666666667,
+          "action": "Приходит другой офицер O2 с личным делом; отличить его от O1",
+          "actionKeys": [
+            "Офицер останавливается перед героем",
+            "Герой слушает",
+            "Коротко отрицательно качает головой"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Авторский закадровый текст, обычный шум двора. Слова офицера передаются косвенно.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s26-sh02",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 10096,
+          "endFrame": 10232,
+          "durationSec": 5.666666666666667,
+          "action": "Герой коротко качает головой, отказываясь",
+          "actionKeys": [
+            "Офицер останавливается перед героем",
+            "Герой слушает",
+            "Коротко отрицательно качает головой"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Авторский закадровый текст, обычный шум двора. Слова офицера передаются косвенно.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s26-sh03",
+          "shotSize": "medium",
+          "framing": "reverse",
+          "startFrame": 10232,
+          "endFrame": 10368,
+          "durationSec": 5.666666666666667,
+          "action": "O2 принимает ответ; не добавлять спор",
+          "actionKeys": [
+            "Офицер останавливается перед героем",
+            "Герой слушает",
+            "Коротко отрицательно качает головой"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Встречный ракурс; сохранить ось разговора и направление взглядов.",
+          "sound": "Авторский закадровый текст, обычный шум двора. Слова офицера передаются косвенно.",
+          "transition": "Прямая склейка",
+          "background": "B05",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s27",
+      "part": 3,
+      "title": "Почему я отказался",
+      "startFrame": 10368,
+      "endFrame": 11160,
+      "shots": [
+        {
+          "id": "ch01-p03-s27-sh01",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 10368,
+          "endFrame": 10896,
+          "durationSec": 22,
+          "action": "Внутренний монолог героя о причинах отказа",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Только закадровые мысли, фон двора убран тише.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B05",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s27-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 10896,
+          "endFrame": 11160,
+          "durationSec": 11,
+          "action": "Герой в том же месте; не показывать месть O1 как случившийся факт",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Только закадровые мысли, фон двора убран тише.",
+          "transition": "Прямая склейка",
+          "background": "B05",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s28",
+      "part": 3,
+      "title": "Отказ приняли",
+      "startFrame": 11160,
+      "endFrame": 11400,
+      "shots": [
+        {
+          "id": "ch01-p03-s28-sh01",
+          "shotSize": "medium",
+          "framing": "two-shot",
+          "startFrame": 11160,
+          "endFrame": 11400,
+          "durationSec": 10,
+          "action": "Спокойное завершение разговора с O2; никаких неслучившихся уговоров",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый текст, пауза. Без реплик убеждения.",
+          "transition": "Прямая склейка",
+          "background": "B05",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s29",
+      "part": 3,
+      "title": "Личное дело в штаб",
+      "startFrame": 11400,
+      "endFrame": 11808,
+      "shots": [
+        {
+          "id": "ch01-p03-s29-sh01",
+          "shotSize": "insert",
+          "framing": "single",
+          "startFrame": 11400,
+          "endFrame": 11536,
+          "durationSec": 5.666666666666667,
+          "action": "Личное дело в руках героя без читаемых персональных сведений",
+          "actionKeys": [
+            "Личное дело в руках героя",
+            "Протягивает папку через стол",
+            "Сотрудник принимает её",
+            "Герой отпускает папку"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Бумага по столу, шорох папки; закадровый текст. Передача документов — единственное видимое действие этого плана.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B08",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s29-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 11536,
+          "endFrame": 11808,
+          "durationSec": 11.333333333333334,
+          "action": "Передача папки через стол в штабе: принимает сотрудник, герой отпускает",
+          "actionKeys": [
+            "Личное дело в руках героя",
+            "Протягивает папку через стол",
+            "Сотрудник принимает её",
+            "Герой отпускает папку"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Бумага по столу, шорох папки; закадровый текст. Передача документов — единственное видимое действие этого плана.",
+          "transition": "Прямая склейка",
+          "background": "B08",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s30",
+      "part": 3,
+      "title": "Набор водолазов уже уехал",
+      "startFrame": 11808,
+      "endFrame": 12096,
+      "shots": [
+        {
+          "id": "ch01-p03-s30-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 11808,
+          "endFrame": 12096,
+          "durationSec": 12,
+          "action": "Герой слушает в штабе сообщение об уехавшем наборе водолазов",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Косвенная речь авторского рассказчика, короткая пауза.",
+          "transition": "Прямая склейка",
+          "background": "B08",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s31",
+      "part": 3,
+      "title": "Назначение в подводный флот",
+      "startFrame": 12096,
+      "endFrame": 12624,
+      "shots": [
+        {
+          "id": "ch01-p03-s31-sh01",
+          "shotSize": "medium",
+          "framing": "reverse",
+          "startFrame": 12096,
+          "endFrame": 12272,
+          "durationSec": 7.333333333333333,
+          "action": "Сотрудник штаба сообщает назначение в авторском рассказе",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Встречный ракурс; сохранить ось разговора и направление взглядов.",
+          "sound": "Закадровый текст: подводный флот — определённо; специальность — скорее всего радист. При необходимости монтажный титр только «Скорее всего — радист».",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B08",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s31-sh02",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 12272,
+          "endFrame": 12624,
+          "durationSec": 14.666666666666666,
+          "action": "Герой воспринимает назначение; лодку и будущую службу не изображать как уже случившиеся",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый текст: подводный флот — определённо; специальность — скорее всего радист. При необходимости монтажный титр только «Скорее всего — радист».",
+          "transition": "Прямая склейка",
+          "background": "B08",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s32",
+      "part": 3,
+      "title": "Может, стоило согласиться",
+      "startFrame": 12624,
+      "endFrame": 12864,
+      "shots": [
+        {
+          "id": "ch01-p03-s32-sh01",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 12624,
+          "endFrame": 12864,
+          "durationSec": 10,
+          "action": "Мысль героя о морской пехоте; без буквального подводного флешфорварда",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Только закадровая мысль и несколько секунд тишины.",
+          "transition": "Прямая склейка",
+          "background": "B08",
+          "heroState": "H2",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s33",
+      "part": 3,
+      "title": "Стрижка налысо",
+      "startFrame": 12864,
+      "endFrame": 13080,
+      "shots": [
+        {
+          "id": "ch01-p03-s33-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 12864,
+          "endFrame": 12936,
+          "durationSec": 3,
+          "action": "Посадка и наклон головы перед стрижкой",
+          "actionKeys": [
+            "Герой садится",
+            "Наклоняет голову",
+            "Первый этап стрижки",
+            "Промежуточная короткая длина волос",
+            "Обритая голова, неизменные черты лица"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Обобщённый звук стрижки без навязанного типа инструмента, шорох; закадровый текст.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B09",
+          "heroState": "H2_to_H3",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s33-sh02",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 12936,
+          "endFrame": 13080,
+          "durationSec": 6,
+          "action": "Три согласованные стадии стрижки через монтаж; лицо и форма черепа неизменны",
+          "actionKeys": [
+            "Герой садится",
+            "Наклоняет голову",
+            "Первый этап стрижки",
+            "Промежуточная короткая длина волос",
+            "Обритая голова, неизменные черты лица"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Обобщённый звук стрижки без навязанного типа инструмента, шорох; закадровый текст.",
+          "transition": "Прямая склейка",
+          "background": "B09",
+          "heroState": "H2_to_H3",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s34",
+      "part": 3,
+      "title": "Душ и сдача гражданской одежды",
+      "startFrame": 13080,
+      "endFrame": 13752,
+      "shots": [
+        {
+          "id": "ch01-p03-s34-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 13080,
+          "endFrame": 13248,
+          "durationSec": 7,
+          "action": "Душ передать со спины и через плечо, без обнажённого фронтального тела",
+          "actionKeys": [
+            "Плечо героя со спины, лицо не меняется",
+            "Руки кладут гражданскую одежду",
+            "Руки принимают свёрток формы"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Вода, шорох ткани; закадровый текст. Переходы между деталями внутри короткого монтажного эпизода.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B10",
+          "heroState": "H3_to_H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s34-sh02",
+          "shotSize": "insert",
+          "framing": "single",
+          "startFrame": 13248,
+          "endFrame": 13416,
+          "durationSec": 7,
+          "action": "Руки сдают гражданскую одежду",
+          "actionKeys": [
+            "Плечо героя со спины, лицо не меняется",
+            "Руки кладут гражданскую одежду",
+            "Руки принимают свёрток формы"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Вода, шорох ткани; закадровый текст. Переходы между деталями внутри короткого монтажного эпизода.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B10",
+          "heroState": "H3_to_H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s34-sh03",
+          "shotSize": "insert",
+          "framing": "single",
+          "startFrame": 13416,
+          "endFrame": 13752,
+          "durationSec": 14,
+          "action": "Руки принимают комплект формы; не надевать весь перечень одновременно",
+          "actionKeys": [
+            "Плечо героя со спины, лицо не меняется",
+            "Руки кладут гражданскую одежду",
+            "Руки принимают свёрток формы"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Вода, шорох ткани; закадровый текст. Переходы между деталями внутри короткого монтажного эпизода.",
+          "transition": "Прямая склейка",
+          "background": "B10",
+          "heroState": "H3_to_H4",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s35",
+      "part": 3,
+      "title": "В одинаковой форме",
+      "startFrame": 13752,
+      "endFrame": 14376,
+      "shots": [
+        {
+          "id": "ch01-p03-s35-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 13752,
+          "endFrame": 13908,
+          "durationSec": 6.5,
+          "action": "Призывники уже в одинаковой парадной форме",
+          "actionKeys": [
+            "Форма уже надета",
+            "Герой опускает взгляд к рукаву",
+            "Расправляет ткань",
+            "Выпрямляется среди остальных"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шорох ткани, шаги группы; закадровый текст.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B11",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s35-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 13908,
+          "endFrame": 14220,
+          "durationSec": 13,
+          "action": "Герой опускает взгляд, расправляет рукав и выпрямляется",
+          "actionKeys": [
+            "Форма уже надета",
+            "Герой опускает взгляд к рукаву",
+            "Расправляет ткань",
+            "Выпрямляется среди остальных"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шорох ткани, шаги группы; закадровый текст.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B11",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s35-sh03",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 14220,
+          "endFrame": 14376,
+          "durationSec": 6.5,
+          "action": "Бескозырка и гюйс по новым референсам; надпись только подтверждённая",
+          "actionKeys": [
+            "Форма уже надета",
+            "Герой опускает взгляд к рукаву",
+            "Расправляет ткань",
+            "Выпрямляется среди остальных"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шорох ткани, шаги группы; закадровый текст.",
+          "transition": "Прямая склейка",
+          "background": "B11",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s36",
+      "part": 3,
+      "title": "Поезд в Севастополь",
+      "startFrame": 14376,
+      "endFrame": 14616,
+      "shots": [
+        {
+          "id": "ch01-p03-s36-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 14376,
+          "endFrame": 14616,
+          "durationSec": 10,
+          "action": "Герой в парадной форме в вагоне; взгляд на попутчиков и затем к окну",
+          "actionKeys": [
+            "Герой находится среди группы в вагоне",
+            "Смотрит на попутчиков",
+            "Переводит взгляд к окну"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый текст, колёса поезда; без выдуманных объявлений и новых реплик.",
+          "transition": "Переход к прибытию ночью 23 ноября.",
+          "background": "B03",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s37",
+      "part": 3,
+      "title": "Ночной вокзал Севастополя",
+      "startFrame": 14616,
+      "endFrame": 14904,
+      "shots": [
+        {
+          "id": "ch01-p03-s37-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 14616,
+          "endFrame": 14904,
+          "durationSec": 12,
+          "action": "Вокзал Севастополя ночью 23 ноября; тёплая погода, без снега",
+          "actionKeys": [],
+          "animationMethod": "held_drawing",
+          "requiresCharacterAnimation": false,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый текст с датой прибытия, спокойный фон станции.",
+          "transition": "Прямая склейка",
+          "background": "B12",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s38",
+      "part": 3,
+      "title": "На грузовиках в учебную часть",
+      "startFrame": 14904,
+      "endFrame": 15336,
+      "shots": [
+        {
+          "id": "ch01-p03-s38-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 14904,
+          "endFrame": 15048,
+          "durationSec": 6,
+          "action": "Группа в кузове грузовика по дороге в учебку",
+          "actionKeys": [
+            "Сидит среди группы в кузове",
+            "Смотрит в сторону дороги",
+            "Собирает плечи от внутреннего напряжения"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровые мысли, двигатель и дорожный фон; без выдуманной речи сопровождающих.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B13",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s38-sh02",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 15048,
+          "endFrame": 15336,
+          "durationSec": 12,
+          "action": "Герой смотрит в сторону дороги, собирает плечи от напряжения",
+          "actionKeys": [
+            "Сидит среди группы в кузове",
+            "Смотрит в сторону дороги",
+            "Собирает плечи от внутреннего напряжения"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровые мысли, двигатель и дорожный фон; без выдуманной речи сопровождающих.",
+          "transition": "Прямая склейка",
+          "background": "B13",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s39",
+      "part": 3,
+      "title": "Распределение по командам",
+      "startFrame": 15336,
+      "endFrame": 15648,
+      "shots": [
+        {
+          "id": "ch01-p03-s39-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 15336,
+          "endFrame": 15492,
+          "durationSec": 6.5,
+          "action": "Распределение групп в учебной части; примерно 60 человек в команде",
+          "actionKeys": [
+            "Группа стоит перед распределением",
+            "Герой занимает место среди своей команды",
+            "Команда собирается вместе"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый текст; шаги и неразборчивый общий гул.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B14",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s39-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 15492,
+          "endFrame": 15648,
+          "durationSec": 6.5,
+          "action": "Герой занимает место среди своей команды",
+          "actionKeys": [
+            "Группа стоит перед распределением",
+            "Герой занимает место среди своей команды",
+            "Команда собирается вместе"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый текст; шаги и неразборчивый общий гул.",
+          "transition": "Прямая склейка",
+          "background": "B14",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s40",
+      "part": 3,
+      "title": "Казарма учебной части",
+      "startFrame": 15648,
+      "endFrame": 15840,
+      "shots": [
+        {
+          "id": "ch01-p03-s40-sh01",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 15648,
+          "endFrame": 15744,
+          "durationSec": 4,
+          "action": "Команда входит в другую казарму; установить новую географию",
+          "actionKeys": [
+            "Команда входит в казарму",
+            "Герой останавливается у нижней койки",
+            "Приготовляется ко сну"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, негромкий фон казармы, скрип кроватей.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B15",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s40-sh02",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 15744,
+          "endFrame": 15840,
+          "durationSec": 4,
+          "action": "Герой останавливается у нижней койки",
+          "actionKeys": [
+            "Команда входит в казарму",
+            "Герой останавливается у нижней койки",
+            "Приготовляется ко сну"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Шаги, негромкий фон казармы, скрип кроватей.",
+          "transition": "Прямая склейка",
+          "background": "B15",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    },
+    {
+      "sourceNode": "ch01-p03-s41",
+      "part": 3,
+      "title": "Первый ярус",
+      "startFrame": 15840,
+      "endFrame": 16872,
+      "shots": [
+        {
+          "id": "ch01-p03-s41-sh01",
+          "shotSize": "medium",
+          "framing": "single",
+          "startFrame": 15840,
+          "endFrame": 16135,
+          "durationSec": 12.291666666666666,
+          "action": "Герой укладывается на нижней койке",
+          "actionKeys": [
+            "Герой устраивается на нижней койке",
+            "Кладёт голову",
+            "Закрывает глаза"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый итог к 25 ноября, спокойная казарма. Подведение итогов явно отделено от даты прибытия.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B15",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s41-sh02",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 16135,
+          "endFrame": 16430,
+          "durationSec": 12.291666666666666,
+          "action": "Кладёт голову и закрывает глаза; лицо без морфинга",
+          "actionKeys": [
+            "Герой устраивается на нижней койке",
+            "Кладёт голову",
+            "Закрывает глаза"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый итог к 25 ноября, спокойная казарма. Подведение итогов явно отделено от даты прибытия.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B15",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s41-sh03",
+          "shotSize": "wide",
+          "framing": "single",
+          "startFrame": 16430,
+          "endFrame": 16725,
+          "durationSec": 12.291666666666666,
+          "action": "Спокойный финальный план казармы на ретроспективе к 25 ноября",
+          "actionKeys": [
+            "Герой устраивается на нижней койке",
+            "Кладёт голову",
+            "Закрывает глаза"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый итог к 25 ноября, спокойная казарма. Подведение итогов явно отделено от даты прибытия.",
+          "transition": "Склейка по действию или взгляду",
+          "background": "B15",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        },
+        {
+          "id": "ch01-p03-s41-sh04",
+          "shotSize": "close",
+          "framing": "single",
+          "startFrame": 16725,
+          "endFrame": 16872,
+          "durationSec": 6.125,
+          "action": "Выдержать финальную паузу; не добавлять новых событий или обещаний",
+          "actionKeys": [
+            "Герой устраивается на нижней койке",
+            "Кладёт голову",
+            "Закрывает глаза"
+          ],
+          "animationMethod": "rigged_2d_and_pose_to_pose",
+          "requiresCharacterAnimation": true,
+          "camera": "Устойчивая постановочная камера; движение персонажей по действию, без постоянного зума.",
+          "sound": "Закадровый итог к 25 ноября, спокойная казарма. Подведение итогов явно отделено от даты прибытия.",
+          "transition": "Конец главы;25 ноября—дата итогов,23 ноября—прибытие.",
+          "background": "B15",
+          "heroState": "H4",
+          "status": "planned",
+          "outputFile": null
+        }
+      ]
+    }
+  ]
+}

@@ -68,8 +68,12 @@ test('Pages содержит три части без фото и коррект
     const script = html.slice(html.lastIndexOf('<script>') + '<script>'.length, html.lastIndexOf('</script>'));
     await vm.runInContext(script + '\nboot();', context);
     assert.match(app.innerHTML, /Место для иллюстрации/);
-    assert.match(app.innerHTML, /Начать историю/);
+    assert.match(app.innerHTML, /Читать историю/);
     assert.doesNotMatch(app.innerHTML, /<img/);
+    for (const label of ['Прослушать историю', 'Посмотреть мини-ролик']) {
+      assert.ok(app.innerHTML.includes(`disabled aria-disabled="true" aria-label="${label}. В разработке"`));
+    }
+    assert.doesNotMatch(app.innerHTML, /(?:27|39) ⭐|Оплатить/);
     await vm.runInContext("navigate('chapters', {});", context);
     assert.match(app.innerHTML, /Дорога и распределение/);
     assert.match(app.innerHTML, /Экзамен у морпехов/);
@@ -105,6 +109,10 @@ test('Pages содержит три части без фото и коррект
     assert.equal(missing.ok, false);
     const invoice = await context.fetch('/api/map/invoice', { method: 'POST' });
     assert.equal(invoice.ok, false);
+    for (const format of ['audio', 'video']) {
+      const unavailable = await context.fetch(`/api/playback/${format}/invoice`, { method: 'POST' });
+      assert.equal(unavailable.status, 409);
+    }
   } finally {
     fs.rmSync(tempDir, { recursive: true, force: true });
   }

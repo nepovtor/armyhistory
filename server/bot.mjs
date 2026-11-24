@@ -1,4 +1,5 @@
 import { completeMapPayment, validateMapCheckout } from './payments.mjs';
+import { playbackProductForPayload, validatePlaybackCheckout, completePlaybackPayment } from './playback.mjs';
 
 const API = 'https://api.telegram.org/bot';
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -16,7 +17,8 @@ async function call(token, method, args, signal) {
 export async function handleBotUpdate(update, { token, appUrl, storage, callApi = call }) {
   const checkout = update.pre_checkout_query;
   if (checkout) {
-    const validation = validateMapCheckout(checkout, storage);
+    const product = playbackProductForPayload(checkout.invoice_payload);
+    const validation = product ? validatePlaybackCheckout(checkout, storage, product) : validateMapCheckout(checkout, storage);
     const args = { pre_checkout_query_id: checkout.id, ok: validation.ok };
     if (!validation.ok) args.error_message = validation.errorMessage;
     await callApi(token, 'answerPreCheckoutQuery', args);
@@ -24,7 +26,8 @@ export async function handleBotUpdate(update, { token, appUrl, storage, callApi 
   }
   const message = update.message;
   if (message?.successful_payment) {
-    const result = completeMapPayment(message, storage);
+    const product = playbackProductForPayload(message.successful_payment.invoice_payload);
+    const result = product ? completePlaybackPayment(message, storage, product) : completeMapPayment(message, storage);
     if (!result.ok) {
       console.error('Отклонён некорректный successful_payment:', result.errorMessage);
       return;
@@ -32,8 +35,8 @@ export async function handleBotUpdate(update, { token, appUrl, storage, callApi 
     if (result.granted && message.chat?.type === 'private') {
       await callApi(token, 'sendMessage', {
         chat_id: message.chat.id,
-        text: 'Оплата получена. Карта маршрута теперь открыта навсегда.',
-        reply_markup: { inline_keyboard: [[{ text: '🗺 Открыть карту', web_app: { url: appUrl } }]] }
+        text: product ? `Оплата получена. ${product.invoiceTitle} теперь доступна в приложении.` : 'Оплата получена. Карта маршрута теперь открыта навсегда.',
+        reply_markup: { inline_keyboard: [[{ text: product ? 'Открыть историю' : '🗺 Открыть карту', web_app: { url: appUrl } }]] }
       });
     }
     return;
